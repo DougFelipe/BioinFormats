@@ -1,0 +1,289 @@
+[
+  {
+    "extension": "fasta",
+    "name": "FASTA Format",
+    "area": ["genomics", "transcriptomics", "proteomics"],
+    "description": "Formato de texto simples para representação de sequências nucleotídicas ou proteicas. Cada sequência é precedida por uma linha de descrição que começa com o caractere '>'.",
+    "example_filenames": ["sequences.fasta", "genome.fa", "proteins.faa"],
+    "example_file_content": ">seq1 description\nACGTACGTACGT\n>seq2 description\nTGCATGCATGCA",
+    "example_file_explanation": [
+      "Linha 1: Cabeçalho da primeira sequência iniciado por '>' seguido do identificador 'seq1' e descrição opcional",
+      "Linha 2: Sequência de nucleotídeos da primeira entrada (ACGTACGTACGT)",
+      "Linha 3: Cabeçalho da segunda sequência com identificador 'seq2' e descrição",
+      "Linha 4: Sequência de nucleotídeos da segunda entrada (TGCATGCATGCA)"
+    ],
+    "pipeline_examples": [
+      "FASTA → BLAST → alignment results",
+      "FASTA → Clustal Omega → multiple alignment",
+      "FASTA → MUSCLE → phylogenetic tree"
+    ],
+    "tools": ["BLAST", "Clustal Omega", "MUSCLE", "MAFFT", "SeqKit"],
+    "references": [
+      {
+        "title": "FASTA Format Description",
+        "url": "https://en.wikipedia.org/wiki/FASTA_format",
+        "type": "documentation"
+      },
+      {
+        "title": "NCBI FASTA Format Guide",
+        "url": "https://www.ncbi.nlm.nih.gov/BLAST/fasta.shtml",
+        "type": "standard"
+      }
+    ],
+    "notes": "Formato amplamente suportado e padrão de facto para sequências biológicas. Extensões comuns incluem .fa, .fas, .fna (DNA), .faa (aminoácidos)."
+  },
+  {
+    "extension": "fastq",
+    "name": "FASTQ Format",
+    "area": ["genomics", "transcriptomics"],
+    "description": "Formato de texto para armazenamento de sequências nucleotídicas junto com suas respectivas pontuações de qualidade por base.",
+    "example_filenames": ["reads.fastq", "sample_R1.fq", "sequences.fastq.gz"],
+    "example_file_content": "@read_identifier\nACGTACGT\n+\n!''*((((***+))%%%++)(%%%%).1***-+*''))**55CCF>>>>>>CCCCCCC65",
+    "example_file_explanation": [
+      "Linha 1: Identificador da leitura iniciado por '@' seguido do nome único da sequência",
+      "Linha 2: Sequência de nucleotídeos (ACGTACGT)",
+      "Linha 3: Separador opcional '+' (pode repetir o identificador)",
+      "Linha 4: String de qualidade ASCII onde cada caractere representa a qualidade da base correspondente"
+    ],
+    "pipeline_examples": [
+      "FASTQ → FastQC → Trimmomatic → BWA → BAM",
+      "FASTQ → STAR → gene counts → DESeq2",
+      "FASTQ → Bowtie2 → SAM → variant calling"
+    ],
+    "tools": ["FastQC", "Trimmomatic", "BWA", "Bowtie2", "STAR"],
+    "references": [
+      {
+        "title": "FASTQ Format Specification",
+        "url": "https://en.wikipedia.org/wiki/FASTQ_format",
+        "type": "documentation"
+      }
+    ],
+    "notes": "Padrão para dados de sequenciamento de nova geração. Scores de qualidade codificados em ASCII (Phred+33 ou Phred+64)."
+  },
+  {
+    "extension": "sam",
+    "name": "Sequence Alignment Map",
+    "area": ["genomics", "transcriptomics"],
+    "description": "Formato padrão para armazenamento de alinhamentos de sequências contra um genoma de referência.",
+    "example_filenames": ["alignment.sam", "mapped_reads.sam"],
+    "example_file_content": "@HD\tVN:1.0\tSO:coordinate\n@SQ\tSN:chr1\tLN:248956422\nread1\t0\tchr1\t1000\t60\t50M\t*\t0\t0\tACGTACGT\t!!!!!!!!",
+    "example_file_explanation": [
+      "Linha 1: Cabeçalho (@HD) especificando versão (VN:1.0) e ordenação (SO:coordinate)",
+      "Linha 2: Sequência de referência (@SQ) com nome do cromossomo (SN:chr1) e comprimento (LN:248956422)",
+      "Linha 3: Alinhamento com nome da leitura (read1), flag (0), cromossomo (chr1), posição (1000), qualidade de mapeamento (60), CIGAR (50M), informações do par (*,0,0), sequência (ACGTACGT) e qualidades (!!!!!!!!)"
+    ],
+    "pipeline_examples": [
+      "FASTQ → BWA → SAM → variant calling",
+      "SAM → SAMtools sort → BAM → indexing",
+      "SAM → Picard → quality metrics"
+    ],
+    "tools": ["SAMtools", "BWA", "Bowtie2", "STAR", "HISAT2"],
+    "references": [
+      {
+        "title": "SAM Format Specification",
+        "url": "https://samtools.github.io/hts-specs/SAMv1.pdf",
+        "type": "standard"
+      }
+    ],
+    "notes": "Formato texto legível. Versão binária comprimida disponível como BAM."
+  },
+  {
+    "extension": "bam",
+    "name": "Binary Alignment Map",
+    "area": ["genomics", "transcriptomics"],
+    "description": "Versão binária comprimida do formato SAM para armazenamento eficiente de alinhamentos.",
+    "example_filenames": ["alignment.bam", "sorted_reads.bam"],
+    "example_file_content": "[Arquivo binário - não legível em texto]",
+    "example_file_explanation": [
+      "Arquivo binário comprimido contendo os mesmos dados do formato SAM",
+      "Estrutura interna: cabeçalho binário seguido de registros de alinhamento comprimidos",
+      "Requer ferramentas específicas (SAMtools) para visualização e manipulação",
+      "Indexação (.bai) necessária para acesso randômico eficiente"
+    ],
+    "pipeline_examples": [
+      "FASTQ → BWA → SAM → SAMtools → BAM",
+      "BAM → GATK → variant calling → VCF",
+      "BAM → IGV → genome visualization"
+    ],
+    "tools": ["SAMtools", "IGV", "GATK", "Picard", "BEDTools"],
+    "references": [
+      {
+        "title": "SAM/BAM Format Specification",
+        "url": "https://samtools.github.io/hts-specs/SAMv1.pdf",
+        "type": "standard"
+      }
+    ],
+    "notes": "Formato binário otimizado para processamento rápido. Requer indexação (.bai) para acesso randômico."
+  },
+  {
+    "extension": "vcf",
+    "name": "Variant Call Format",
+    "area": ["genomics", "clinical-bioinformatics"],
+    "description": "Formato padrão para armazenamento de variações genéticas como SNPs, indels e variações estruturais.",
+    "example_filenames": ["variants.vcf", "mutations.vcf.gz"],
+    "example_file_content": "##fileformat=VCFv4.2\n#CHROM\tPOS\tID\tREF\tALT\tQUAL\tFILTER\tINFO\nchr1\t123456\t.\tA\tG\t60\tPASS\tDP=30",
+    "example_file_explanation": [
+      "Linha 1: Meta-informação especificando a versão do formato VCF (v4.2)",
+      "Linha 2: Cabeçalho das colunas obrigatórias do VCF",
+      "Linha 3: Variante no cromossomo 1, posição 123456, sem ID (.), alelo de referência A, alelo alternativo G, qualidade 60, passou nos filtros (PASS), profundidade de cobertura 30 (DP=30)"
+    ],
+    "pipeline_examples": [
+      "BAM → GATK → VCF → annotation",
+      "VCF → VCFtools → population analysis",
+      "VCF → PLINK → GWAS analysis"
+    ],
+    "tools": ["GATK", "VCFtools", "bcftools", "PLINK", "SnpEff"],
+    "references": [
+      {
+        "title": "VCF Format Specification",
+        "url": "https://samtools.github.io/hts-specs/VCFv4.3.pdf",
+        "type": "standard"
+      }
+    ],
+    "notes": "Padrão para estudos de associação genômica (GWAS) e genômica médica. Suporta múltiplas amostras."
+  },
+  {
+    "extension": "bed",
+    "name": "Browser Extensible Data",
+    "area": ["genomics", "epigenomics"],
+    "description": "Formato simples para definição de regiões genômicas com coordenadas cromossômicas.",
+    "example_filenames": ["peaks.bed", "genes.bed", "regions.bed"],
+    "example_file_content": "chr1\t1000\t2000\tfeature1\t100\t+\nchr1\t3000\t4000\tfeature2\t200\t-",
+    "example_file_explanation": [
+      "Linha 1: Região no cromossomo 1 (chr1), início na posição 1000, fim na posição 2000, nome 'feature1', score 100, fita positiva (+)",
+      "Linha 2: Segunda região no cromossomo 1, posições 3000-4000, nome 'feature2', score 200, fita negativa (-)",
+      "Colunas separadas por tabulação: cromossomo, início, fim, nome, score, fita"
+    ],
+    "pipeline_examples": [
+      "ChIP-seq peaks → BED → genome annotation",
+      "BED → BEDTools → genomic intervals",
+      "BED → UCSC Browser → visualization"
+    ],
+    "tools": ["BEDTools", "IGV", "UCSC Genome Browser", "Galaxy"],
+    "references": [
+      {
+        "title": "BED Format Description",
+        "url": "https://genome.ucsc.edu/FAQ/FAQformat.html#format1",
+        "type": "documentation"
+      }
+    ],
+    "notes": "Formato flexível com 3 a 12 colunas. Amplamente usado para anotação genômica e visualização."
+  },
+  {
+    "extension": "gff",
+    "name": "General Feature Format",
+    "area": ["genomics", "transcriptomics"],
+    "description": "Formato padrão para anotação de características genômicas como genes, exons e elementos regulatórios.",
+    "example_filenames": ["annotation.gff3", "genes.gff", "features.gff"],
+    "example_file_content": "chr1\tRefSeq\tgene\t1000\t9000\t.\t+\t.\tID=gene1;Name=GENE1",
+    "example_file_explanation": [
+      "Coluna 1: Cromossomo ou sequência de referência (chr1)",
+      "Coluna 2: Fonte da anotação (RefSeq)",
+      "Coluna 3: Tipo de característica (gene)",
+      "Colunas 4-5: Coordenadas de início (1000) e fim (9000)",
+      "Coluna 6: Score (. = não definido)",
+      "Coluna 7: Fita (+)",
+      "Coluna 8: Fase (. = não aplicável para genes)",
+      "Coluna 9: Atributos com ID único (gene1) e nome (GENE1)"
+    ],
+    "pipeline_examples": [
+      "genome assembly → gene prediction → GFF",
+      "GFF → genome browser → visualization",
+      "GFF → feature extraction → analysis"
+    ],
+    "tools": ["GenomeTools", "IGV", "Apollo", "MAKER"],
+    "references": [
+      {
+        "title": "GFF3 Format Specification",
+        "url": "https://github.com/The-Sequence-Ontology/Specifications/blob/master/gff3.md",
+        "type": "standard"
+      }
+    ],
+    "notes": "Versão atual é GFF3. Suporta hierarquias complexas de características genômicas."
+  },
+  {
+    "extension": "gtf",
+    "name": "Gene Transfer Format",
+    "area": ["transcriptomics", "genomics"],
+    "description": "Subconjunto do formato GFF2 especializado para anotação de estruturas gênicas e transcritos.",
+    "example_filenames": ["genes.gtf", "transcripts.gtf"],
+    "example_file_content": "chr1\tStringTie\texon\t1000\t1500\t.\t+\t.\tgene_id \"GENE1\"; transcript_id \"TRANS1\";",
+    "example_file_explanation": [
+      "Cromossomo chr1, fonte StringTie, tipo de característica 'exon'",
+      "Coordenadas do exon: início 1000, fim 1500",
+      "Score não definido (.), fita positiva (+), fase não aplicável (.)",
+      "Atributos obrigatórios: gene_id identifica o gene (GENE1), transcript_id identifica o transcrito (TRANS1)",
+      "Formato de atributos: chave \"valor\"; separados por ponto e vírgula"
+    ],
+    "pipeline_examples": [
+      "RNA-seq → STAR → GTF → gene quantification",
+      "GTF → StringTie → transcript assembly",
+      "GTF → featureCounts → expression matrix"
+    ],
+    "tools": ["StringTie", "Cufflinks", "STAR", "HISAT2"],
+    "references": [
+      {
+        "title": "GTF Format Guide",
+        "url": "https://www.ensembl.org/info/website/upload/gff.html",
+        "type": "documentation"
+      }
+    ],
+    "notes": "Padrão para análise de expressão gênica e montagem de transcritos."
+  },
+  {
+    "extension": "pdb",
+    "name": "Protein Data Bank",
+    "area": ["structural-biology", "proteomics"],
+    "description": "Formato padrão para armazenamento de estruturas tridimensionais de macromoléculas biológicas.",
+    "example_filenames": ["1ABC.pdb", "protein_structure.pdb"],
+    "example_file_content": "HEADER    TRANSFERASE                             01-JAN-99   1ABC\nATOM      1  N   ALA A   1      20.154  16.967  23.421  1.00 20.00           N",
+    "example_file_explanation": [
+      "Linha HEADER: Classificação da proteína (TRANSFERASE), data de depósito (01-JAN-99), código PDB (1ABC)",
+      "Linha ATOM: Registro de átomo com número serial (1), nome do átomo (N), resíduo (ALA), cadeia (A), número do resíduo (1), coordenadas x,y,z (20.154, 16.967, 23.421), ocupância (1.00), fator B (20.00), elemento (N)"
+    ],
+    "pipeline_examples": [
+      "X-ray crystallography → PDB → structure analysis",
+      "PDB → PyMOL → molecular visualization",
+      "PDB → molecular dynamics → simulation"
+    ],
+    "tools": ["PyMOL", "ChimeraX", "VMD", "Swiss-PdbViewer"],
+    "references": [
+      {
+        "title": "PDB Format Guide",
+        "url": "https://www.wwpdb.org/documentation/file-format",
+        "type": "standard"
+      }
+    ],
+    "notes": "Formato texto com campos de largura fixa. Sendo substituído gradualmente pelo mmCIF."
+  },
+  {
+    "extension": "sdf",
+    "name": "Structure Data Format",
+    "area": ["structural-biology", "proteomics"],
+    "description": "Formato para armazenamento de estruturas químicas 2D/3D com propriedades moleculares associadas.",
+    "example_filenames": ["compounds.sdf", "molecules.sdf"],
+    "example_file_content": "Molecule Name\n  ChemDraw01011912302D\n\n  3  2  0  0  0  0  0  0  0  0999 V2000\n    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n$$$$",
+    "example_file_explanation": [
+      "Linha 1: Nome da molécula",
+      "Linha 2: Informações do programa gerador e timestamp",
+      "Linha 3: Linha de comentário (vazia)",
+      "Linha 4: Tabela de contagem - 3 átomos, 2 ligações, formato V2000",
+      "Linha 5: Bloco de átomos com coordenadas x,y,z (0.0000, 0.0000, 0.0000) e símbolo do elemento (C)",
+      "Linha 6: Delimitador de fim de molécula ($$$$)"
+    ],
+    "pipeline_examples": [
+      "chemical database → SDF → drug discovery",
+      "SDF → RDKit → molecular analysis",
+      "SDF → virtual screening → hit identification"
+    ],
+    "tools": ["ChemDraw", "OpenBabel", "RDKit", "Schrödinger Suite"],
+    "references": [
+      {
+        "title": "SDF Format Description",
+        "url": "https://en.wikipedia.org/wiki/Chemical_table_file#SDF",
+        "type": "documentation"
+      }
+    ],
+    "notes": "Extensão do formato MOL. Permite múltiplas estruturas e dados associados em um arquivo."
+  }
+]

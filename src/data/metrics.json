@@ -1,0 +1,194 @@
+{
+  "overview": {
+    "totalFormats": 47,
+    "totalConsultations": 12847,
+    "totalAreas": 10,
+    "totalTools": 156,
+    "lastUpdated": "2024-12-15"
+  },
+  "topFormats": [
+    {
+      "extension": "fasta",
+      "name": "FASTA Format",
+      "views": 2847,
+      "percentage": 22.1
+    },
+    {
+      "extension": "fastq",
+      "name": "FASTQ Format", 
+      "views": 2156,
+      "percentage": 16.8
+    },
+    {
+      "extension": "bam",
+      "name": "Binary Alignment Map",
+      "views": 1923,
+      "percentage": 15.0
+    },
+    {
+      "extension": "vcf",
+      "name": "Variant Call Format",
+      "views": 1654,
+      "percentage": 12.9
+    },
+    {
+      "extension": "sam",
+      "name": "Sequence Alignment Map",
+      "views": 1432,
+      "percentage": 11.1
+    }
+  ],
+  "topAreas": [
+    {
+      "id": "genomics",
+      "name": "Genômica",
+      "views": 4521,
+      "percentage": 35.2
+    },
+    {
+      "id": "transcriptomics", 
+      "name": "Transcriptômica",
+      "views": 2847,
+      "percentage": 22.1
+    },
+    {
+      "id": "proteomics",
+      "name": "Proteômica",
+      "views": 2156,
+      "percentage": 16.8
+    },
+    {
+      "id": "structural-biology",
+      "name": "Biologia Estrutural",
+      "views": 1654,
+      "percentage": 12.9
+    },
+    {
+      "id": "clinical-bioinformatics",
+      "name": "Bioinformática Clínica",
+      "views": 1669,
+      "percentage": 13.0
+    }
+  ],
+  "recentFormats": [
+    {
+      "extension": "cram",
+      "name": "Compressed Reference-oriented Alignment Map",
+      "dateAdded": "2024-12-10",
+      "area": "genomics"
+    },
+    {
+      "extension": "mzml",
+      "name": "Mass Spectrometry Markup Language",
+      "dateAdded": "2024-12-08",
+      "area": "proteomics"
+    },
+    {
+      "extension": "h5",
+      "name": "Hierarchical Data Format 5",
+      "dateAdded": "2024-12-05",
+      "area": "big-data-repositories"
+    },
+    {
+      "extension": "bcf",
+      "name": "Binary Variant Call Format",
+      "dateAdded": "2024-12-03",
+      "area": "genomics"
+    },
+    {
+      "extension": "mmcif",
+      "name": "Macromolecular Crystallographic Information File",
+      "dateAdded": "2024-11-28",
+      "area": "structural-biology"
+    }
+  ],
+  "topTools": [
+    {
+      "name": "SAMtools",
+      "mentions": 15,
+      "category": "Alignment Processing"
+    },
+    {
+      "name": "BLAST",
+      "mentions": 12,
+      "category": "Sequence Search"
+    },
+    {
+      "name": "IGV",
+      "mentions": 11,
+      "category": "Genome Visualization"
+    },
+    {
+      "name": "GATK",
+      "mentions": 9,
+      "category": "Variant Calling"
+    },
+    {
+      "name": "BWA",
+      "mentions": 8,
+      "category": "Sequence Alignment"
+    }
+  ],
+  "growthData": [
+    {
+      "month": "Jan 2024",
+      "formats": 28,
+      "consultations": 1250
+    },
+    {
+      "month": "Fev 2024",
+      "formats": 31,
+      "consultations": 1680
+    },
+    {
+      "month": "Mar 2024",
+      "formats": 34,
+      "consultations": 2100
+    },
+    {
+      "month": "Abr 2024",
+      "formats": 37,
+      "consultations": 2450
+    },
+    {
+      "month": "Mai 2024",
+      "formats": 40,
+      "consultations": 2890
+    },
+    {
+      "month": "Jun 2024",
+      "formats": 42,
+      "consultations": 3200
+    },
+    {
+      "month": "Jul 2024",
+      "formats": 44,
+      "consultations": 3650
+    },
+    {
+      "month": "Ago 2024",
+      "formats": 45,
+      "consultations": 4100
+    },
+    {
+      "month": "Set 2024",
+      "formats": 46,
+      "consultations": 4580
+    },
+    {
+      "month": "Out 2024",
+      "formats": 47,
+      "consultations": 5200
+    },
+    {
+      "month": "Nov 2024",
+      "formats": 47,
+      "consultations": 5850
+    },
+    {
+      "month": "Dez 2024",
+      "formats": 47,
+      "consultations": 6500
+    }
+  ]
+}

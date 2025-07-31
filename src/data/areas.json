@@ -1,0 +1,62 @@
+[
+  {
+    "id": "genomics",
+    "name": "Genômica",
+    "description": "Estudo completo do material genético de organismos, incluindo sequenciamento e análise de genomas.",
+    "icon": "dna"
+  },
+  {
+    "id": "transcriptomics",
+    "name": "Transcriptômica",
+    "description": "Análise de todos os transcritos de RNA produzidos por um organismo em condições específicas.",
+    "icon": "activity"
+  },
+  {
+    "id": "proteomics",
+    "name": "Proteômica",
+    "description": "Estudo em larga escala de proteínas, incluindo sua estrutura, função e modificações.",
+    "icon": "shapes"
+  },
+  {
+    "id": "metagenomics",
+    "name": "Metagenômica",
+    "description": "Análise do material genético recuperado diretamente de amostras ambientais.",
+    "icon": "globe"
+  },
+  {
+    "id": "structural-biology",
+    "name": "Biologia Estrutural",
+    "description": "Estudo da estrutura molecular de macromoléculas biológicas como proteínas e ácidos nucleicos.",
+    "icon": "box"
+  },
+  {
+    "id": "epigenomics",
+    "name": "Epigenômica",
+    "description": "Análise de modificações epigenéticas que afetam a expressão gênica sem alterar a sequência de DNA.",
+    "icon": "layers"
+  },
+  {
+    "id": "biological-networks",
+    "name": "Redes Biológicas",
+    "description": "Modelagem e análise de interações complexas entre biomoléculas e processos celulares.",
+    "icon": "network"
+  },
+  {
+    "id": "clinical-bioinformatics",
+    "name": "Bioinformática Clínica",
+    "description": "Aplicação de métodos bioinformáticos para diagnóstico médico e medicina personalizada.",
+    "icon": "heart"
+  },
+  {
+    "id": "ml-bioinformatics",
+    "name": "Machine Learning em Bioinformática",
+    "description": "Uso de algoritmos de aprendizado de máquina para análise de dados biológicos complexos.",
+    "icon": "brain"
+  },
+  {
+    "id": "big-data-repositories",
+    "name": "Big Data & Repositórios",
+    "description": "Gerenciamento e análise de grandes volumes de dados biológicos em repositórios públicos.",
+    "icon": "database"
+  }
+]
