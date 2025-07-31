@@ -2,15 +2,15 @@
   {
     "extension": "fasta",
     "name": "FASTA Format",
-    "area": ["genomics", "transcriptomics", "proteomics"],
-    "description": "Formato de texto simples para representação de sequências nucleotídicas ou proteicas. Cada sequência é precedida por uma linha de descrição que começa com o caractere '>'.",
+    "area": ["Genomics", "Transcriptomics", "Proteomics"],
+    "description": "A text-based format for representing nucleotide or peptide sequences. Each sequence is preceded by a single-line description that starts with a '>' character.",
     "example_filenames": ["sequences.fasta", "genome.fa", "proteins.faa"],
     "example_file_content": ">seq1 description\nACGTACGTACGT\n>seq2 description\nTGCATGCATGCA",
     "example_file_explanation": [
-      "Linha 1: Cabeçalho da primeira sequência iniciado por '>' seguido do identificador 'seq1' e descrição opcional",
-      "Linha 2: Sequência de nucleotídeos da primeira entrada (ACGTACGTACGT)",
-      "Linha 3: Cabeçalho da segunda sequência com identificador 'seq2' e descrição",
-      "Linha 4: Sequência de nucleotídeos da segunda entrada (TGCATGCATGCA)"
+      "Line 1: Header of the first sequence, starting with '>' followed by the identifier 'seq1' and an optional description.",
+      "Line 2: Nucleotide sequence of the first entry (ACGTACGTACGT).",
+      "Line 3: Header of the second sequence with identifier 'seq2' and description.",
+      "Line 4: Nucleotide sequence of the second entry (TGCATGCATGCA)."
     ],
     "pipeline_examples": [
       "FASTA → BLAST → alignment results",
@@ -30,20 +30,22 @@
         "type": "standard"
       }
     ],
-    "notes": "Formato amplamente suportado e padrão de facto para sequências biológicas. Extensões comuns incluem .fa, .fas, .fna (DNA), .faa (aminoácidos)."
+    "encoding_type": "ASCII / UTF-8",
+    "used_in_repositories": ["NCBI GenBank", "ENA", "DDBJ", "UniProt"],
+    "notes": "A widely supported and de facto standard for biological sequences. Common extensions include .fa, .fas, .fna (DNA), .faa (amino acids)."
   },
   {
     "extension": "fastq",
     "name": "FASTQ Format",
-    "area": ["genomics", "transcriptomics"],
-    "description": "Formato de texto para armazenamento de sequências nucleotídicas junto com suas respectivas pontuações de qualidade por base.",
+    "area": ["Genomics", "Transcriptomics"],
+    "description": "A text-based format for storing nucleotide sequences along with their corresponding base quality scores.",
     "example_filenames": ["reads.fastq", "sample_R1.fq", "sequences.fastq.gz"],
     "example_file_content": "@read_identifier\nACGTACGT\n+\n!''*((((***+))%%%++)(%%%%).1***-+*''))**55CCF>>>>>>CCCCCCC65",
     "example_file_explanation": [
-      "Linha 1: Identificador da leitura iniciado por '@' seguido do nome único da sequência",
-      "Linha 2: Sequência de nucleotídeos (ACGTACGT)",
-      "Linha 3: Separador opcional '+' (pode repetir o identificador)",
-      "Linha 4: String de qualidade ASCII onde cada caractere representa a qualidade da base correspondente"
+      "Line 1: Read identifier, starting with '@' followed by a unique sequence name.",
+      "Line 2: Nucleotide sequence (ACGTACGT).",
+      "Line 3: Optional separator '+' (can repeat the identifier).",
+      "Line 4: ASCII quality string where each character represents the quality of the corresponding base."
     ],
     "pipeline_examples": [
       "FASTQ → FastQC → Trimmomatic → BWA → BAM",
@@ -58,19 +60,21 @@
         "type": "documentation"
       }
     ],
-    "notes": "Padrão para dados de sequenciamento de nova geração. Scores de qualidade codificados em ASCII (Phred+33 ou Phred+64)."
+    "encoding_type": "ASCII / UTF-8",
+    "used_in_repositories": ["NCBI SRA", "ENA", "DDBJ"],
+    "notes": "The standard for next-generation sequencing data. Quality scores are ASCII-encoded (Phred+33 or Phred+64)."
   },
   {
     "extension": "sam",
     "name": "Sequence Alignment Map",
-    "area": ["genomics", "transcriptomics"],
-    "description": "Formato padrão para armazenamento de alinhamentos de sequências contra um genoma de referência.",
+    "area": ["Genomics", "Transcriptomics"],
+    "description": "A standard format for storing sequence alignments against a reference genome.",
     "example_filenames": ["alignment.sam", "mapped_reads.sam"],
     "example_file_content": "@HD\tVN:1.0\tSO:coordinate\n@SQ\tSN:chr1\tLN:248956422\nread1\t0\tchr1\t1000\t60\t50M\t*\t0\t0\tACGTACGT\t!!!!!!!!",
     "example_file_explanation": [
-      "Linha 1: Cabeçalho (@HD) especificando versão (VN:1.0) e ordenação (SO:coordinate)",
-      "Linha 2: Sequência de referência (@SQ) com nome do cromossomo (SN:chr1) e comprimento (LN:248956422)",
-      "Linha 3: Alinhamento com nome da leitura (read1), flag (0), cromossomo (chr1), posição (1000), qualidade de mapeamento (60), CIGAR (50M), informações do par (*,0,0), sequência (ACGTACGT) e qualidades (!!!!!!!!)"
+      "Line 1: Header (@HD) specifying version (VN:1.0) and sorting order (SO:coordinate).",
+      "Line 2: Reference sequence (@SQ) with chromosome name (SN:chr1) and length (LN:248956422).",
+      "Line 3: An alignment record for 'read1' with its mapping information and sequence."
     ],
     "pipeline_examples": [
       "FASTQ → BWA → SAM → variant calling",
@@ -85,20 +89,22 @@
         "type": "standard"
       }
     ],
-    "notes": "Formato texto legível. Versão binária comprimida disponível como BAM."
+    "encoding_type": "ASCII / UTF-8",
+    "used_in_repositories": ["GEO (NCBI)", "ArrayExpress"],
+    "notes": "Human-readable text format. A compressed binary version is available as BAM."
   },
   {
     "extension": "bam",
     "name": "Binary Alignment Map",
-    "area": ["genomics", "transcriptomics"],
-    "description": "Versão binária comprimida do formato SAM para armazenamento eficiente de alinhamentos.",
+    "area": ["Genomics", "Transcriptomics"],
+    "description": "The compressed binary version of the SAM format for efficient storage of alignments.",
     "example_filenames": ["alignment.bam", "sorted_reads.bam"],
-    "example_file_content": "[Arquivo binário - não legível em texto]",
+    "example_file_content": "[Binary file - not human-readable]",
     "example_file_explanation": [
-      "Arquivo binário comprimido contendo os mesmos dados do formato SAM",
-      "Estrutura interna: cabeçalho binário seguido de registros de alinhamento comprimidos",
-      "Requer ferramentas específicas (SAMtools) para visualização e manipulação",
-      "Indexação (.bai) necessária para acesso randômico eficiente"
+      "This is a binary file, which is a compressed version of a SAM file.",
+      "It contains the same alignment data but is not human-readable.",
+      "Requires tools like SAMtools to be viewed or converted.",
+      "An index file (.bai) allows for fast access to specific genomic regions."
     ],
     "pipeline_examples": [
       "FASTQ → BWA → SAM → SAMtools → BAM",
@@ -113,19 +119,21 @@
         "type": "standard"
       }
     ],
-    "notes": "Formato binário otimizado para processamento rápido. Requer indexação (.bai) para acesso randômico."
+    "encoding_type": "Binary",
+    "used_in_repositories": ["GEO (NCBI)", "ArrayExpress", "TCGA"],
+    "notes": "Binary format optimized for fast processing. Requires indexing (.bai) for random access."
   },
   {
     "extension": "vcf",
     "name": "Variant Call Format",
-    "area": ["genomics", "clinical-bioinformatics"],
-    "description": "Formato padrão para armazenamento de variações genéticas como SNPs, indels e variações estruturais.",
+    "area": ["Genomics", "Clinical Bioinformatics"],
+    "description": "A standard format for storing genetic variations such as SNPs, indels, and structural variants.",
     "example_filenames": ["variants.vcf", "mutations.vcf.gz"],
     "example_file_content": "##fileformat=VCFv4.2\n#CHROM\tPOS\tID\tREF\tALT\tQUAL\tFILTER\tINFO\nchr1\t123456\t.\tA\tG\t60\tPASS\tDP=30",
     "example_file_explanation": [
-      "Linha 1: Meta-informação especificando a versão do formato VCF (v4.2)",
-      "Linha 2: Cabeçalho das colunas obrigatórias do VCF",
-      "Linha 3: Variante no cromossomo 1, posição 123456, sem ID (.), alelo de referência A, alelo alternativo G, qualidade 60, passou nos filtros (PASS), profundidade de cobertura 30 (DP=30)"
+      "Line 1: Meta-information specifying the VCF format version (v4.2).",
+      "Line 2: Header line defining the columns.",
+      "Line 3: A variant record showing a change from 'A' to 'G' on chromosome 1 at position 123456."
     ],
     "pipeline_examples": [
       "BAM → GATK → VCF → annotation",
@@ -140,19 +148,21 @@
         "type": "standard"
       }
     ],
-    "notes": "Padrão para estudos de associação genômica (GWAS) e genômica médica. Suporta múltiplas amostras."
+    "encoding_type": "ASCII / UTF-8",
+    "used_in_repositories": ["dbSNP", "ClinVar", "gnomAD", "dbVar"],
+    "notes": "The standard for genome-wide association studies (GWAS) and medical genomics. Supports multiple samples."
   },
   {
     "extension": "bed",
     "name": "Browser Extensible Data",
-    "area": ["genomics", "epigenomics"],
-    "description": "Formato simples para definição de regiões genômicas com coordenadas cromossômicas.",
+    "area": ["Genomics", "Epigenomics"],
+    "description": "A simple format for defining genomic regions with chromosome coordinates.",
     "example_filenames": ["peaks.bed", "genes.bed", "regions.bed"],
     "example_file_content": "chr1\t1000\t2000\tfeature1\t100\t+\nchr1\t3000\t4000\tfeature2\t200\t-",
     "example_file_explanation": [
-      "Linha 1: Região no cromossomo 1 (chr1), início na posição 1000, fim na posição 2000, nome 'feature1', score 100, fita positiva (+)",
-      "Linha 2: Segunda região no cromossomo 1, posições 3000-4000, nome 'feature2', score 200, fita negativa (-)",
-      "Colunas separadas por tabulação: cromossomo, início, fim, nome, score, fita"
+      "Line 1: Defines a feature named 'feature1' on chromosome 1, from base 1000 to 2000, on the positive strand.",
+      "Line 2: Defines a feature named 'feature2' on chromosome 1, from base 3000 to 4000, on the negative strand.",
+      "The columns are: chromosome, start, end, name, score, and strand."
     ],
     "pipeline_examples": [
       "ChIP-seq peaks → BED → genome annotation",
@@ -167,24 +177,21 @@
         "type": "documentation"
       }
     ],
-    "notes": "Formato flexível com 3 a 12 colunas. Amplamente usado para anotação genômica e visualização."
+    "encoding_type": "ASCII / UTF-8",
+    "used_in_repositories": ["UCSC Genome Browser", "ENCODE", "Roadmap Epigenomics"],
+    "notes": "A flexible format with 3 to 12 columns. Widely used for genomic annotation and visualization."
   },
   {
     "extension": "gff",
     "name": "General Feature Format",
-    "area": ["genomics", "transcriptomics"],
-    "description": "Formato padrão para anotação de características genômicas como genes, exons e elementos regulatórios.",
+    "area": ["Genomics", "Transcriptomics"],
+    "description": "A standard format for annotating genomic features such as genes, exons, and regulatory elements.",
     "example_filenames": ["annotation.gff3", "genes.gff", "features.gff"],
     "example_file_content": "chr1\tRefSeq\tgene\t1000\t9000\t.\t+\t.\tID=gene1;Name=GENE1",
     "example_file_explanation": [
-      "Coluna 1: Cromossomo ou sequência de referência (chr1)",
-      "Coluna 2: Fonte da anotação (RefSeq)",
-      "Coluna 3: Tipo de característica (gene)",
-      "Colunas 4-5: Coordenadas de início (1000) e fim (9000)",
-      "Coluna 6: Score (. = não definido)",
-      "Coluna 7: Fita (+)",
-      "Coluna 8: Fase (. = não aplicável para genes)",
-      "Coluna 9: Atributos com ID único (gene1) e nome (GENE1)"
+      "This line describes a 'gene' feature from the 'RefSeq' source.",
+      "It is located on 'chr1' from base 1000 to 9000 on the positive strand.",
+      "The last column contains attributes, like the ID and Name of the gene."
     ],
     "pipeline_examples": [
       "genome assembly → gene prediction → GFF",
@@ -199,21 +206,21 @@
         "type": "standard"
       }
     ],
-    "notes": "Versão atual é GFF3. Suporta hierarquias complexas de características genômicas."
+    "encoding_type": "ASCII / UTF-8",
+    "used_in_repositories": ["NCBI RefSeq", "Ensembl", "FlyBase"],
+    "notes": "The current version is GFF3. It supports complex hierarchies of genomic features."
   },
   {
     "extension": "gtf",
     "name": "Gene Transfer Format",
-    "area": ["transcriptomics", "genomics"],
-    "description": "Subconjunto do formato GFF2 especializado para anotação de estruturas gênicas e transcritos.",
+    "area": ["Transcriptomics", "Genomics"],
+    "description": "A subset of the GFF2 format specialized for annotating gene and transcript structures.",
     "example_filenames": ["genes.gtf", "transcripts.gtf"],
     "example_file_content": "chr1\tStringTie\texon\t1000\t1500\t.\t+\t.\tgene_id \"GENE1\"; transcript_id \"TRANS1\";",
     "example_file_explanation": [
-      "Cromossomo chr1, fonte StringTie, tipo de característica 'exon'",
-      "Coordenadas do exon: início 1000, fim 1500",
-      "Score não definido (.), fita positiva (+), fase não aplicável (.)",
-      "Atributos obrigatórios: gene_id identifica o gene (GENE1), transcript_id identifica o transcrito (TRANS1)",
-      "Formato de atributos: chave \"valor\"; separados por ponto e vírgula"
+      "This line describes an 'exon' feature from base 1000 to 1500 on 'chr1'.",
+      "The last column must contain 'gene_id' and 'transcript_id' attributes.",
+      "This structure is essential for modeling gene transcripts."
     ],
     "pipeline_examples": [
       "RNA-seq → STAR → GTF → gene quantification",
@@ -228,18 +235,20 @@
         "type": "documentation"
       }
     ],
-    "notes": "Padrão para análise de expressão gênica e montagem de transcritos."
+    "encoding_type": "ASCII / UTF-8",
+    "used_in_repositories": ["Ensembl", "GENCODE"],
+    "notes": "A standard for gene expression analysis and transcript assembly."
   },
   {
     "extension": "pdb",
     "name": "Protein Data Bank",
-    "area": ["structural-biology", "proteomics"],
-    "description": "Formato padrão para armazenamento de estruturas tridimensionais de macromoléculas biológicas.",
+    "area": ["Structural Biology", "Proteomics"],
+    "description": "A standard format for storing three-dimensional structures of biological macromolecules.",
     "example_filenames": ["1ABC.pdb", "protein_structure.pdb"],
-    "example_file_content": "HEADER    TRANSFERASE                             01-JAN-99   1ABC\nATOM      1  N   ALA A   1      20.154  16.967  23.421  1.00 20.00           N",
+    "example_file_content": "HEADER    TRANSFERASE                         01-JAN-99   1ABC\nATOM      1  N   ALA A   1      20.154  16.967  23.421  1.00 20.00           N",
     "example_file_explanation": [
-      "Linha HEADER: Classificação da proteína (TRANSFERASE), data de depósito (01-JAN-99), código PDB (1ABC)",
-      "Linha ATOM: Registro de átomo com número serial (1), nome do átomo (N), resíduo (ALA), cadeia (A), número do resíduo (1), coordenadas x,y,z (20.154, 16.967, 23.421), ocupância (1.00), fator B (20.00), elemento (N)"
+      "Line 1 (HEADER): Contains metadata like the molecule's class, date, and ID.",
+      "Line 2 (ATOM): Describes a single atom, including its type (N), residue (ALA), chain (A), position (x,y,z), and other properties."
     ],
     "pipeline_examples": [
       "X-ray crystallography → PDB → structure analysis",
@@ -254,22 +263,22 @@
         "type": "standard"
       }
     ],
-    "notes": "Formato texto com campos de largura fixa. Sendo substituído gradualmente pelo mmCIF."
+    "encoding_type": "ASCII / UTF-8",
+    "used_in_repositories": ["PDB (wwPDB)", "RCSB PDB", "PDBe", "PDBj"],
+    "notes": "A fixed-width text format. It is gradually being replaced by mmCIF."
   },
   {
     "extension": "sdf",
     "name": "Structure Data Format",
-    "area": ["structural-biology", "proteomics"],
-    "description": "Formato para armazenamento de estruturas químicas 2D/3D com propriedades moleculares associadas.",
+    "area": ["Structural Biology", "Proteomics"],
+    "description": "A format for storing 2D/3D chemical structures with associated molecular properties.",
     "example_filenames": ["compounds.sdf", "molecules.sdf"],
     "example_file_content": "Molecule Name\n  ChemDraw01011912302D\n\n  3  2  0  0  0  0  0  0  0  0999 V2000\n    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n$$$$",
     "example_file_explanation": [
-      "Linha 1: Nome da molécula",
-      "Linha 2: Informações do programa gerador e timestamp",
-      "Linha 3: Linha de comentário (vazia)",
-      "Linha 4: Tabela de contagem - 3 átomos, 2 ligações, formato V2000",
-      "Linha 5: Bloco de átomos com coordenadas x,y,z (0.0000, 0.0000, 0.0000) e símbolo do elemento (C)",
-      "Linha 6: Delimitador de fim de molécula ($$$$)"
+      "Line 1: Name of the molecule.",
+      "Line 4 (Counts line): Specifies the number of atoms (3) and bonds (2).",
+      "Line 5 (Atom block): Defines the coordinates and element type (C) for an atom.",
+      "Line 6 ($$$$): Marks the end of a single molecule entry."
     ],
     "pipeline_examples": [
       "chemical database → SDF → drug discovery",
@@ -284,6 +293,129 @@
         "type": "documentation"
       }
     ],
-    "notes": "Extensão do formato MOL. Permite múltiplas estruturas e dados associados em um arquivo."
+    "encoding_type": "ASCII / UTF-8",
+    "used_in_repositories": ["PubChem", "ChEMBL", "ZINC"],
+    "notes": "An extension of the MOL format. Allows multiple structures and associated data in one file."
+  },
+  {
+    "extension": "mmcif",
+    "name": "Macromolecular Crystallographic Information File",
+    "area": ["Structural Biology", "Proteomics"],
+    "description": "A modern, flexible format for storing macromolecular structures, replacing the legacy PDB format.",
+    "example_filenames": ["1abc.cif", "structure_data.mmcif"],
+    "example_file_content": "data_1ABC\n#\n_entry.id   1ABC\n#\nloop_\n_atom_site.id\n_atom_site.Cartn_x\n_atom_site.Cartn_y\n_atom_site.Cartn_z\n1 20.154 16.967 23.421",
+    "example_file_explanation": [
+      "Line 3: A key-value pair defining the entry ID (_entry.id) as 1ABC.",
+      "Line 5: The 'loop_' statement indicates the start of a table of data.",
+      "Lines 6-9: These lines define the columns of the table (atom ID and x,y,z coordinates).",
+      "Line 10: A row in the table, providing values for the columns defined above."
+    ],
+    "pipeline_examples": [
+      "Structure deposition → mmCIF → PDB database",
+      "mmCIF → Mol* Viewer → advanced visualization",
+      "mmCIF → data parsing → large-scale structural analysis"
+    ],
+    "tools": ["Mol* Viewer", "PyMOL", "ChimeraX", "phenix"],
+    "references": [
+      {
+        "title": "mmCIF Specification",
+        "url": "https://mmcif.wwpdb.org/",
+        "type": "standard"
+      }
+    ],
+    "encoding_type": "ASCII / UTF-8",
+    "used_in_repositories": ["PDB (wwPDB)", "RCSB PDB", "PDBe", "PDBj"],
+    "notes": "The standard format for the Protein Data Bank archive. Uses a key-value and tabular structure."
+  },
+  {
+    "extension": "nwk",
+    "name": "Newick Format",
+    "area": ["Genomics", "Biological Networks"],
+    "description": "A standard way of representing phylogenetic trees using parentheses and commas.",
+    "example_filenames": ["tree.nwk", "phylogeny.newick"],
+    "example_file_content": "(A:0.1,B:0.2,(C:0.3,D:0.4)E:0.5)F;",
+    "example_file_explanation": [
+      "'(A,B)' means that A and B are sister nodes.",
+      "'A:0.1' means that the branch length leading to node A is 0.1.",
+      "'(C,D)E' means that C and D are sister nodes, and their parent node is E.",
+      "The entire structure is enclosed in parentheses and ends with a semicolon."
+    ],
+    "pipeline_examples": [
+      "Multiple sequence alignment → PhyML → Newick tree",
+      "Newick → FigTree → tree visualization",
+      "Newick → ETE Toolkit → programmatic tree analysis"
+    ],
+    "tools": ["FigTree", "TreeView", "ETE Toolkit", "PhyML", "RAxML"],
+    "references": [
+      {
+        "title": "Newick Format Description",
+        "url": "https://en.wikipedia.org/wiki/Newick_format",
+        "type": "documentation"
+      }
+    ],
+    "encoding_type": "ASCII / UTF-8",
+    "used_in_repositories": ["TreeBASE", "Open Tree of Life"],
+    "notes": "A very simple and universal format for tree structures, not limited to phylogenetics."
+  },
+  {
+    "extension": "gb",
+    "name": "GenBank Format",
+    "area": ["Genomics", "Transcriptomics", "Big Data & Repositories"],
+    "description": "A comprehensive flat file format from NCBI for storing sequence data and its rich annotation.",
+    "example_filenames": ["sequence.gb", "record.genbank"],
+    "example_file_content": "LOCUS       SCU49845    5028 bp    DNA\nDEFINITION  Saccharomyces cerevisiae TCP1-beta gene.\nFEATURES             Location/Qualifiers\n     gene            1..5028\n                     /gene=\"TCP1\"\nORIGIN\n        1 gcgacctcgc ggcggcgagc tcggcggcgg cggcgagcgc\n//",
+    "example_file_explanation": [
+      "Line 1 (LOCUS): Provides the entry name, length, and molecule type.",
+      "Line 2 (DEFINITION): A brief description of the sequence.",
+      "Lines 3-5 (FEATURES): A table describing features like genes and their locations.",
+      "Lines 6-7 (ORIGIN): Marks the beginning of the sequence data.",
+      "Line 8 (//): Indicates the end of the record."
+    ],
+    "pipeline_examples": [
+      "NCBI search → GenBank download → sequence extraction",
+      "GenBank → Biopython → parsing and analysis",
+      "GenBank → feature extraction → annotation summary"
+    ],
+    "tools": ["NCBI Entrez", "Biopython", "SeqIO", "Artemis"],
+    "references": [
+      {
+        "title": "GenBank Sample Record",
+        "url": "https://www.ncbi.nlm.nih.gov/Sitemap/samplerecord.html",
+        "type": "documentation"
+      }
+    ],
+    "encoding_type": "ASCII / UTF-8",
+    "used_in_repositories": ["NCBI GenBank", "ENA", "DDBJ"],
+    "notes": "One of the most common and detailed formats for annotated sequences in public databases."
+  },
+  {
+    "extension": "sra",
+    "name": "Sequence Read Archive Format",
+    "area": ["Genomics", "Transcriptomics", "Big Data & Repositories"],
+    "description": "A format for storing raw sequencing data from high-throughput sequencing experiments, managed by NCBI.",
+    "example_filenames": ["SRR123456.sra", "data.sra"],
+    "example_file_content": "[Binary archive - requires specific tools to access]",
+    "example_file_explanation": [
+      "This is a binary archive, not a simple text file.",
+      "It contains raw sequencing reads, quality scores, and metadata.",
+      "It must be converted to FASTQ or other formats using the SRA Toolkit for analysis.",
+      "Data is organized by submissions (SRA), experiments (SRX), and runs (SRR)."
+    ],
+    "pipeline_examples": [
+      "Download SRA file → SRA Toolkit (fastq-dump) → FASTQ files",
+      "SRA → alignment pipeline → analysis",
+      "SRA → cloud computing platform → large-scale processing"
+    ],
+    "tools": ["SRA Toolkit", "fastq-dump", "prefetch", "sam-dump"],
+    "references": [
+      {
+        "title": "NCBI SRA Documentation",
+        "url": "https://www.ncbi.nlm.nih.gov/sra/docs/",
+        "type": "standard"
+      }
+    ],
+    "encoding_type": "Binary",
+    "used_in_repositories": ["NCBI SRA", "ENA", "DDBJ"],
+    "notes": "The primary archive for raw sequencing data. Conversion to FASTQ is a common first step for analysis."
   }
 ]

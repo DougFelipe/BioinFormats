@@ -13,12 +13,7 @@ const ExplanationBlock: React.FC<ExplanationBlockProps> = ({ explanations, class
 
   return (
     <div className={`bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-200 ${className}`}>
-      <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center">
-        <div className="inline-flex p-2 rounded-lg bg-blue-100 mr-3">
-          <BookOpen className="h-6 w-6 text-blue-600" />
-        </div>
-        Interpretative Explanation
-      </h3>
+
       
       <div className="space-y-4">
         {explanations.map((explanation, index) => (

@@ -15,10 +15,10 @@ const typeIcons: Record<Reference['type'], React.ComponentType<any>> = {
 };
 
 const typeLabels: Record<Reference['type'], string> = {
-  documentation: 'Documentação',
-  paper: 'Artigo',
-  tool: 'Ferramenta',
-  standard: 'Padrão',
+  documentation: 'Docs',
+  paper: 'Paper',
+  tool: 'Tool',
+  standard: 'Standard',
 };
 
 const typeColors: Record<Reference['type'], string> = {

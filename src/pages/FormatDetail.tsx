@@ -52,51 +52,76 @@ const FormatDetail: React.FC<FormatDetailProps> = ({ formats }) => {
             Back
           </Link>
           
-          <div className="bg-white rounded-xl p-8 border border-gray-200">
-            <div className="flex items-start space-x-4 mb-6">
-              <div className="flex-1">
-                <h1 className="text-3xl font-bold text-gray-900 mb-2">
-                  .{format.extension}
-                </h1>
-                <h2 className="text-xl text-gray-700 mb-2">
-                  {format.name}
-                </h2>
-                <p className="text-gray-700 text-lg leading-relaxed mb-4">
-                  {format.description}
-                </p>
-                <div className="mb-1 text-sm font-semibold text-gray-700">Associated areas</div>
-                <div className="flex flex-wrap gap-2 mb-2">
-                  {format.area.map((area) => (
-                    <span
-                      key={area}
-                      className="inline-flex px-3 py-1 rounded-full text-sm font-medium bg-purple-100 text-purple-800"
-                    >
-                      {area}
-                    </span>
-                  ))}
-                </div>
-                {format.tools && format.tools.length > 0 && (
-                  <>
-                    <div className="mb-1 text-sm font-semibold text-gray-700">Associated Tools</div>
-                    <div className="flex flex-wrap gap-2 mt-1">
-                      {format.tools.map((tool, index) => (
-                        <span
-                          key={index}
-                          className="inline-flex px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800"
-                        >
-                          {tool}
-                        </span>
-                      ))}
-                    </div>
-                  </>
-                )}
-              </div>
-            </div>
-            
-            <p className="text-gray-700 text-lg leading-relaxed">
-              {/* ...existing code... */}
-            </p>
+<div className="bg-white rounded-xl p-8 border border-gray-200">
+  <div className="flex items-start space-x-4 mb-6">
+    <div className="flex-1">
+      <h1 className="text-3xl font-bold text-gray-900 mb-2">
+        .{format.extension}
+      </h1>
+      <h2 className="text-xl text-gray-700 mb-2">
+        {format.name}
+      </h2>
+      <p className="text-gray-700 text-lg leading-relaxed mb-4">
+        {format.description}
+      </p>
+
+      {/* Associated Areas */}
+      <div className="mb-1 text-sm font-semibold text-gray-700">Associated areas</div>
+      <div className="flex flex-wrap gap-2 mb-4">
+        {format.area.map((area) => (
+          <span
+            key={area}
+            className="inline-flex px-3 py-1 rounded-full text-sm font-medium bg-purple-100 text-purple-800"
+          >
+            {area}
+          </span>
+        ))}
+      </div>
+
+      {/* Associated Tools */}
+      {format.tools && format.tools.length > 0 && (
+        <div className="mb-4">
+          <div className="mb-1 text-sm font-semibold text-gray-700">Associated Tools</div>
+          <div className="flex flex-wrap gap-2 mt-1">
+            {format.tools.map((tool, index) => (
+              <span
+                key={index}
+                className="inline-flex px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800"
+              >
+                {tool}
+              </span>
+            ))}
           </div>
+        </div>
+      )}
+
+      {/* NEW: Encoding Type */}
+      <div className="mb-4">
+        <div className="mb-1 text-sm font-semibold text-gray-700">Encoding Type</div>
+        <span className="inline-flex px-3 py-1 rounded-full text-sm font-medium bg-yellow-100 text-yellow-800">
+          {format.encoding_type}
+        </span>
+      </div>
+
+      {/* NEW: Used in Repositories */}
+      <div>
+        <div className="mb-1 text-sm font-semibold text-gray-700">Used in Repositories</div>
+        <div className="flex flex-wrap gap-2 mt-1">
+          {format.used_in_repositories.map((repo, index) => (
+            <span
+              key={index}
+              className="inline-flex px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800"
+            >
+              {repo}
+            </span>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
         </div>
 
         {/* Main Content */}

@@ -1,62 +1,52 @@
 [
   {
     "id": "genomics",
-    "name": "Genômica",
-    "description": "Estudo completo do material genético de organismos, incluindo sequenciamento e análise de genomas.",
-    "icon": "dna"
+    "name": "Genomics",
+    "description": "Comprehensive study of the genetic material of organisms, including genome sequencing and analysis."
   },
   {
     "id": "transcriptomics",
-    "name": "Transcriptômica",
-    "description": "Análise de todos os transcritos de RNA produzidos por um organismo em condições específicas.",
-    "icon": "activity"
+    "name": "Transcriptomics",
+    "description": "Analysis of all RNA transcripts produced by an organism under specific conditions."
   },
   {
     "id": "proteomics",
-    "name": "Proteômica",
-    "description": "Estudo em larga escala de proteínas, incluindo sua estrutura, função e modificações.",
-    "icon": "shapes"
+    "name": "Proteomics",
+    "description": "Large-scale study of proteins, including their structure, function, and modifications."
   },
   {
     "id": "metagenomics",
-    "name": "Metagenômica",
-    "description": "Análise do material genético recuperado diretamente de amostras ambientais.",
-    "icon": "globe"
+    "name": "Metagenomics",
+    "description": "Analysis of genetic material recovered directly from environmental samples."
   },
   {
     "id": "structural-biology",
-    "name": "Biologia Estrutural",
-    "description": "Estudo da estrutura molecular de macromoléculas biológicas como proteínas e ácidos nucleicos.",
-    "icon": "box"
+    "name": "Structural Biology",
+    "description": "Study of the molecular structure of biological macromolecules such as proteins and nucleic acids."
   },
   {
     "id": "epigenomics",
-    "name": "Epigenômica",
-    "description": "Análise de modificações epigenéticas que afetam a expressão gênica sem alterar a sequência de DNA.",
-    "icon": "layers"
+    "name": "Epigenomics",
+    "description": "Analysis of epigenetic modifications that affect gene expression without altering the DNA sequence."
   },
   {
     "id": "biological-networks",
-    "name": "Redes Biológicas",
-    "description": "Modelagem e análise de interações complexas entre biomoléculas e processos celulares.",
-    "icon": "network"
+    "name": "Biological Networks",
+    "description": "Modeling and analysis of complex interactions between biomolecules and cellular processes."
   },
   {
     "id": "clinical-bioinformatics",
-    "name": "Bioinformática Clínica",
-    "description": "Aplicação de métodos bioinformáticos para diagnóstico médico e medicina personalizada.",
-    "icon": "heart"
+    "name": "Clinical Bioinformatics",
+    "description": "Application of bioinformatics methods for medical diagnosis and personalized medicine."
   },
   {
     "id": "ml-bioinformatics",
-    "name": "Machine Learning em Bioinformática",
-    "description": "Uso de algoritmos de aprendizado de máquina para análise de dados biológicos complexos.",
-    "icon": "brain"
+    "name": "Machine Learning in Bioinformatics",
+    "description": "Use of machine learning algorithms for the analysis of complex biological data."
   },
   {
     "id": "big-data-repositories",
-    "name": "Big Data & Repositórios",
-    "description": "Gerenciamento e análise de grandes volumes de dados biológicos em repositórios públicos.",
-    "icon": "database"
+    "name": "Big Data & Repositories",
+    "description": "Management and analysis of large volumes of biological data in public repositories."
   }
 ]

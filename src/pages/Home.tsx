@@ -13,11 +13,24 @@ interface HomeProps {
 
 const Home: React.FC<HomeProps> = ({ formats, areas }) => {
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedArea, setSelectedArea] = useState<string>('all');
+  // O estado agora armazena o ID da área, ou null se nenhuma estiver selecionada.
+  const [selectedAreaId, setSelectedAreaId] = useState<string | null>(null);
 
+  // Lógica de filtro atualizada
   const filteredFormats = useMemo(() => {
-    return searchFormats(formats, searchQuery, selectedArea === 'all' ? undefined : selectedArea);
-  }, [formats, searchQuery, selectedArea]);
+    // 1. Encontra o objeto da área selecionada usando o ID.
+    const selectedAreaObject = areas.find(area => area.id === selectedAreaId);
+    // 2. Obtém o nome da área para usar no filtro (ex: "Genomics").
+    const areaNameToFilter = selectedAreaObject ? selectedAreaObject.name : undefined;
+
+    // 3. A função de busca agora usa o nome da área para filtrar.
+    return searchFormats(formats, searchQuery, areaNameToFilter);
+  }, [formats, searchQuery, selectedAreaId, areas]);
+
+  // Função para lidar com a seleção de área, permite selecionar e desmarcar.
+  const handleAreaSelect = (areaId: string) => {
+    setSelectedAreaId(prevId => (prevId === areaId ? null : areaId));
+  };
 
   const featuredFormats = formats.slice(0, 6);
 
@@ -37,8 +50,8 @@ const Home: React.FC<HomeProps> = ({ formats, areas }) => {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-              <Link
-                to="#search"
+              <a
+                href="#search"
                 className="inline-flex items-center justify-center px-8 py-4 bg-white text-blue-700 font-semibold rounded-lg hover:bg-blue-50 transition-all duration-200 shadow-lg hover:shadow-xl"
                 onClick={(e) => {
                   e.preventDefault();
@@ -47,15 +60,8 @@ const Home: React.FC<HomeProps> = ({ formats, areas }) => {
               >
                 <Search className="h-5 w-5 mr-2" />
                 Search Format
-              </Link>
-              
-              <Link
-                to="/areas"
-                className="inline-flex items-center justify-center px-8 py-4 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-blue-700 transition-all duration-200"
-              >
-                <Grid3X3 className="h-5 w-5 mr-2" />
-                Browse by Area
-              </Link>
+              </a>            
+
             </div>
             
             <div className="flex items-center justify-center space-x-8 text-blue-200">
@@ -95,22 +101,12 @@ const Home: React.FC<HomeProps> = ({ formats, areas }) => {
           />
           
           <div className="flex flex-wrap gap-2 justify-center">
-            <button
-              onClick={() => setSelectedArea('all')}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-                selectedArea === 'all'
-                  ? 'bg-blue-600 text-white'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-              }`}
-            >
-              All areas
-            </button>
-            {areas.slice(0, 5).map((area) => (
+            {areas.map((area) => (
               <button
                 key={area.id}
-                onClick={() => setSelectedArea(area.id)}
+                onClick={() => handleAreaSelect(area.id)}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-                  selectedArea === area.id
+                  selectedAreaId === area.id
                     ? 'bg-blue-600 text-white'
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 }`}
@@ -120,7 +116,7 @@ const Home: React.FC<HomeProps> = ({ formats, areas }) => {
             ))}
           </div>
           
-          {(searchQuery || selectedArea !== 'all') && (
+          {(searchQuery || selectedAreaId) && (
             <div className="mt-8">
               <h3 className="text-lg font-semibold text-gray-900 mb-4">
                 Search results ({filteredFormats.length})
@@ -144,7 +140,7 @@ const Home: React.FC<HomeProps> = ({ formats, areas }) => {
       </div>
 
       {/* Featured Formats */}
-      {!searchQuery && selectedArea === 'all' && (
+      {!searchQuery && !selectedAreaId && (
         <div className="py-16 bg-gray-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
@@ -163,13 +159,7 @@ const Home: React.FC<HomeProps> = ({ formats, areas }) => {
             </div>
             
             <div className="text-center">
-              <Link
-                to="/areas"
-                className="inline-flex items-center justify-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-all duration-200"
-              >
-                View all formats
-                <ArrowRight className="h-5 w-5 ml-2" />
-              </Link>
+
             </div>
           </div>
         </div>

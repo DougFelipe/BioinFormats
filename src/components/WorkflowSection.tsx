@@ -17,12 +17,7 @@ const WorkflowSection: React.FC<WorkflowSectionProps> = ({ pipelines, className 
 
   return (
     <div className={`bg-gradient-to-br from-indigo-50 to-blue-50 rounded-xl p-6 border border-indigo-200 ${className}`}>
-      <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center">
-        <div className="inline-flex p-2 rounded-lg bg-indigo-100 mr-3">
-          <Workflow className="h-6 w-6 text-indigo-600" />
-        </div>
-        Typical Usage Workflows
-      </h3>
+
       
       <div className="space-y-4">
         {pipelines.map((pipeline, index) => {

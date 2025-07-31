@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navigation from './components/Navigation';
 import Home from './pages/Home';
-import Areas from './pages/Areas';
 import FormatDetail from './pages/FormatDetail';
 import { FileFormat, BioinformaticsArea } from './types';
+
 
 // Import JSON data
 import areasData from './data/areas.json';
@@ -22,10 +22,6 @@ function App() {
           <Route 
             path="/" 
             element={<Home formats={formats} areas={areas} />} 
-          />
-          <Route 
-            path="/areas" 
-            element={<Areas areas={areas} formats={formats} />} 
           />
           <Route 
             path="/format/:extension" 
