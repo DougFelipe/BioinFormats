@@ -35,7 +35,7 @@ const ReferenceList: React.FC<ReferenceListProps> = ({ references, className = "
 
   return (
     <div className={className}>
-      <h3 className="text-lg font-semibold text-gray-900 mb-4">Referências</h3>
+      <h3 className="text-lg font-semibold text-gray-900 mb-4">Reference</h3>
       <div className="space-y-3">
         {references.map((reference, index) => {
           const IconComponent = typeIcons[reference.type];

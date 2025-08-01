@@ -1,192 +1,5 @@
 [
   {
-    "_comment": "# Extensions beginning with A"
-  },
-  {
-    "extension": "arff",
-    "name": "Attribute-Relation File Format",
-    "area": [
-      "Machine Learning in Bioinformatics"
-    ],
-    "description": "A text file format primarily used with the Weka machine learning software. It describes a list of instances sharing a set of attributes, making it ideal for classic ML tasks.",
-    "example_filenames": [
-      "dna_promoters.arff",
-      "protein_classification.arff"
-    ],
-    "example_file_content": "@RELATION promoters\n@ATTRIBUTE promoter_sequence STRING\n@ATTRIBUTE class {+, -}\n@DATA\n'ccttccgg',+\n'aaccggtt',-",
-    "example_file_explanation": [
-      "Lines starting with '@' are headers. @RELATION defines the dataset name.",
-      "@ATTRIBUTE defines a feature (column) and its data type (e.g., STRING or nominal {+, -}).",
-      "@DATA marks the beginning of the data instances, following the CSV format."
-    ],
-    "pipeline_examples": [
-      "Feature Data → ARFF → Weka for analysis and modeling",
-      "ARFF → MOA (for streaming data) → Classification"
-    ],
-    "tools": [
-      "Weka",
-      "MOA",
-      "Li-bsvm"
-    ],
-    "references": [
-      {
-        "title": "ARFF Format Description",
-        "url": "https://www.cs.waikato.ac.nz/ml/weka/arff.html",
-        "type": "documentation"
-      }
-    ],
-    "encoding_type": "ASCII / UTF-8",
-    "used_in_repositories": [
-      "UCI Machine Learning Repository",
-      "Weka Datasets"
-    ],
-    "notes": "Less common outside of the Weka ecosystem but very structured and descriptive for classic machine learning."
-  },
-  {
-    "_comment": "# Extensions beginning with B"
-  },
-  {
-    "extension": "bam",
-    "name": "Binary Alignment Map",
-    "area": [
-      "Genomics",
-      "Transcriptomics"
-    ],
-    "description": "The compressed binary version of the SAM format for efficient storage of alignments.",
-    "example_filenames": [
-      "alignment.bam",
-      "sorted_reads.bam"
-    ],
-    "example_file_content": "[Binary file - not human-readable]",
-    "example_file_explanation": [
-      "This is a binary file, which is a compressed version of a SAM file.",
-      "It contains the same alignment data but is not human-readable.",
-      "Requires tools like SAMtools to be viewed or converted.",
-      "An index file (.bai) allows for fast access to specific genomic regions."
-    ],
-    "pipeline_examples": [
-      "FASTQ → BWA → SAM → SAMtools → BAM",
-      "BAM → GATK → variant calling → VCF",
-      "BAM → IGV → genome visualization"
-    ],
-    "tools": [
-      "SAMtools",
-      "IGV",
-      "GATK",
-      "Picard",
-      "BEDTools"
-    ],
-    "references": [
-      {
-        "title": "SAM/BAM Format Specification",
-        "url": "https://samtools.github.io/hts-specs/SAMv1.pdf",
-        "type": "standard"
-      }
-    ],
-    "encoding_type": "Binary",
-    "used_in_repositories": [
-      "GEO (NCBI)",
-      "ArrayExpress",
-      "TCGA"
-    ],
-    "notes": "Binary format optimized for fast processing. Requires indexing (.bai) for random access."
-  },
-  {
-    "extension": "bed",
-    "name": "Browser Extensible Data",
-    "area": [
-      "Genomics",
-      "Epigenomics"
-    ],
-    "description": "A simple format for defining genomic regions with chromosome coordinates.",
-    "example_filenames": [
-      "peaks.bed",
-      "genes.bed",
-      "regions.bed"
-    ],
-    "example_file_content": "chr1\t1000\t2000\tfeature1\t100\t+\nchr1\t3000\t4000\tfeature2\t200\t-",
-    "example_file_explanation": [
-      "Line 1: Defines a feature named 'feature1' on chromosome 1, from base 1000 to 2000, on the positive strand.",
-      "Line 2: Defines a feature named 'feature2' on chromosome 1, from base 3000 to 4000, on the negative strand.",
-      "The columns are: chromosome, start, end, name, score, and strand."
-    ],
-    "pipeline_examples": [
-      "ChIP-seq peaks → BED → genome annotation",
-      "BED → BEDTools → genomic intervals",
-      "BED → UCSC Browser → visualization"
-    ],
-    "tools": [
-      "BEDTools",
-      "IGV",
-      "UCSC Genome Browser",
-      "Galaxy"
-    ],
-    "references": [
-      {
-        "title": "BED Format Description",
-        "url": "https://genome.ucsc.edu/FAQ/FAQformat.html#format1",
-        "type": "documentation"
-      }
-    ],
-    "encoding_type": "ASCII / UTF-8",
-    "used_in_repositories": [
-      "UCSC Genome Browser",
-      "ENCODE",
-      "Roadmap Epigenomics"
-    ],
-    "notes": "A flexible format with 3 to 12 columns. Widely used for genomic annotation and visualization."
-  },
-  {
-    "_comment": "# Extensions beginning with C"
-  },
-  {
-    "extension": "csv",
-    "name": "Comma-Separated Values",
-    "area": [
-      "Machine Learning in Bioinformatics",
-      "Genomics",
-      "Transcriptomics",
-      "Proteomics"
-    ],
-    "description": "A simple text-based format for storing tabular data. It is a universal standard for feature tables, gene expression matrices, and metadata used as input for machine learning algorithms.",
-    "example_filenames": [
-      "gene_expression.csv",
-      "features.csv"
-    ],
-    "example_file_content": "gene_id,sample1,sample2,sample3\nGENE1,10.5,12.1,11.3\nGENE2,8.2,9.0,8.5",
-    "example_file_explanation": [
-      "The first line is the header, defining the columns (gene ID and sample names).",
-      "Each subsequent line represents a record (a gene) with its corresponding values separated by commas."
-    ],
-    "pipeline_examples": [
-      "RNA-seq counts → CSV → Scikit-learn for classification",
-      "Variant data → Feature Engineering → CSV → XGBoost model"
-    ],
-    "tools": [
-      "Pandas (Python)",
-      "R",
-      "Microsoft Excel",
-      "Any spreadsheet software"
-    ],
-    "references": [
-      {
-        "title": "CSV Specification (RFC 4180)",
-        "url": "https://datatracker.ietf.org/doc/html/rfc4180",
-        "type": "standard"
-      }
-    ],
-    "encoding_type": "ASCII / UTF-8",
-    "used_in_repositories": [
-      "GEO (NCBI)",
-      "Kaggle",
-      "Zenodo"
-    ],
-    "notes": "While simple, it's essential to be consistent with delimiters and headers. TSV (Tab-Separated Values) is a common and often safer alternative."
-  },
-  {
-    "_comment": "# Extensions beginning with F"
-  },
-  {
     "extension": "fasta",
     "name": "FASTA Format",
     "area": [
@@ -208,9 +21,18 @@
       "Line 4: Nucleotide sequence of the second entry (TGCATGCATGCA)."
     ],
     "pipeline_examples": [
-      "FASTA → BLAST → alignment results",
-      "FASTA → Clustal Omega → multiple alignment",
-      "FASTA → MUSCLE → phylogenetic tree"
+      {
+        "pipeline": "FASTA → BLAST → alignment results",
+        "explanation": "A sequence from a FASTA file is used as a query in a BLAST search to find similar sequences in a database, producing alignment results."
+      },
+      {
+        "pipeline": "FASTA → Clustal Omega → multiple alignment",
+        "explanation": "Multiple sequences from a FASTA file are aligned using Clustal Omega to identify conserved regions and evolutionary relationships."
+      },
+      {
+        "pipeline": "FASTA → MUSCLE → phylogenetic tree",
+        "explanation": "Sequences are aligned with MUSCLE, and this alignment is then used as input for phylogenetic software to construct an evolutionary tree."
+      }
     ],
     "tools": [
       "BLAST",
@@ -261,9 +83,18 @@
       "Line 4: ASCII quality string where each character represents the quality of the corresponding base."
     ],
     "pipeline_examples": [
-      "FASTQ → FastQC → Trimmomatic → BWA → BAM",
-      "FASTQ → STAR → gene counts → DESeq2",
-      "FASTQ → Bowtie2 → SAM → variant calling"
+      {
+        "pipeline": "FASTQ → FastQC → Trimmomatic → BWA → BAM",
+        "explanation": "Raw sequencing reads (FASTQ) are quality-checked (FastQC), trimmed (Trimmomatic), aligned to a reference (BWA), and compressed into a BAM file."
+      },
+      {
+        "pipeline": "FASTQ → STAR → gene counts → DESeq2",
+        "explanation": "An RNA-seq pipeline where reads are aligned (STAR), expression is quantified (gene counts), and differential expression is analyzed (DESeq2)."
+      },
+      {
+        "pipeline": "FASTQ → Bowtie2 → SAM → variant calling",
+        "explanation": "Reads are aligned to a genome (Bowtie2), the alignment is stored (SAM), and this is used as the basis for identifying genetic variants."
+      }
     ],
     "tools": [
       "FastQC",
@@ -288,562 +119,59 @@
     "notes": "The standard for next-generation sequencing data. Quality scores are ASCII-encoded (Phred+33 or Phred+64)."
   },
   {
-    "_comment": "# Extensions beginning with G"
-  },
-  {
-    "extension": "gb",
-    "name": "GenBank Format",
-    "area": [
-      "Genomics",
-      "Transcriptomics",
-      "Big Data & Repositories"
-    ],
-    "description": "A comprehensive flat file format from NCBI for storing sequence data and its rich annotation.",
-    "example_filenames": [
-      "sequence.gb",
-      "record.genbank"
-    ],
-    "example_file_content": "LOCUS       SCU49845     5028 bp    DNA\nDEFINITION  Saccharomyces cerevisiae TCP1-beta gene.\nFEATURES             Location/Qualifiers\n     gene            1..5028\n                     /gene=\"TCP1\"\nORIGIN\n        1 gcgacctcgc ggcggcgagc tcggcggcgg cggcgagcgc\n//",
-    "example_file_explanation": [
-      "Line 1 (LOCUS): Provides the entry name, length, and molecule type.",
-      "Line 2 (DEFINITION): A brief description of the sequence.",
-      "Lines 3-5 (FEATURES): A table describing features like genes and their locations.",
-      "Lines 6-7 (ORIGIN): Marks the beginning of the sequence data.",
-      "Line 8 (//): Indicates the end of the record."
-    ],
-    "pipeline_examples": [
-      "NCBI search → GenBank download → sequence extraction",
-      "GenBank → Biopython → parsing and analysis",
-      "GenBank → feature extraction → annotation summary"
-    ],
-    "tools": [
-      "NCBI Entrez",
-      "Biopython",
-      "SeqIO",
-      "Artemis"
-    ],
-    "references": [
-      {
-        "title": "GenBank Sample Record",
-        "url": "https://www.ncbi.nlm.nih.gov/Sitemap/samplerecord.html",
-        "type": "documentation"
-      }
-    ],
-    "encoding_type": "ASCII / UTF-8",
-    "used_in_repositories": [
-      "NCBI GenBank",
-      "ENA",
-      "DDBJ"
-    ],
-    "notes": "One of the most common and detailed formats for annotated sequences in public databases."
-  },
-  {
-    "extension": "gff",
-    "name": "General Feature Format",
+    "extension": "bam",
+    "name": "Binary Alignment Map",
     "area": [
       "Genomics",
       "Transcriptomics"
     ],
-    "description": "A standard format for annotating genomic features such as genes, exons, and regulatory elements.",
+    "description": "The compressed binary version of the SAM format for efficient storage of alignments.",
     "example_filenames": [
-      "annotation.gff3",
-      "genes.gff",
-      "features.gff"
-    ],
-    "example_file_content": "chr1\tRefSeq\tgene\t1000\t9000\t.\t+\t.\tID=gene1;Name=GENE1",
-    "example_file_explanation": [
-      "This line describes a 'gene' feature from the 'RefSeq' source.",
-      "It is located on 'chr1' from base 1000 to 9000 on the positive strand.",
-      "The last column contains attributes, like the ID and Name of the gene."
-    ],
-    "pipeline_examples": [
-      "genome assembly → gene prediction → GFF",
-      "GFF → genome browser → visualization",
-      "GFF → feature extraction → analysis"
-    ],
-    "tools": [
-      "GenomeTools",
-      "IGV",
-      "Apollo",
-      "MAKER"
-    ],
-    "references": [
-      {
-        "title": "GFF3 Format Specification",
-        "url": "https://github.com/The-Sequence-Ontology/Specifications/blob/master/gff3.md",
-        "type": "standard"
-      }
-    ],
-    "encoding_type": "ASCII / UTF-8",
-    "used_in_repositories": [
-      "NCBI RefSeq",
-      "Ensembl",
-      "FlyBase"
-    ],
-    "notes": "The current version is GFF3. It supports complex hierarchies of genomic features."
-  },
-  {
-    "extension": "gtf",
-    "name": "Gene Transfer Format",
-    "area": [
-      "Transcriptomics",
-      "Genomics"
-    ],
-    "description": "A subset of the GFF2 format specialized for annotating gene and transcript structures.",
-    "example_filenames": [
-      "genes.gtf",
-      "transcripts.gtf"
-    ],
-    "example_file_content": "chr1\tStringTie\texon\t1000\t1500\t.\t+\t.\tgene_id \"GENE1\"; transcript_id \"TRANS1\";",
-    "example_file_explanation": [
-      "This line describes an 'exon' feature from base 1000 to 1500 on 'chr1'.",
-      "The last column must contain 'gene_id' and 'transcript_id' attributes.",
-      "This structure is essential for modeling gene transcripts."
-    ],
-    "pipeline_examples": [
-      "RNA-seq → STAR → GTF → gene quantification",
-      "GTF → StringTie → transcript assembly",
-      "GTF → featureCounts → expression matrix"
-    ],
-    "tools": [
-      "StringTie",
-      "Cufflinks",
-      "STAR",
-      "HISAT2"
-    ],
-    "references": [
-      {
-        "title": "GTF Format Guide",
-        "url": "https://www.ensembl.org/info/website/upload/gff.html",
-        "type": "documentation"
-      }
-    ],
-    "encoding_type": "ASCII / UTF-8",
-    "used_in_repositories": [
-      "Ensembl",
-      "GENCODE"
-    ],
-    "notes": "A standard for gene expression analysis and transcript assembly."
-  },
-  {
-    "_comment": "# Extensions beginning with H"
-  },
-  {
-    "extension": "h5",
-    "name": "Hierarchical Data Format 5",
-    "area": [
-      "Machine Learning in Bioinformatics",
-      "Big Data & Repositories",
-      "Genomics"
-    ],
-    "description": "A versatile binary format for storing large and complex heterogeneous data. Commonly used for storing raw numerical data, feature matrices, and trained machine learning models (e.g., from Keras/TensorFlow).",
-    "example_filenames": [
-      "model_weights.h5",
-      "genomic_data.hdf5"
+      "alignment.bam",
+      "sorted_reads.bam"
     ],
     "example_file_content": "[Binary file - not human-readable]",
     "example_file_explanation": [
-      "This is a binary file that can contain multiple datasets in a hierarchical structure, much like a file system.",
-      "It is highly efficient for storing large numerical arrays, such as those from sequencing data or imaging, and for saving the weights of a trained neural network."
+      "This is a binary file, which is a compressed version of a SAM file.",
+      "It contains the same alignment data but is not human-readable.",
+      "Requires tools like SAMtools to be viewed or converted.",
+      "An index file (.bai) allows for fast access to specific genomic regions."
     ],
     "pipeline_examples": [
-      "Genomic Data → Preprocessing → H5 (Feature Matrix)",
-      "TensorFlow/Keras → Model Training → Save Weights to H5"
-    ],
-    "tools": [
-      "h5py (Python)",
-      "TensorFlow",
-      "PyTorch",
-      "HDFView"
-    ],
-    "references": [
       {
-        "title": "HDF5 Group Website",
-        "url": "https://www.hdfgroup.org/solutions/hdf5/",
-        "type": "standard"
-      }
-    ],
-    "encoding_type": "Binary",
-    "used_in_repositories": [
-      "Zenodo",
-      "Figshare",
-      "Custom research repositories"
-    ],
-    "notes": "Extremely flexible and scalable, making it a go-to for large-scale scientific data."
-  },
-  {
-    "_comment": "# Extensions beginning with I"
-  },
-  {
-    "extension": "ipynb",
-    "name": "Jupyter Notebook",
-    "area": [
-      "Machine Learning in Bioinformatics"
-    ],
-    "description": "A document format for computational notebooks, containing both computer code (e.g., Python) and rich text elements (paragraphs, equations, figures). It is the de facto standard for developing and sharing ML workflows.",
-    "example_filenames": [
-      "data_analysis.ipynb",
-      "model_training.ipynb"
-    ],
-    "example_file_content": "[JSON-based file with code cells, markdown, and outputs]",
-    "example_file_explanation": [
-      "An IPYNB file is a JSON file that stores the contents of a notebook.",
-      "It contains a list of 'cells', where each cell can be code, markdown text, or the output of a code execution (like a plot or table)."
-    ],
-    "pipeline_examples": [
-      "Data Exploration → Model Prototyping → Visualization in a Jupyter Notebook",
-      "Sharing reproducible research with code, text, and results in one file"
-    ],
-    "tools": [
-      "JupyterLab",
-      "Jupyter Notebook",
-      "Google Colab",
-      "VS Code"
-    ],
-    "references": [
+        "pipeline": "SAM → SAMtools → BAM",
+        "explanation": "A text-based SAM alignment file is converted and compressed into the efficient binary BAM format using SAMtools."
+      },
       {
-        "title": "Jupyter Project",
-        "url": "https://jupyter.org/",
-        "type": "documentation"
-      }
-    ],
-    "encoding_type": "JSON (UTF-8)",
-    "used_in_repositories": [
-      "GitHub",
-      "Kaggle",
-      "Google Colab"
-    ],
-    "notes": "Essential for reproducible research and interactive data science, but not ideal for production code."
-  },
-  {
-    "_comment": "# Extensions beginning with M"
-  },
-  {
-    "extension": "mmcif",
-    "name": "Macromolecular Crystallographic Information File",
-    "area": [
-      "Structural Biology",
-      "Proteomics"
-    ],
-    "description": "A modern, flexible format for storing macromolecular structures, replacing the legacy PDB format.",
-    "example_filenames": [
-      "1abc.cif",
-      "structure_data.mmcif"
-    ],
-    "example_file_content": "data_1ABC\n#\n_entry.id   1ABC\n#\nloop_\n_atom_site.id\n_atom_site.Cartn_x\n_atom_site.Cartn_y\n_atom_site.Cartn_z\n1 20.154 16.967 23.421",
-    "example_file_explanation": [
-      "Line 3: A key-value pair defining the entry ID (_entry.id) as 1ABC.",
-      "Line 5: The 'loop_' statement indicates the start of a table of data.",
-      "Lines 6-9: These lines define the columns of the table (atom ID and x,y,z coordinates).",
-      "Line 10: A row in the table, providing values for the columns defined above."
-    ],
-    "pipeline_examples": [
-      "Structure deposition → mmCIF → PDB database",
-      "mmCIF → Mol* Viewer → advanced visualization",
-      "mmCIF → data parsing → large-scale structural analysis"
-    ],
-    "tools": [
-      "Mol* Viewer",
-      "PyMOL",
-      "ChimeraX",
-      "phenix"
-    ],
-    "references": [
+        "pipeline": "BAM → GATK → variant calling → VCF",
+        "explanation": "A sorted and indexed BAM file is used by the GATK toolkit to identify genetic variants, with results stored in a VCF file."
+      },
       {
-        "title": "mmCIF Specification",
-        "url": "https://mmcif.wwpdb.org/",
-        "type": "standard"
+        "pipeline": "BAM → IGV → genome visualization",
+        "explanation": "BAM files are loaded into genome browsers like IGV to visually inspect how individual reads align to the reference genome."
       }
-    ],
-    "encoding_type": "ASCII / UTF-8",
-    "used_in_repositories": [
-      "PDB (wwPDB)",
-      "RCSB PDB",
-      "PDBe",
-      "PDBj"
-    ],
-    "notes": "The standard format for the Protein Data Bank archive. Uses a key-value and tabular structure."
-  },
-  {
-    "_comment": "# Extensions beginning with N"
-  },
-  {
-    "extension": "nwk",
-    "name": "Newick Format",
-    "area": [
-      "Genomics",
-      "Biological Networks"
-    ],
-    "description": "A standard way of representing phylogenetic trees using parentheses and commas.",
-    "example_filenames": [
-      "tree.nwk",
-      "phylogeny.newick"
-    ],
-    "example_file_content": "(A:0.1,B:0.2,(C:0.3,D:0.4)E:0.5)F;",
-    "example_file_explanation": [
-      "'(A,B)' means that A and B are sister nodes.",
-      "'A:0.1' means that the branch length leading to node A is 0.1.",
-      "'(C,D)E' means that C and D are sister nodes, and their parent node is E.",
-      "The entire structure is enclosed in parentheses and ends with a semicolon."
-    ],
-    "pipeline_examples": [
-      "Multiple sequence alignment → PhyML → Newick tree",
-      "Newick → FigTree → tree visualization",
-      "Newick → ETE Toolkit → programmatic tree analysis"
-    ],
-    "tools": [
-      "FigTree",
-      "TreeView",
-      "ETE Toolkit",
-      "PhyML",
-      "RAxML"
-    ],
-    "references": [
-      {
-        "title": "Newick Format Description",
-        "url": "https://en.wikipedia.org/wiki/Newick_format",
-        "type": "documentation"
-      }
-    ],
-    "encoding_type": "ASCII / UTF-8",
-    "used_in_repositories": [
-      "TreeBASE",
-      "Open Tree of Life"
-    ],
-    "notes": "A very simple and universal format for tree structures, not limited to phylogenetics."
-  },
-  {
-    "_comment": "# Extensions beginning with O"
-  },
-  {
-    "extension": "onnx",
-    "name": "Open Neural Network Exchange",
-    "area": [
-      "Machine Learning in Bioinformatics",
-      "Structural Biology"
-    ],
-    "description": "An open standard for representing machine learning models. It allows models to be trained in one framework (e.g., PyTorch) and deployed in another (e.g., ONNX Runtime), enhancing interoperability.",
-    "example_filenames": [
-      "alphafold_model.onnx",
-      "protein_classifier.onnx"
-    ],
-    "example_file_content": "[Binary file - Protocol Buffers]",
-    "example_file_explanation": [
-      "This binary file contains a complete description of a computational graph, including the network architecture and trained parameters (weights).",
-      "It is framework-agnostic, designed to make AI models portable."
-    ],
-    "pipeline_examples": [
-      "PyTorch Model → Export to ONNX → Deploy in Production",
-      "AlphaFold Model → Convert to ONNX → Faster Inference"
-    ],
-    "tools": [
-      "ONNX Runtime",
-      "PyTorch",
-      "TensorFlow",
-      "Scikit-learn"
-    ],
-    "references": [
-      {
-        "title": "ONNX Official Website",
-        "url": "https://onnx.ai/",
-        "type": "standard"
-      }
-    ],
-    "encoding_type": "Binary",
-    "used_in_repositories": [
-      "ONNX Model Zoo",
-      "Hugging Face Hub",
-      "GitHub"
-    ],
-    "notes": "Crucial for deploying models in production environments that may differ from the training environment."
-  },
-  {
-    "_comment": "# Extensions beginning with P"
-  },
-  {
-    "extension": "pdb",
-    "name": "Protein Data Bank",
-    "area": [
-      "Structural Biology",
-      "Proteomics"
-    ],
-    "description": "A standard format for storing three-dimensional structures of biological macromolecules.",
-    "example_filenames": [
-      "1ABC.pdb",
-      "protein_structure.pdb"
-    ],
-    "example_file_content": "HEADER    TRANSFERASE                         01-JAN-99   1ABC\nATOM      1  N   ALA A   1      20.154  16.967  23.421  1.00 20.00           N",
-    "example_file_explanation": [
-      "Line 1 (HEADER): Contains metadata like the molecule's class, date, and ID.",
-      "Line 2 (ATOM): Describes a single atom, including its type (N), residue (ALA), chain (A), position (x,y,z), and other properties."
-    ],
-    "pipeline_examples": [
-      "X-ray crystallography → PDB → structure analysis",
-      "PDB → PyMOL → molecular visualization",
-      "PDB → molecular dynamics → simulation"
-    ],
-    "tools": [
-      "PyMOL",
-      "ChimeraX",
-      "VMD",
-      "Swiss-PdbViewer"
-    ],
-    "references": [
-      {
-        "title": "PDB Format Guide",
-        "url": "https://www.wwpdb.org/documentation/file-format",
-        "type": "standard"
-      }
-    ],
-    "encoding_type": "ASCII / UTF-8",
-    "used_in_repositories": [
-      "PDB (wwPDB)",
-      "RCSB PDB",
-      "PDBe",
-      "PDBj"
-    ],
-    "notes": "A fixed-width text format. It is gradually being replaced by mmCIF."
-  },
-  {
-    "_comment": "# Extensions beginning with S"
-  },
-  {
-    "extension": "sam",
-    "name": "Sequence Alignment Map",
-    "area": [
-      "Genomics",
-      "Transcriptomics"
-    ],
-    "description": "A standard format for storing sequence alignments against a reference genome.",
-    "example_filenames": [
-      "alignment.sam",
-      "mapped_reads.sam"
-    ],
-    "example_file_content": "@HD\tVN:1.0\tSO:coordinate\n@SQ\tSN:chr1\tLN:248956422\nread1\t0\tchr1\t1000\t60\t50M\t*\t0\t0\tACGTACGT\t!!!!!!!!",
-    "example_file_explanation": [
-      "Line 1: Header (@HD) specifying version (VN:1.0) and sorting order (SO:coordinate).",
-      "Line 2: Reference sequence (@SQ) with chromosome name (SN:chr1) and length (LN:248956422).",
-      "Line 3: An alignment record for 'read1' with its mapping information and sequence."
-    ],
-    "pipeline_examples": [
-      "FASTQ → BWA → SAM → variant calling",
-      "SAM → SAMtools sort → BAM → indexing",
-      "SAM → Picard → quality metrics"
     ],
     "tools": [
       "SAMtools",
-      "BWA",
-      "Bowtie2",
-      "STAR",
-      "HISAT2"
+      "IGV",
+      "GATK",
+      "Picard",
+      "BEDTools"
     ],
     "references": [
       {
-        "title": "SAM Format Specification",
+        "title": "SAM/BAM Format Specification",
         "url": "https://samtools.github.io/hts-specs/SAMv1.pdf",
         "type": "standard"
       }
     ],
-    "encoding_type": "ASCII / UTF-8",
-    "used_in_repositories": [
-      "GEO (NCBI)",
-      "ArrayExpress"
-    ],
-    "notes": "Human-readable text format. A compressed binary version is available as BAM."
-  },
-  {
-    "extension": "sdf",
-    "name": "Structure Data Format",
-    "area": [
-      "Structural Biology",
-      "Proteomics"
-    ],
-    "description": "A format for storing 2D/3D chemical structures with associated molecular properties.",
-    "example_filenames": [
-      "compounds.sdf",
-      "molecules.sdf"
-    ],
-    "example_file_content": "Molecule Name\n  ChemDraw01011912302D\n\n  3  2  0  0  0  0  0  0  0  0999 V2000\n    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n$$$$",
-    "example_file_explanation": [
-      "Line 1: Name of the molecule.",
-      "Line 4 (Counts line): Specifies the number of atoms (3) and bonds (2).",
-      "Line 5 (Atom block): Defines the coordinates and element type (C) for an atom.",
-      "Line 6 ($$$$): Marks the end of a single molecule entry."
-    ],
-    "pipeline_examples": [
-      "chemical database → SDF → drug discovery",
-      "SDF → RDKit → molecular analysis",
-      "SDF → virtual screening → hit identification"
-    ],
-    "tools": [
-      "ChemDraw",
-      "OpenBabel",
-      "RDKit",
-      "Schrödinger Suite"
-    ],
-    "references": [
-      {
-        "title": "SDF Format Description",
-        "url": "https://en.wikipedia.org/wiki/Chemical_table_file#SDF",
-        "type": "documentation"
-      }
-    ],
-    "encoding_type": "ASCII / UTF-8",
-    "used_in_repositories": [
-      "PubChem",
-      "ChEMBL",
-      "ZINC"
-    ],
-    "notes": "An extension of the MOL format. Allows multiple structures and associated data in one file."
-  },
-  {
-    "extension": "sra",
-    "name": "Sequence Read Archive Format",
-    "area": [
-      "Genomics",
-      "Transcriptomics",
-      "Big Data & Repositories"
-    ],
-    "description": "A format for storing raw sequencing data from high-throughput sequencing experiments, managed by NCBI.",
-    "example_filenames": [
-      "SRR123456.sra",
-      "data.sra"
-    ],
-    "example_file_content": "[Binary archive - requires specific tools to access]",
-    "example_file_explanation": [
-      "This is a binary archive, not a simple text file.",
-      "It contains raw sequencing reads, quality scores, and metadata.",
-      "It must be converted to FASTQ or other formats using the SRA Toolkit for analysis.",
-      "Data is organized by submissions (SRA), experiments (SRX), and runs (SRR)."
-    ],
-    "pipeline_examples": [
-      "Download SRA file → SRA Toolkit (fastq-dump) → FASTQ files",
-      "SRA → alignment pipeline → analysis",
-      "SRA → cloud computing platform → large-scale processing"
-    ],
-    "tools": [
-      "SRA Toolkit",
-      "fastq-dump",
-      "prefetch",
-      "sam-dump"
-    ],
-    "references": [
-      {
-        "title": "NCBI SRA Documentation",
-        "url": "https://www.ncbi.nlm.nih.gov/sra/docs/",
-        "type": "standard"
-      }
-    ],
     "encoding_type": "Binary",
     "used_in_repositories": [
-      "NCBI SRA",
-      "ENA",
-      "DDBJ"
+      "GEO (NCBI)",
+      "ArrayExpress",
+      "TCGA"
     ],
-    "notes": "The primary archive for raw sequencing data. Conversion to FASTQ is a common first step for analysis."
-  },
-  {
-    "_comment": "# Extensions beginning with V"
+    "notes": "Binary format optimized for fast processing. Requires indexing (.bai) for random access."
   },
   {
     "extension": "vcf",
@@ -864,9 +192,18 @@
       "Line 3: A variant record showing a change from 'A' to 'G' on chromosome 1 at position 123456."
     ],
     "pipeline_examples": [
-      "BAM → GATK → VCF → annotation",
-      "VCF → VCFtools → population analysis",
-      "VCF → PLINK → GWAS analysis"
+      {
+        "pipeline": "BAM → GATK → VCF → annotation",
+        "explanation": "A VCF file is generated from alignments (BAM) using GATK, and then annotated to add functional information to the variants."
+      },
+      {
+        "pipeline": "VCF → VCFtools → population analysis",
+        "explanation": "A VCF file containing variants from multiple individuals is analyzed with VCFtools to calculate population genetics statistics."
+      },
+      {
+        "pipeline": "VCF → PLINK → GWAS analysis",
+        "explanation": "VCF data is converted and used in PLINK for genome-wide association studies (GWAS) to find links between variants and traits."
+      }
     ],
     "tools": [
       "GATK",
@@ -890,5 +227,59 @@
       "dbVar"
     ],
     "notes": "The standard for genome-wide association studies (GWAS) and medical genomics. Supports multiple samples."
+  },
+  {
+    "extension": "bed",
+    "name": "Browser Extensible Data",
+    "area": [
+      "Genomics",
+      "Epigenomics"
+    ],
+    "description": "A simple format for defining genomic regions with chromosome coordinates.",
+    "example_filenames": [
+      "peaks.bed",
+      "genes.bed",
+      "regions.bed"
+    ],
+    "example_file_content": "chr1\t1000\t2000\tfeature1\t100\t+\nchr1\t3000\t4000\tfeature2\t200\t-",
+    "example_file_explanation": [
+      "Line 1: Defines a feature named 'feature1' on chromosome 1, from base 1000 to 2000, on the positive strand.",
+      "Line 2: Defines a feature named 'feature2' on chromosome 1, from base 3000 to 4000, on the negative strand.",
+      "The columns are: chromosome, start, end, name, score, and strand."
+    ],
+    "pipeline_examples": [
+      {
+        "pipeline": "ChIP-seq peaks → BED → genome annotation",
+        "explanation": "The genomic coordinates of protein-binding sites (peaks) from a ChIP-seq experiment are stored in a BED file for downstream annotation."
+      },
+      {
+        "pipeline": "BED → BEDTools → genomic intervals",
+        "explanation": "BEDTools is used to perform set operations on genomic regions (e.g., finding overlaps or differences) defined in BED files."
+      },
+      {
+        "pipeline": "BED → UCSC Browser → visualization",
+        "explanation": "A BED file can be uploaded as a custom track to the UCSC Genome Browser to visualize specific genomic features."
+      }
+    ],
+    "tools": [
+      "BEDTools",
+      "IGV",
+      "UCSC Genome Browser",
+      "Galaxy"
+    ],
+    "references": [
+      {
+        "title": "BED Format Description",
+        "url": "https://genome.ucsc.edu/FAQ/FAQformat.html#format1",
+        "type": "documentation"
+      }
+    ],
+    "encoding_type": "ASCII / UTF-8",
+    "used_in_repositories": [
+      "UCSC Genome Browser",
+      "ENCODE",
+      "Roadmap Epigenomics"
+    ],
+    "notes": "A flexible format with 3 to 12 columns. Widely used for genomic annotation and visualization."
   }
 ]

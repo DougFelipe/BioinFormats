@@ -55,19 +55,25 @@ const FormatDetail: React.FC<FormatDetailProps> = ({ formats }) => {
 <div className="bg-white rounded-xl p-8 border border-gray-200">
   <div className="flex items-start space-x-4 mb-6">
     <div className="flex-1">
+
+      {/* Extension */}
       <h1 className="text-3xl font-bold text-gray-900 mb-2">
         .{format.extension}
       </h1>
-      <h2 className="text-xl text-gray-700 mb-2">
+
+      {/* Format Name */}
+      <h2 className="text-xl text-gray-700 mb-4">
         {format.name}
       </h2>
-      <p className="text-gray-700 text-lg leading-relaxed mb-4">
+
+      {/* Description */}
+      <p className="text-gray-700 text-lg leading-relaxed mb-6">
         {format.description}
       </p>
 
       {/* Associated Areas */}
-      <div className="mb-1 text-sm font-semibold text-gray-700">Associated areas</div>
-      <div className="flex flex-wrap gap-2 mb-4">
+      <div className="mb-2 text-sm font-semibold text-gray-700">Associated Areas</div>
+      <div className="flex flex-wrap gap-2 mb-6">
         {format.area.map((area) => (
           <span
             key={area}
@@ -79,10 +85,10 @@ const FormatDetail: React.FC<FormatDetailProps> = ({ formats }) => {
       </div>
 
       {/* Associated Tools */}
-      {format.tools && format.tools.length > 0 && (
-        <div className="mb-4">
-          <div className="mb-1 text-sm font-semibold text-gray-700">Associated Tools</div>
-          <div className="flex flex-wrap gap-2 mt-1">
+      {format.tools?.length > 0 && (
+        <div className="mb-6">
+          <div className="mb-2 text-sm font-semibold text-gray-700">Associated Tools</div>
+          <div className="flex flex-wrap gap-2">
             {format.tools.map((tool, index) => (
               <span
                 key={index}
@@ -95,24 +101,39 @@ const FormatDetail: React.FC<FormatDetailProps> = ({ formats }) => {
         </div>
       )}
 
-      {/* NEW: Encoding Type */}
-      <div className="mb-4">
-        <div className="mb-1 text-sm font-semibold text-gray-700">Encoding Type</div>
+      {/* Encoding Type */}
+      <div className="mb-6">
+        <div className="mb-2 text-sm font-semibold text-gray-700">Encoding Type</div>
         <span className="inline-flex px-3 py-1 rounded-full text-sm font-medium bg-yellow-100 text-yellow-800">
           {format.encoding_type}
         </span>
       </div>
 
-      {/* NEW: Used in Repositories */}
-      <div>
-        <div className="mb-1 text-sm font-semibold text-gray-700">Used in Repositories</div>
-        <div className="flex flex-wrap gap-2 mt-1">
+      {/* Used in Repositories */}
+      <div className="mb-6">
+        <div className="mb-2 text-sm font-semibold text-gray-700">Used in Repositories</div>
+        <div className="flex flex-wrap gap-2">
           {format.used_in_repositories.map((repo, index) => (
             <span
               key={index}
               className="inline-flex px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800"
             >
               {repo}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {/* Example Filenames */}
+      <div>
+        <div className="mb-2 text-sm font-semibold text-gray-700">Example Filenames</div>
+        <div className="flex flex-wrap gap-2">
+          {format.example_filenames.map((name, index) => (
+            <span
+              key={index}
+              className="inline-flex px-3 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-600"
+            >
+              {name}
             </span>
           ))}
         </div>
@@ -163,56 +184,28 @@ const FormatDetail: React.FC<FormatDetailProps> = ({ formats }) => {
             </div>
           </details>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="flex flex-col gap-8">
             {/* Additional Information */}
-            <div className="lg:col-span-2 space-y-6">
-              {/* Technical Notes */}
-              {format.notes && (
-                <div className="bg-white rounded-xl p-6 border border-gray-200">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-                    <Info className="h-5 w-5 mr-2 text-gray-600" />
-                    Technical Notes
-                  </h3>
-                  <div className="bg-amber-50 border border-amber-200 rounded-lg p-4">
-                    <p className="text-amber-800 leading-relaxed">
-                      {format.notes}
-                    </p>
-                  </div>
+            {format.notes && (
+              <div className="bg-white rounded-xl p-6 border border-gray-200 w-full">
+                <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                  <Info className="h-5 w-5 mr-2 text-gray-600" />
+                  Technical Notes
+                </h3>
+                <div className="bg-amber-50 border border-amber-200 rounded-lg p-4">
+                  <p className="text-amber-800 leading-relaxed">
+                    {format.notes}
+                  </p>
                 </div>
-              )}
-              
-              {/* Compact Secondary Information */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {/* Common Filenames */}
-                <div className="bg-white rounded-lg p-4 border border-gray-200">
-                  <h4 className="text-sm font-semibold text-gray-700 mb-3 flex items-center">
-                    <FileText className="h-4 w-4 mr-2 text-gray-500" />
-                    Common Filenames
-                  </h4>
-                  <div className="flex flex-wrap gap-2">
-                    {format.example_filenames.map((filename, index) => (
-                      <span
-                        key={index}
-                        className="inline-flex items-center px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs font-mono"
-                      >
-                        {filename}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Associated Tools */}
-                {/* ...existing code... */}
               </div>
-            </div>
+            )}
 
             {/* References Sidebar */}
-            <div className="space-y-6">
-              <div className="bg-white rounded-xl p-6 border border-gray-200">
-                <ReferenceList references={format.references} />
-              </div>
+            <div className="bg-white rounded-xl p-6 border border-gray-200 w-full">
+              <ReferenceList references={format.references} />
             </div>
           </div>
+
         </div>
       </div>
     </div>

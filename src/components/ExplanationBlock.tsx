@@ -12,17 +12,15 @@ const ExplanationBlock: React.FC<ExplanationBlockProps> = ({ explanations, class
   }
 
   return (
-    <div className={`bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-200 ${className}`}>
-
-      
+    <div className={`bg-white rounded-xl p-6 border border-gray-200 ${className}`}>
       <div className="space-y-4">
         {explanations.map((explanation, index) => (
           <div
             key={index}
-            className="flex items-start space-x-4 p-4 bg-white rounded-lg border border-blue-100 hover:border-blue-200 transition-colors"
+            className="flex items-start space-x-4 p-4 bg-gray-50 rounded-lg border border-gray-200 hover:border-gray-300 transition-colors"
           >
             <div className="flex-shrink-0">
-              <div className="flex items-center justify-center w-8 h-8 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold">
+              <div className="flex items-center justify-center w-8 h-8 bg-gray-200 text-gray-800 rounded-full text-sm font-semibold">
                 {index + 1}
               </div>
             </div>
@@ -33,11 +31,10 @@ const ExplanationBlock: React.FC<ExplanationBlockProps> = ({ explanations, class
               </p>
             </div>
             
-            <ChevronRight className="h-4 w-4 text-blue-400 flex-shrink-0 mt-1" />
+            <ChevronRight className="h-4 w-4 text-gray-400 flex-shrink-0 mt-1" />
           </div>
         ))}
       </div>
-      
     </div>
   );
 };

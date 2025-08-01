@@ -1,47 +1,62 @@
 import React from 'react';
 import { ArrowRight, Workflow } from 'lucide-react';
 
+// A estrutura dos dados que o componente espera receber foi atualizada.
+interface PipelineItem {
+  pipeline: string;
+  explanation: string;
+}
+
 interface WorkflowSectionProps {
-  pipelines: string[];
+  // A propriedade 'pipelines' agora espera um array de PipelineItem.
+  pipelines: PipelineItem[];
   className?: string;
 }
 
 const WorkflowSection: React.FC<WorkflowSectionProps> = ({ pipelines, className = "" }) => {
-  if (!pipelines.length) {
+  // A verificação de segurança agora é feita na propriedade 'pipelines'.
+  if (!pipelines || pipelines.length === 0) {
     return null;
   }
 
+  // A função para dividir o texto do pipeline em passos individuais.
   const parseWorkflow = (pipeline: string) => {
     return pipeline.split(' → ').map(step => step.trim());
   };
 
   return (
-    <div className={`bg-gradient-to-br from-indigo-50 to-blue-50 rounded-xl p-6 border border-indigo-200 ${className}`}>
-
-      
-      <div className="space-y-4">
-        {pipelines.map((pipeline, index) => {
-          const steps = parseWorkflow(pipeline);
+    <div className={`bg-white rounded-xl p-6 border border-gray-200 ${className}`}>
+      <div className="space-y-6">
+        {/* O map agora itera sobre os 'pipelines' (objetos). */}
+        {pipelines.map((item, index) => {
+          const steps = parseWorkflow(item.pipeline);
           
           return (
             <div
               key={index}
-              className="bg-white rounded-lg p-4 border border-indigo-100 hover:border-indigo-200 transition-colors"
+              className="bg-gray-50 rounded-lg p-4 border border-gray-200"
             >
-              <div className="flex items-center justify-center">
-                <div className="flex items-center space-x-2 overflow-x-auto pb-2">
+              {/* Representação visual do fluxo de trabalho */}
+              {/* AJUSTE: Adicionado 'justify-center' para centralizar os passos do pipeline */}
+              <div className="flex items-center justify-center overflow-x-auto pb-2">
+                <div className="flex items-center space-x-2">
                   {steps.map((step, stepIndex) => (
                     <React.Fragment key={stepIndex}>
-                      <div className="flex-shrink-0 px-3 py-2 bg-gradient-to-r from-indigo-500 to-blue-500 text-white rounded-lg text-sm font-medium shadow-sm">
+                      <div className="flex-shrink-0 px-3 py-1 bg-gray-200 text-gray-800 rounded-md text-sm font-medium">
                         {step}
                       </div>
                       {stepIndex < steps.length - 1 && (
-                        <ArrowRight className="h-4 w-4 text-indigo-400 flex-shrink-0" />
+                        <ArrowRight className="h-4 w-4 text-gray-400 flex-shrink-0" />
                       )}
                     </React.Fragment>
                   ))}
                 </div>
               </div>
+              
+              {/* Explicação do fluxo de trabalho */}
+              <p className="mt-3 text-sm text-gray-600 leading-relaxed border-t border-gray-200 pt-3">
+                {item.explanation}
+              </p>
             </div>
           );
         })}
