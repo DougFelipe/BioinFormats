@@ -417,5 +417,121 @@
     "encoding_type": "Binary",
     "used_in_repositories": ["NCBI SRA", "ENA", "DDBJ"],
     "notes": "The primary archive for raw sequencing data. Conversion to FASTQ is a common first step for analysis."
+  },
+    {
+    "extension": "h5",
+    "name": "Hierarchical Data Format 5",
+    "area": ["Machine Learning in Bioinformatics", "Big Data & Repositories", "Genomics"],
+    "description": "A versatile binary format for storing large and complex heterogeneous data. Commonly used for storing raw numerical data, feature matrices, and trained machine learning models (e.g., from Keras/TensorFlow).",
+    "example_filenames": ["model_weights.h5", "genomic_data.hdf5"],
+    "example_file_content": "[Binary file - not human-readable]",
+    "example_file_explanation": [
+      "This is a binary file that can contain multiple datasets in a hierarchical structure, much like a file system.",
+      "It is highly efficient for storing large numerical arrays, such as those from sequencing data or imaging, and for saving the weights of a trained neural network."
+    ],
+    "pipeline_examples": [
+      "Genomic Data → Preprocessing → H5 (Feature Matrix)",
+      "TensorFlow/Keras → Model Training → Save Weights to H5"
+    ],
+    "tools": ["h5py (Python)", "TensorFlow", "PyTorch", "HDFView"],
+    "references": [
+      { "title": "HDF5 Group Website", "url": "https://www.hdfgroup.org/solutions/hdf5/", "type": "standard" }
+    ],
+    "encoding_type": "Binary",
+    "used_in_repositories": ["Zenodo", "Figshare", "Custom research repositories"],
+    "notes": "Extremely flexible and scalable, making it a go-to for large-scale scientific data."
+  },
+  {
+    "extension": "onnx",
+    "name": "Open Neural Network Exchange",
+    "area": ["Machine Learning in Bioinformatics", "Structural Biology"],
+    "description": "An open standard for representing machine learning models. It allows models to be trained in one framework (e.g., PyTorch) and deployed in another (e.g., ONNX Runtime), enhancing interoperability.",
+    "example_filenames": ["alphafold_model.onnx", "protein_classifier.onnx"],
+    "example_file_content": "[Binary file - Protocol Buffers]",
+    "example_file_explanation": [
+      "This binary file contains a complete description of a computational graph, including the network architecture and trained parameters (weights).",
+      "It is framework-agnostic, designed to make AI models portable."
+    ],
+    "pipeline_examples": [
+      "PyTorch Model → Export to ONNX → Deploy in Production",
+      "AlphaFold Model → Convert to ONNX → Faster Inference"
+    ],
+    "tools": ["ONNX Runtime", "PyTorch", "TensorFlow", "Scikit-learn"],
+    "references": [
+      { "title": "ONNX Official Website", "url": "https://onnx.ai/", "type": "standard" }
+    ],
+    "encoding_type": "Binary",
+    "used_in_repositories": ["ONNX Model Zoo", "Hugging Face Hub", "GitHub"],
+    "notes": "Crucial for deploying models in production environments that may differ from the training environment."
+  },
+  {
+    "extension": "csv",
+    "name": "Comma-Separated Values",
+    "area": ["Machine Learning in Bioinformatics", "Genomics", "Transcriptomics", "Proteomics"],
+    "description": "A simple text-based format for storing tabular data. It is a universal standard for feature tables, gene expression matrices, and metadata used as input for machine learning algorithms.",
+    "example_filenames": ["gene_expression.csv", "features.csv"],
+    "example_file_content": "gene_id,sample1,sample2,sample3\nGENE1,10.5,12.1,11.3\nGENE2,8.2,9.0,8.5",
+    "example_file_explanation": [
+      "The first line is the header, defining the columns (gene ID and sample names).",
+      "Each subsequent line represents a record (a gene) with its corresponding values separated by commas."
+    ],
+    "pipeline_examples": [
+      "RNA-seq counts → CSV → Scikit-learn for classification",
+      "Variant data → Feature Engineering → CSV → XGBoost model"
+    ],
+    "tools": ["Pandas (Python)", "R", "Microsoft Excel", "Any spreadsheet software"],
+    "references": [
+      { "title": "CSV Specification (RFC 4180)", "url": "https://datatracker.ietf.org/doc/html/rfc4180", "type": "standard" }
+    ],
+    "encoding_type": "ASCII / UTF-8",
+    "used_in_repositories": ["GEO (NCBI)", "Kaggle", "Zenodo"],
+    "notes": "While simple, it's essential to be consistent with delimiters and headers. TSV (Tab-Separated Values) is a common and often safer alternative."
+  },
+  {
+    "extension": "arff",
+    "name": "Attribute-Relation File Format",
+    "area": ["Machine Learning in Bioinformatics"],
+    "description": "A text file format primarily used with the Weka machine learning software. It describes a list of instances sharing a set of attributes, making it ideal for classic ML tasks.",
+    "example_filenames": ["dna_promoters.arff", "protein_classification.arff"],
+    "example_file_content": "@RELATION promoters\n@ATTRIBUTE promoter_sequence STRING\n@ATTRIBUTE class {+, -}\n@DATA\n'ccttccgg',+\n'aaccggtt',-",
+    "example_file_explanation": [
+      "Lines starting with '@' are headers. @RELATION defines the dataset name.",
+      "@ATTRIBUTE defines a feature (column) and its data type (e.g., STRING or nominal {+, -}).",
+      "@DATA marks the beginning of the data instances, following the CSV format."
+    ],
+    "pipeline_examples": [
+      "Feature Data → ARFF → Weka for analysis and modeling",
+      "ARFF → MOA (for streaming data) → Classification"
+    ],
+    "tools": ["Weka", "MOA", "Li-bsvm"],
+    "references": [
+      { "title": "ARFF Format Description", "url": "https://www.cs.waikato.ac.nz/ml/weka/arff.html", "type": "documentation" }
+    ],
+    "encoding_type": "ASCII / UTF-8",
+    "used_in_repositories": ["UCI Machine Learning Repository", "Weka Datasets"],
+    "notes": "Less common outside of the Weka ecosystem but very structured and descriptive for classic machine learning."
+  },
+  {
+    "extension": "ipynb",
+    "name": "Jupyter Notebook",
+    "area": ["Machine Learning in Bioinformatics"],
+    "description": "A document format for computational notebooks, containing both computer code (e.g., Python) and rich text elements (paragraphs, equations, figures). It is the de facto standard for developing and sharing ML workflows.",
+    "example_filenames": ["data_analysis.ipynb", "model_training.ipynb"],
+    "example_file_content": "[JSON-based file with code cells, markdown, and outputs]",
+    "example_file_explanation": [
+      "An IPYNB file is a JSON file that stores the contents of a notebook.",
+      "It contains a list of 'cells', where each cell can be code, markdown text, or the output of a code execution (like a plot or table)."
+    ],
+    "pipeline_examples": [
+      "Data Exploration → Model Prototyping → Visualization in a Jupyter Notebook",
+      "Sharing reproducible research with code, text, and results in one file"
+    ],
+    "tools": ["JupyterLab", "Jupyter Notebook", "Google Colab", "VS Code"],
+    "references": [
+      { "title": "Jupyter Project", "url": "https://jupyter.org/", "type": "documentation" }
+    ],
+    "encoding_type": "JSON (UTF-8)",
+    "used_in_repositories": ["GitHub", "Kaggle", "Google Colab"],
+    "notes": "Essential for reproducible research and interactive data science, but not ideal for production code."
   }
 ]
