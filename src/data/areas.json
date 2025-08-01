@@ -1,52 +1,102 @@
 [
   {
     "id": "genomics",
-    "name": "Genomics",
-    "description": "Comprehensive study of the genetic material of organisms, including genome sequencing and analysis."
+    "name": "Genomics"
   },
   {
     "id": "transcriptomics",
-    "name": "Transcriptomics",
-    "description": "Analysis of all RNA transcripts produced by an organism under specific conditions."
+    "name": "Transcriptomics"
   },
   {
     "id": "proteomics",
-    "name": "Proteomics",
-    "description": "Large-scale study of proteins, including their structure, function, and modifications."
+    "name": "Proteomics"
   },
   {
     "id": "metagenomics",
-    "name": "Metagenomics",
-    "description": "Analysis of genetic material recovered directly from environmental samples."
+    "name": "Metagenomics"
   },
   {
     "id": "structural-biology",
-    "name": "Structural Biology",
-    "description": "Study of the molecular structure of biological macromolecules such as proteins and nucleic acids."
+    "name": "Structural Biology"
   },
   {
     "id": "epigenomics",
-    "name": "Epigenomics",
-    "description": "Analysis of epigenetic modifications that affect gene expression without altering the DNA sequence."
+    "name": "Epigenomics"
   },
   {
     "id": "biological-networks",
-    "name": "Biological Networks",
-    "description": "Modeling and analysis of complex interactions between biomolecules and cellular processes."
+    "name": "Biological Networks"
   },
   {
     "id": "clinical-bioinformatics",
-    "name": "Clinical Bioinformatics",
-    "description": "Application of bioinformatics methods for medical diagnosis and personalized medicine."
+    "name": "Clinical Bioinformatics"
   },
   {
     "id": "ml-bioinformatics",
-    "name": "Machine Learning in Bioinformatics",
-    "description": "Use of machine learning algorithms for the analysis of complex biological data."
+    "name": "Machine Learning in Bioinformatics"
   },
   {
     "id": "big-data-repositories",
-    "name": "Big Data & Repositories",
-    "description": "Management and analysis of large volumes of biological data in public repositories."
+    "name": "Big Data & Repositories"
+  },
+  {
+    "id": "metabolomics",
+    "name": "Metabolomics"
+  },
+  {
+    "id": "pharmacogenomics",
+    "name": "Pharmacogenomics"
+  },
+  {
+    "id": "systems-biology",
+    "name": "Systems Biology"
+  },
+  {
+    "id": "cheminformatics",
+    "name": "Cheminformatics"
+  },
+  {
+    "id": "immunoinformatics",
+    "name": "Immunoinformatics"
+  },
+  {
+    "id": "phylogenetics",
+    "name": "Phylogenetics"
+  },
+  {
+    "id": "population-genetics",
+    "name": "Population Genetics"
+  },
+  {
+    "id": "glycomics",
+    "name": "Glycomics"
+  },
+  {
+    "id": "lipidomics",
+    "name": "Lipidomics"
+  },
+  {
+    "id": "cancer-genomics",
+    "name": "Cancer Genomics"
+  },
+  {
+    "id": "viromics",
+    "name": "Viromics"
+  },
+  {
+    "id": "drug-discovery",
+    "name": "Drug Discovery"
+  },
+  {
+    "id": "single-cell-omics",
+    "name": "Single-Cell Omics"
+  },
+  {
+    "id": "evolutionary-genomics",
+    "name": "Evolutionary Genomics"
+  },
+  {
+    "id": "microbiome-analysis",
+    "name": "Microbiome Analysis"
   }
 ]
