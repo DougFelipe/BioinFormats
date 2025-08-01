@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { FileText, Home, Grid3X3, HelpCircle } from 'lucide-react';
+// O ícone 'Home' foi removido porque o link de texto já não existe.
+import { FileText, Grid3X3, HelpCircle } from 'lucide-react';
 
 const Navigation: React.FC = () => {
   // Função para determinar a classe do link, simplificando a repetição
@@ -16,6 +17,7 @@ const Navigation: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center space-x-8">
+            {/* O logótipo funciona como o link principal para a página inicial */}
             <Link 
               to="/" 
               className="flex items-center space-x-2 text-xl font-bold text-gray-900 hover:text-blue-600 transition-colors"
@@ -25,18 +27,11 @@ const Navigation: React.FC = () => {
             </Link>
             
             <div className="hidden md:flex items-center space-x-6">
-              <NavLink to="/" className={navLinkClass}>
-                <Home className="h-4 w-4" />
-                <span>Home</span>
-              </NavLink>
+              {/* O link de texto "Home" foi removido */}
               
-              {/* Link para a página de Áreas adicionado */}
-              <NavLink to="/areas" className={navLinkClass}>
-                <Grid3X3 className="h-4 w-4" />
-                <span>Areas</span>
-              </NavLink>
+
               
-              {/* Link para a página de FAQ adicionado */}
+              {/* Link para a página de FAQ */}
               <NavLink to="/faq" className={navLinkClass}>
                 <HelpCircle className="h-4 w-4" />
                 <span>FAQ</span>

@@ -116,26 +116,29 @@ const Home: React.FC<HomeProps> = ({ formats, areas }) => {
             ))}
           </div>
           
-          {(searchQuery || selectedAreaId) && (
-            <div className="mt-8">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">
-                Search results ({filteredFormats.length})
-              </h3>
-              
-              {filteredFormats.length > 0 ? (
-                <div className="grid grid-cols-1 gap-6">
-                  {filteredFormats.map((format) => (
+        {(searchQuery || selectedAreaId) && (
+          <div className="mt-8">
+            <h3 className="text-lg font-semibold text-gray-900 mb-4">
+              Search results ({filteredFormats.length})
+            </h3>
+            
+            {filteredFormats.length > 0 ? (
+              <div className="grid grid-cols-1 gap-6">
+                {/* A lista de formatos é ordenada por ordem alfabética antes de ser renderizada */}
+                {[...filteredFormats]
+                  .sort((a, b) => a.extension.localeCompare(b.extension))
+                  .map((format) => (
                     <ExtensionCard key={format.extension} format={format} />
-                  ))}
-                </div>
-              ) : (
-                <div className="text-center py-12">
-                  <FileText className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-                  <p className="text-gray-600">No formats found matching the search criteria.</p>
-                </div>
-              )}
-            </div>
-          )}
+                ))}
+              </div>
+            ) : (
+              <div className="text-center py-12">
+                <FileText className="h-12 w-12 text-gray-400 mx-auto mb-4" />
+                <p className="text-gray-600">No formats found matching the search criteria.</p>
+              </div>
+            )}
+          </div>
+        )}
         </div>
       </div>
 

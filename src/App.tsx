@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navigation from './components/Navigation';
 import Home from './pages/Home';
 import FormatDetail from './pages/FormatDetail';
-import AreasPage from './pages/Areas'; // Supondo que este arquivo exista
 import FaqPage from './pages/Faq';
 import { FileFormat, BioinformaticsArea } from './types';
 
@@ -28,11 +27,6 @@ function App() {
             <Route 
               path="/format/:extension" 
               element={<FormatDetail formats={formats} />} 
-            />
-            {/* Rota para a página de Áreas adicionada */}
-            <Route 
-              path="/areas" 
-              element={<AreasPage formats={formats} areas={areas} />} 
             />
             {/* Rota para a página de FAQ adicionada */}
             <Route 
