@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navigation from './components/Navigation';
+import Footer from './components/Footer'; // 1. Importe o novo componente Footer
 import Home from './pages/Home';
 import FormatDetail from './pages/FormatDetail';
 import FaqPage from './pages/Faq';
@@ -8,7 +9,7 @@ import { FileFormat, BioinformaticsArea } from './types';
 
 // Import JSON data
 import areasData from './data/areas.json';
-import formatsData from './data/formats.json';
+import formatsData from './data/formats.json'; // Lembre-se que este ficheiro agora é .js
 
 function App() {
   const [areas] = useState<BioinformaticsArea[]>(areasData);
@@ -16,9 +17,10 @@ function App() {
 
   return (
     <Router>
-      <div className="min-h-screen bg-gray-50">
+      {/* 2. Use flexbox para garantir que o rodapé fique no fundo */}
+      <div className="min-h-screen bg-gray-50 flex flex-col">
         <Navigation />
-        <main>
+        <main className="flex-grow"> {/* 3. A área de conteúdo principal cresce para preencher o espaço */}
           <Routes>
             <Route 
               path="/" 
@@ -28,13 +30,14 @@ function App() {
               path="/format/:extension" 
               element={<FormatDetail formats={formats} />} 
             />
-            {/* Rota para a página de FAQ adicionada */}
+
             <Route 
               path="/faq" 
               element={<FaqPage />} 
             />
           </Routes>
         </main>
+        <Footer /> {/* 4. Adicione o componente Footer aqui */}
       </div>
     </Router>
   );

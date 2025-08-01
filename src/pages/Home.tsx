@@ -41,28 +41,13 @@ const Home: React.FC<HomeProps> = ({ formats, areas }) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Bioinformatics File Formats
-              <span className="text-blue-200"> Reference</span>
+              Bioinformatics Files 
+              <span className="text-blue-200"> Formats</span>
             </h1>
             <p className="text-xl md:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto">
-              Technical and educational platform for consulting file extensions and formats 
-              used across various bioinformatics fields.
+              Platform for consulting file extensions and formats 
+              used across various bioinformatics fields
             </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-              <a
-                href="#search"
-                className="inline-flex items-center justify-center px-8 py-4 bg-white text-blue-700 font-semibold rounded-lg hover:bg-blue-50 transition-all duration-200 shadow-lg hover:shadow-xl"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.getElementById('search')?.scrollIntoView({ behavior: 'smooth' });
-                }}
-              >
-                <Search className="h-5 w-5 mr-2" />
-                Search Format
-              </a>            
-
-            </div>
             
             <div className="flex items-center justify-center space-x-8 text-blue-200">
               <div className="text-center">
@@ -72,10 +57,6 @@ const Home: React.FC<HomeProps> = ({ formats, areas }) => {
               <div className="text-center">
                 <div className="text-2xl font-bold text-white">{areas.length}</div>
                 <div className="text-sm">Areas</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-white">100%</div>
-                <div className="text-sm">Free</div>
               </div>
             </div>
           </div>
