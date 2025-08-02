@@ -13,9 +13,6 @@ const FaqPage: React.FC = () => {
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
               Frequently Asked Questions
             </h1>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Have questions? We've got answers. If you can't find what you're looking for, feel free to reach out.
-            </p>
           </div>
         </div>
       </div>
