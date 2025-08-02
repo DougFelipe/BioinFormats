@@ -147,82 +147,47 @@ To add a new area to the application:
 
 To add a new file format:
 
-1. **Edit the file `src/data/formats.json`** using the correct structure (see example in previous version).
+1. **Edit the file `src/data/formats.json`** using the correct structure.
 
 ```json
 {
-
-  "extension": "new_ext",
-
-  "name": "Name of the Format",
-
-  "area": ["Genomics", "Transcriptomics", "Proteomics"],
-
-  "description": "Detailed description of the format and its purpose within bioinformatics workflows.",
-
-  "example_filenames": ["example1.new_ext", "example2.new_ext"],
-
-  "example_file_content": "Example content of the file format goes here.",
-
-  "example_file_explanation": [
-
-    "Line 1: Explanation of the first line in the example file content.",
-
-    "Line 2: Explanation of the second line.",
-
-    "Line 3: Continue explaining content as needed."
-
-  ],
-
-  "pipeline_examples": [
-
-    {
-
-      "pipeline": "Format → Tool → Output",
-
-      "explanation": "Describe how the format is used in this pipeline step-by-step."
-
-    },
-
-    {
-
-      "pipeline": "Format → Another Tool → Processed Output",
-
-      "explanation": "Another example of how this format fits into a bioinformatics workflow."
-
-    }
-
-  ],
-
-  "tools": ["Tool1", "Tool2", "Tool3"],
-
-  "references": [
-
-    {
-
-      "title": "Reference Title",
-
-      "url": "https://example.com",
-
-      "type": "documentation"
-
-    }
-
-  ],
-
-  "encoding_type": "ASCII / UTF-8",
-
-  "used_in_repositories": [
-
-    "Repository Name 1",
-
-    "Repository Name 2"
-
-  ],
-
-  "notes": "Important considerations or historical context about the format."
-
+  "extension": "new_ext",
+  "name": "Name of the Format",
+  "area": ["Genomics", "Transcriptomics", "Proteomics"],
+  "description": "Detailed description of the format and its purpose within bioinformatics workflows.",
+  "example_filenames": ["example1.new_ext", "example2.new_ext"],
+  "example_file_content": "Example content of the file format goes here.",
+  "example_file_explanation": [
+    "Line 1: Explanation of the first line in the example file content.",
+    "Line 2: Explanation of the second line.",
+    "Line 3: Continue explaining content as needed."
+  ],
+  "pipeline_examples": [
+    {
+      "pipeline": "Format → Tool → Output",
+      "explanation": "Describe how the format is used in this pipeline step-by-step."
+    },
+    {
+      "pipeline": "Format → Another Tool → Processed Output",
+      "explanation": "Another example of how this format fits into a bioinformatics workflow."
+    }
+  ],
+  "tools": ["Tool1", "Tool2", "Tool3"],
+  "references": [
+    {
+      "title": "Reference Title",
+      "url": "https://example.com",
+      "type": "documentation"
+    }
+  ],
+  "encoding_type": "ASCII / UTF-8",
+  "used_in_repositories": [
+    "Repository Name 1",
+    "Repository Name 2"
+  ],
+  "notes": "Important considerations or historical context about the format."
 }
+
 ```
 
 2. **Reference types**: `documentation`, `paper`, `tool`, `standard`
