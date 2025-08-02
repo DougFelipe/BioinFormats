@@ -276,7 +276,6 @@ This project is licensed under the AGPL-3.0 License. See the [LICENSE](LICENSE) 
 For questions or suggestions:
 
 * Open an issue on GitHub
-* Contact via email: \[[your-email@example.com](mailto:your-email@example.com)]
 
 ---
 
