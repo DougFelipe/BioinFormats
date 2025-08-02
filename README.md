@@ -1,10 +1,10 @@
-# BioinFormats - Reference for Bioinformatics File Formats
-
-A modern static web application for technical and educational consultation of file formats and extensions used in bioinformatics.
+# BioinFormats -  Bioinformatics File Formats
 
 ## 🧬 About the Project
 
-BioinFormats is a platform dedicated to providing detailed information about various file formats used in bioinformatics. The application offers complete technical sheets, practical examples, and references for each format, serving as an essential educational tool for students, researchers, and professionals in the field.
+BioinFormats is a platform dedicated to providing detailed information about various file formats used in bioinformatics. 
+
+The application offers complete technical sheets, practical examples, and references for each format, serving as an essential educational and reference tool for students, researchers, and professionals in the field.
 
 ## ✨ Features
 
@@ -12,8 +12,7 @@ BioinFormats is a platform dedicated to providing detailed information about var
 * **Area Filter**: Organized navigation by main bioinformatics areas
 * **Technical Sheets**: Detailed information including description, examples, and tools
 * **Responsive Design**: Optimized interface for mobile, tablets, and desktop
-* **Modular Architecture**: Expandable system based on static JSON
-* **Pure Frontend**: 100% static, no backend required
+
 
 ## 🌟 Covered Areas
 
@@ -58,7 +57,8 @@ BioinFormats is a platform dedicated to providing detailed information about var
 
 ```bash
 # Clone the repository
-git clone <repository-url>
+git clone https://github.com/DougFelipe/BioinFormats
+
 cd BioinFormats
 
 # Install dependencies
