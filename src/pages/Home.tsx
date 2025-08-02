@@ -42,11 +42,11 @@ const Home: React.FC<HomeProps> = ({ formats, areas }) => {
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
               Bioinformatics Files 
-              <span className="text-blue-200"> Formats</span>
+              <span className="text-blue-600"> Formats</span>
             </h1>
-            <p className="text-xl md:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto">
+            <p className="text-xl md:text-2xl text-white-100 mb-8 max-w-3xl mx-auto">
               Platform for consulting file extensions and formats 
-              used across various bioinformatics fields
+              used across various Bioinformatics fields
             </p>
             
             <div className="flex items-center justify-center space-x-8 text-blue-200">
