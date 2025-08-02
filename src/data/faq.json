@@ -4,7 +4,7 @@
     "items": [
       {
         "question": "What is the primary goal of the BioinFormats platform?",
-        "answer": "BioinFormats serves as a centralized, high-speed reference guide for file formats used in bioinformatics. It is designed for users of all levels—from students just starting out to experienced researchers—to quickly find and understand the structure, use cases, and associated tools for a wide range of bioinformatics data files."
+        "answer": "BioinFormats serves as a reference guide for file formats used in bioinformatics. It is designed for users of all levels—from students just starting out to experienced researchers—to quickly find and understand the structure, pipelines, and associated tools for a wide range of bioinformatics data files."
       },
       {
         "question": "Who is this platform for?",
@@ -16,11 +16,11 @@
       },
       {
         "question": "How does the search functionality work?",
-        "answer": "Our search is designed to be powerful and intuitive. You can enter almost any term related to a format, including its file extension (e.g., '.sam'), full name ('Sequence Alignment Map'), associated tools ('SAMtools'), a related area ('Genomics'), or even its encoding type ('Binary'). The system will search across all metadata fields to find the most relevant results."
+        "answer": "You can enter almost any term related to a format, including its file extension (e.g., '.sam'), full name ('Sequence Alignment Map'), associated tools ('SAMtools'), a related area ('Genomics'), or even its encoding type ('Binary'). The system will search across all metadata fields to find the most relevant results."
       },
       {
         "question": "What makes BioinFormats different from other resources?",
-        "answer": "Our focus is on speed, centralization, and comprehensive search. Instead of browsing multiple wikis or documentation pages, you get a standardized overview in one place. Our hybrid data aggregation model, combining automated scraping with AI-driven curation, allows us to cover a broad range of formats while maintaining a high standard of technical accuracy."
+        "answer": "Our focus is on centralization and comprehensive search. Instead of browsing multiple wikis or documentation pages, you get a standardized overview in one place. Our hybrid data aggregation model, combining automated scraping with AI-driven curation, allows us to cover a broad range of formats."
       }
     ]
   },
@@ -29,7 +29,7 @@
     "items": [
       {
         "question": "How can I be sure the information is accurate?",
-        "answer": "Our data pipeline starts by scraping official sources like standards documentation and established biological databases. This raw information is then processed, verified, and enriched by AI models trained on technical bioinformatics content. While we strive for 100% accuracy, the project's open-source nature allows the community to report any discrepancies via GitHub, ensuring the data is continuously refined."
+        "answer": "Our data pipeline starts by scraping official sources like standards documentation and established biological databases. This raw information is then processed, verified, and enriched by AI models. While we strive for 100% accuracy, the project's open-source nature allows the community to report any discrepancies via GitHub, ensuring the data is continuously refined."
       },
       {
         "question": "How often is the data updated?",
@@ -58,15 +58,15 @@
     "items": [
       {
         "question": "How can I contribute to this project?",
-        "answer": "This is an open-source project, and we welcome contributions from the community! You can contribute by forking the repository on GitHub, making your changes, and submitting a 'Pull Request'. We have a guide for contributors in the repository that explains the process."
+        "answer": "This is an open-source project, and we welcome contributions from the community! You can contribute by forking the repository on GitHub at https://github.com/DougFelipe/BioinFormats, making your changes, and submitting a 'Pull Request'. We have a guide for contributors in the repository that explains the process."
       },
       {
         "question": "I found an error or have a suggestion. How can I report it?",
-        "answer": "The best way to report a bug or suggest an improvement is to open an 'Issue' on our GitHub repository. This helps us track all feedback in a centralized place and allows for community discussion. We appreciate all feedback that helps us improve the platform."
+        "answer": "The best way to report a bug or suggest an improvement is to open an 'Issue' on our GitHub repository, which you can find at https://github.com/DougFelipe/BioinFormats/issues. This helps us track all feedback in a centralized place."
       },
       {
         "question": "I'm not a developer. Can I still contribute?",
-        "answer": "Absolutely! Non-developers can contribute in many valuable ways, such as identifying and reporting errors in the data, suggesting new file formats to include, improving descriptions, or helping with documentation. Simply opening an 'Issue' on GitHub is a great way to start."
+        "answer": "Absolutely! Non-developers can contribute in many valuable ways, such as identifying and reporting errors in the data, suggesting new file formats to include, or improving descriptions. Simply opening an 'Issue' on GitHub is a great way to start."
       },
       {
         "question": "What happens after I submit a contribution or report an issue?",
@@ -74,7 +74,7 @@
       },
       {
         "question": "Where can I find the contribution guidelines?",
-        "answer": "Detailed contribution guidelines are available in the `CONTRIBUTING.md` file in our official GitHub repository. We highly recommend reading it before submitting your first contribution."
+        "answer": "Detailed contribution guidelines are available in the `README.md` file in our official GitHub repository: https://github.com/DougFelipe/BioinFormats. We highly recommend reading it before submitting your first contribution."
       }
     ]
   },
@@ -82,20 +82,20 @@
     "category": "Future Plans",
     "items": [
       {
-        "question": "Is there an API for programmatic access to the data?",
-        "answer": "An official public API is a planned feature for the future. For now, all the data that powers this platform is available directly in our open-source GitHub repository. Developers interested in using the data programmatically are welcome to clone the repository."
-      },
-      {
-        "question": "What is the long-term vision for BioinFormats?",
-        "answer": "Our vision is to become the definitive, community-driven resource for bioinformatics data standards. We plan to expand our dataset, add more interactive examples, and potentially include more educational content like tutorials and in-depth guides on data management best practices."
-      },
-      {
-        "question": "Are there plans for more interactive features?",
-        "answer": "Yes, we are exploring ideas for more interactive features, such as allowing users to upload a small file to have it identified, or providing interactive viewers for certain text-based formats directly on the page. These are long-term goals that will depend on community interest and contributions."
-      },
-      {
         "question": "Will the platform ever have user accounts or personalized features?",
         "answer": "While not on our immediate roadmap, we have considered features like user accounts for saving favorite formats or creating personalized collections. The implementation of such features will depend on user demand and the evolution of the platform."
+      },
+      {
+        "question": "Will the platform eventually support a RESTful API for querying formats?",
+        "answer": "Yes, that’s part of our long-term goal. A RESTful API would allow programmatic access to the dataset, making integration with pipelines, tools, and registries much easier. We’re open to collaborations and contributions to help shape this feature."
+      },
+      {
+        "question": "Are you planning to add educational resources, like mini-courses or walkthroughs?",
+        "answer": "Yes — education and accessibility are at the core of this platform. The goal is to centralize technical documentation while making it easier to understand through complementary resources like tutorials, guides, or mini-courses. We welcome contributions in this area as well."
+      },
+      {
+        "question": "Is localization or multilingual support planned for non-English-speaking users?",
+        "answer": "Since the platform was initially built by a single developer, English was chosen as the default. However, we recognize the global nature of bioinformatics and may explore localization support in the future. For now, modern browsers offer built-in translation features that can assist users."
       }
     ]
   }
