@@ -139,9 +139,8 @@ To add a new area to the application:
 }
 ```
 
-2. **Available icons**: Icons are from the Lucide React library. Refer to its documentation to browse all icons.
 
-3. **Automatic update**: The new area will appear automatically in the menu and filters with no code changes required.
+2. **Automatic update**: The new area will appear automatically in the menu and filters with no code changes required.
 
 ### Adding New Formats/Extensions
 
