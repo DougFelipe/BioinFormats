@@ -24,3 +24,21 @@ export interface FileFormat {
   references: Reference[];
   notes: string;
 }
+
+export type Area = {
+  id: string;
+  name: string;
+};
+
+export type ReferenceLink = { title: string; url: string };
+
+export type GlossaryTerm = {
+  id: string;
+  term: string;
+  slug: string;
+  definition: string;
+  area_ids: string[];        // deve casar com Area.id de areas.json
+  aliases?: string[];
+  related_terms?: string[];  // pode referenciar slugs de outros termos
+  references?: ReferenceLink[];
+};

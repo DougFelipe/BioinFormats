@@ -7,6 +7,9 @@ import Home from './pages/Home';
 import FormatDetail from './pages/FormatDetail';
 import FaqPage from './pages/Faq';
 import { FileFormat, BioinformaticsArea } from './types';
+import Glossary from "./pages/Glossary";
+
+
 
 // Import data
 import areasData from './data/areas.json';
@@ -35,6 +38,9 @@ function App() {
               path="/faq" 
               element={<FaqPage />} 
             />
+            <Route path="/glossary" element={<Glossary />} />
+
+
           </Routes>
         </main>
         <Footer />
