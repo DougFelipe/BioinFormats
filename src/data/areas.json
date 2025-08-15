@@ -1,63 +1,71 @@
 [
   {
-    "id": "genomics",
-    "name": "Genomics"
-  },
-  {
-    "id": "transcriptomics",
-    "name": "Transcriptomics"
-  },
-  {
-    "id": "proteomics",
-    "name": "Proteomics"
-  },
-  {
-    "id": "metagenomics",
-    "name": "Metagenomics"
-  },
-  {
-    "id": "structural-biology",
-    "name": "Structural Biology"
-  },
-  {
-    "id": "epigenomics",
-    "name": "Epigenomics"
+    "id": "big-data-repositories",
+    "name": "Big Data & Repositories"
   },
   {
     "id": "biological-networks",
     "name": "Biological Networks"
   },
   {
-    "id": "clinical-bioinformatics",
-    "name": "Clinical Bioinformatics"
-  },
-  {
-    "id": "ml-bioinformatics",
-    "name": "Machine Learning in Bioinformatics"
-  },
-  {
-    "id": "big-data-repositories",
-    "name": "Big Data & Repositories"
-  },
-  {
-    "id": "metabolomics",
-    "name": "Metabolomics"
-  },
-  {
-    "id": "pharmacogenomics",
-    "name": "Pharmacogenomics"
-  },
-  {
-    "id": "systems-biology",
-    "name": "Systems Biology"
+    "id": "cancer-genomics",
+    "name": "Cancer Genomics"
   },
   {
     "id": "cheminformatics",
     "name": "Cheminformatics"
   },
   {
+    "id": "clinical-bioinformatics",
+    "name": "Clinical Bioinformatics"
+  },
+  {
+    "id": "drug-discovery",
+    "name": "Drug Discovery"
+  },
+  {
+    "id": "epigenomics",
+    "name": "Epigenomics"
+  },
+  {
+    "id": "evolutionary-genomics",
+    "name": "Evolutionary Genomics"
+  },
+  {
+    "id": "genomics",
+    "name": "Genomics"
+  },
+  {
+    "id": "glycomics",
+    "name": "Glycomics"
+  },
+  {
     "id": "immunoinformatics",
     "name": "Immunoinformatics"
+  },
+  {
+    "id": "lipidomics",
+    "name": "Lipidomics"
+  },
+  {
+    "id": "ml-bioinformatics",
+    "name": "Machine Learning in Bioinformatics"
+  },
+  {
+    "id": "metabolomics",
+    "name": "Metabolomics"
+  },
+  {
+    "id": "metagenomics",
+    "name": "Metagenomics"
+  },
+  {
+    "id": "microbiome-analysis",
+    "name": "Microbiome Analysis"
+  },
+  {
+    "id": "pharmacogenomics",
+    "name": "Pharmacogenomics"
   },
   {
     "id": "phylogenetics",
@@ -68,35 +76,27 @@
     "name": "Population Genetics"
   },
   {
-    "id": "glycomics",
-    "name": "Glycomics"
-  },
-  {
-    "id": "lipidomics",
-    "name": "Lipidomics"
-  },
-  {
-    "id": "cancer-genomics",
-    "name": "Cancer Genomics"
-  },
-  {
-    "id": "viromics",
-    "name": "Viromics"
-  },
-  {
-    "id": "drug-discovery",
-    "name": "Drug Discovery"
+    "id": "proteomics",
+    "name": "Proteomics"
   },
   {
     "id": "single-cell-omics",
     "name": "Single-Cell Omics"
   },
   {
-    "id": "evolutionary-genomics",
-    "name": "Evolutionary Genomics"
+    "id": "structural-biology",
+    "name": "Structural Biology"
   },
   {
-    "id": "microbiome-analysis",
-    "name": "Microbiome Analysis"
+    "id": "systems-biology",
+    "name": "Systems Biology"
+  },
+  {
+    "id": "transcriptomics",
+    "name": "Transcriptomics"
+  },
+  {
+    "id": "viromics",
+    "name": "Viromics"
   }
 ]

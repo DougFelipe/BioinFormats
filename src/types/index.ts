@@ -1,14 +1,17 @@
 export interface BioinformaticsArea {
   id: string;
   name: string;
-  description: string;
-  icon: string;
 }
 
 export interface Reference {
   title: string;
   url: string;
   type: 'documentation' | 'paper' | 'tool' | 'standard';
+}
+
+export interface PipelineExample {
+  pipeline: string;
+  explanation: string;
 }
 
 export interface FileFormat {
@@ -19,10 +22,12 @@ export interface FileFormat {
   example_filenames: string[];
   example_file_content: string;
   example_file_explanation: string[];
-  pipeline_examples: string[];
+  pipeline_examples: PipelineExample[];
   tools: string[];
   references: Reference[];
-  notes: string;
+  encoding_type: string;
+  used_in_repositories?: string[];
+  notes?: string;
 }
 
 export type Area = {

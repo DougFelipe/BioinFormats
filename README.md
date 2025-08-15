@@ -64,6 +64,9 @@ cd BioinFormats
 # Install dependencies
 npm install
 
+# Validate and organize data
+npm run organize-data
+
 # Run development server
 npm run dev
 ```
@@ -78,17 +81,45 @@ npm run build
 npm run preview
 ```
 
+### Data Management
+
+```bash
+# Validate data integrity
+npm run validate-data
+
+# Organize data alphabetically
+npm run organize-data
+
+# Force organization (even with validation errors)
+npm run force-organize
+```
+
 ## 📁 Project Structure
 
 ```
 ├── .gitignore
 ├── LICENSE
 ├── README.md
+├── SCRIPTS_DOCUMENTATION.md          # 📖 Scripts documentation
+├── validation-report.md               # 📊 Auto-generated data report
 ├── eslint.config.js
 ├── index.html
 ├── package-lock.json
 ├── package.json
 ├── postcss.config.js
+├── scripts/                           # 🤖 Data management scripts
+│   ├── organize-data.cjs             #    Main organization script
+│   ├── validators/                   #    Data validation modules
+│   │   ├── area-validator.cjs
+│   │   ├── format-validator.cjs
+│   │   └── glossary-validator.cjs
+│   ├── sorters/                      #    Data sorting modules
+│   │   ├── area-sorter.cjs
+│   │   ├── format-sorter.cjs
+│   │   └── glossary-sorter.cjs
+│   └── utils/                        #    Utility modules
+│       ├── file-handler.cjs
+│       └── logger.cjs
 ├── src
 │   ├── App.tsx
 │   ├── components
@@ -97,15 +128,17 @@ npm run preview
 │   │   ├── ExtensionCard.tsx
 │   │   ├── FaqItem.tsx
 │   │   ├── Footer.tsx
+│   │   ├── GlossaryListItem.tsx
 │   │   ├── Navigation.tsx
 │   │   ├── ReferenceList.tsx
 │   │   ├── ScrollToTop.tsx
 │   │   ├── SearchBar.tsx
 │   │   └── WorkflowSection.tsx
-│   ├── data
-│   │   ├── areas.json
-│   │   ├── faq.json
-│   │   └── formats.json
+│   ├── data                           # 📊 JSON data files (auto-organized)
+│   │   ├── areas.json                #    Bioinformatics areas
+│   │   ├── faq.json                  #    FAQ items
+│   │   ├── formats.json              #    File formats
+│   │   └── glossary.json             #    Glossary terms
 │   ├── index.css
 │   ├── main.tsx
 │   ├── pages
