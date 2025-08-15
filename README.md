@@ -1,4 +1,5 @@
 # BioinFormats -  Bioinformatics File Formats
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/DougFelipe/biorempp)
 
 ## 🧬 About the Project
 
