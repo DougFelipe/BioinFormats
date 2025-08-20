@@ -23,7 +23,6 @@ The application offers complete technical sheets, practical examples, and refere
 * Metagenomics
 * Structural Biology
 * Epigenomics
-* Biological Networks
 * Clinical Bioinformatics
 * Machine Learning in Bioinformatics
 * Big Data & Repositories
@@ -33,15 +32,13 @@ The application offers complete technical sheets, practical examples, and refere
 * Cheminformatics
 * Immunoinformatics
 * Phylogenetics
-* Population Genetics
 * Glycomics
 * Lipidomics
-* Cancer Genomics
 * Viromics
 * Drug Discovery
-* Single-Cell Omics
+* Single-Cell
 * Evolutionary Genomics
-* Microbiome Analysis
+
 
 ## 🛠️ Technologies
 

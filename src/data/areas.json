@@ -16,10 +16,6 @@
     "name": "Cheminformatics"
   },
   {
-    "id": "clinical-bioinformatics",
-    "name": "Clinical Bioinformatics"
-  },
-  {
     "id": "drug-discovery",
     "name": "Drug Discovery"
   },
@@ -81,7 +77,7 @@
   },
   {
     "id": "single-cell-omics",
-    "name": "Single-Cell Omics"
+    "name": "Single-Cell"
   },
   {
     "id": "structural-biology",
