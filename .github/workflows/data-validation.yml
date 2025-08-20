@@ -1,11 +1,9 @@
 name: Data Validation and Organization
 
 on:
+  workflow_dispatch: {}
   push:
     branches: [ main, develop ]
-    paths: 
-      - 'src/data/**'
-      - 'scripts/**'
   pull_request:
     branches: [ main ]
     paths:
