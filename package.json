@@ -11,8 +11,10 @@
     "organize-data": "node scripts/organize-data.cjs",
     "validate-data": "node scripts/organize-data.cjs --validate-only",
     "force-organize": "node scripts/organize-data.cjs --force",
-    "prepush": "npm run lint && npm run validate-data",
-    "prepare": "husky install"
+  "prepush": "npm run lint && npm run validate-data",
+  "prepare": "husky install",
+  "docker:build": "docker build -t bioinformats:local .",
+  "docker:run": "docker run --rm -p 8080:80 bioinformats:local"
   },
   "dependencies": {
     "lucide-react": "^0.344.0",
