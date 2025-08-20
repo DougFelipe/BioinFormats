@@ -265,6 +265,71 @@ To implement new functionalities:
 4. Push to the branch (`git push origin feature/NewFeature`)
 5. Open a Pull Request
 
+## 🛡️ Pre-commit and Pre-push (local checks)
+
+This project uses Husky and lint-staged to run quick, local checks before commits and pushes to keep the codebase clean.
+
+What runs locally:
+
+- pre-commit: runs `lint-staged` which executes ESLint `--fix` on staged JS/TS files and a lightweight validation for `src/data` JSON files.
+- pre-push: runs a `prepush` script (`npm run prepush`) that performs a full lint and a data validation (`npm run lint && npm run validate-data`).
+
+How to set up locally (one-time):
+
+```powershell
+npm install
+npm run prepare
+# or: npx husky install
+```
+
+How to test hooks:
+
+1. Modify a source file or a `src/data` JSON file.
+2. Stage the change: `git add <file>`
+3. Commit: `git commit -m "test: hooks"` — pre-commit will run automatically.
+4. Push: `git push` — pre-push will run automatically.
+
+If a hook auto-fixes changes (ESLint --fix), the hook will re-add fixed files to the commit.
+
+CI behavior and important notes
+
+- The GitHub workflow `Data Validation and Organization` runs in CI and validates data and organizes it. It now only commits organized data if files under `src/data/` changed (prevents false positives from artifacts like `validation-report.md`).
+- The CI also uploads `validation-report.md` as an artifact. The file remains ignored locally via `.gitignore`.
+
+## 🧾 Updated Contributing Guide (detailed)
+
+Follow these steps to contribute:
+
+1. Fork the repository
+2. Create a branch for your feature: `git checkout -b feature/your-feature`
+3. Install dependencies and prepare hooks:
+
+```powershell
+npm install
+npm run prepare
+```
+
+4. Make your changes in a focused commit(s). Keep commits small and descriptive.
+
+5. Before committing, run lint and validation locally (optional but recommended):
+
+```powershell
+npm run lint
+npm run validate-data
+```
+
+6. Stage and commit your changes. The pre-commit hook will lint staged files and may autofix issues.
+
+7. Push to your branch: `git push origin feature/your-feature`
+
+8. Open a Pull Request against `main`. In the PR description, explain the change and any manual validation steps.
+
+9. Respond to CI and review feedback. If CI suggests fixes (lint/data), apply them locally and push a new commit.
+
+Thanks for contributing!
+
+
+
 ## 📄 License
 
 This project is licensed under the AGPL-3.0 License. See the [LICENSE](LICENSE) file for more details.
