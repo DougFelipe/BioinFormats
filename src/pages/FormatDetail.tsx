@@ -5,7 +5,7 @@ import ExplanationBlock from '../components/ExplanationBlock';
 import WorkflowSection from '../components/WorkflowSection';
 import CodeBlock from '../components/CodeBlock';
 import { FileFormat } from '../types';
-import { FileText, Tag, PenTool as Tool, Info, ArrowLeft } from 'lucide-react';
+import { FileText, Info, ArrowLeft } from 'lucide-react';
 
 interface FormatDetailProps {
   formats: FileFormat[];
@@ -113,7 +113,7 @@ const FormatDetail: React.FC<FormatDetailProps> = ({ formats }) => {
       <div className="mb-6">
         <div className="mb-2 text-sm font-semibold text-gray-700">Used in Repositories</div>
         <div className="flex flex-wrap gap-2">
-          {format.used_in_repositories.map((repo, index) => (
+          {format.used_in_repositories?.map((repo, index) => (
             <span
               key={index}
               className="inline-flex px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800"

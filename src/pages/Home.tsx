@@ -1,10 +1,10 @@
 import React, { useState, useMemo } from 'react';
-import { Link } from 'react-router-dom';
+// ...existing code...
 import SearchBar from '../components/SearchBar';
 import ExtensionCard from '../components/ExtensionCard';
 import { FileFormat, BioinformaticsArea } from '../types';
 import { searchFormats } from '../utils/searchUtils';
-import { Search, Grid3X3, FileText, ArrowRight } from 'lucide-react';
+import { FileText } from 'lucide-react';
 
 interface HomeProps {
   formats: FileFormat[];

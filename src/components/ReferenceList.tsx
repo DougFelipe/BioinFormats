@@ -7,7 +7,7 @@ interface ReferenceListProps {
   className?: string;
 }
 
-const typeIcons: Record<Reference['type'], React.ComponentType<any>> = {
+const typeIcons: Record<Reference['type'], React.ComponentType<unknown>> = {
   documentation: FileText,
   paper: BookOpen,
   tool: Tool,

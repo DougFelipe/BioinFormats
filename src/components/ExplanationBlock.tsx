@@ -1,5 +1,5 @@
 import React from 'react';
-import { BookOpen, ChevronRight } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 
 interface ExplanationBlockProps {
   explanations: string[];

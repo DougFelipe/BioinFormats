@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Workflow } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 // A estrutura dos dados que o componente espera receber foi atualizada.
 interface PipelineItem {
