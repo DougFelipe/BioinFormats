@@ -12,6 +12,8 @@ dist
 dist-ssr
 *.local
 RELATORIO.md
+validation-report.md
+PRECOMMIT_MODEL.md
 
 # Editor directories and files
 .vscode/*
