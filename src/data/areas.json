@@ -4,44 +4,8 @@
     "name": "Big Data & Repositories"
   },
   {
-    "id": "biological-networks",
-    "name": "Biological Networks"
-  },
-  {
-    "id": "cancer-genomics",
-    "name": "Cancer Genomics"
-  },
-  {
-    "id": "cheminformatics",
-    "name": "Cheminformatics"
-  },
-  {
-    "id": "drug-discovery",
-    "name": "Drug Discovery"
-  },
-  {
-    "id": "epigenomics",
-    "name": "Epigenomics"
-  },
-  {
-    "id": "evolutionary-genomics",
-    "name": "Evolutionary Genomics"
-  },
-  {
     "id": "genomics",
     "name": "Genomics"
-  },
-  {
-    "id": "glycomics",
-    "name": "Glycomics"
-  },
-  {
-    "id": "immunoinformatics",
-    "name": "Immunoinformatics"
-  },
-  {
-    "id": "lipidomics",
-    "name": "Lipidomics"
   },
   {
     "id": "ml-bioinformatics",
@@ -60,16 +24,8 @@
     "name": "Microbiome Analysis"
   },
   {
-    "id": "pharmacogenomics",
-    "name": "Pharmacogenomics"
-  },
-  {
     "id": "phylogenetics",
     "name": "Phylogenetics"
-  },
-  {
-    "id": "population-genetics",
-    "name": "Population Genetics"
   },
   {
     "id": "proteomics",
@@ -90,9 +46,5 @@
   {
     "id": "transcriptomics",
     "name": "Transcriptomics"
-  },
-  {
-    "id": "viromics",
-    "name": "Viromics"
   }
 ]
