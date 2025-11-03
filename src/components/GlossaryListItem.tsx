@@ -1,4 +1,3 @@
-import React from "react";
 import type { GlossaryTerm } from "../types";
 
 type Props = {
@@ -16,7 +15,7 @@ export default function GlossaryListItem({ term, query, renderHighlight }: Props
       <h3 className="text-lg font-semibold">
         {renderHighlight(term.term, query)}
       </h3>
-      <p className="mt-2 text-sm text-slate-700 dark:text-slate-300 line-clamp-2">
+      <p className="mt-2 text-sm text-black line-clamp-2">
         {renderHighlight(shortDef, query)}
       </p>
     </li>

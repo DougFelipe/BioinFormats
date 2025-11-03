@@ -59,7 +59,7 @@ export default function Glossary() {
         type="button"
         onClick={() => handleLetterClick(letter)}
         aria-pressed={active}
-        aria-label={`Filtrar por termos iniciados com ${letter}`}
+        aria-label={`Filter by terms starting with ${letter}`}
         className={[
           "w-full h-8 rounded-md text-xs sm:text-sm font-medium transition",
           "border border-slate-200 dark:border-slate-700",
@@ -76,9 +76,9 @@ export default function Glossary() {
   return (
     <main className="mx-auto max-w-5xl px-4 py-8">
       <header className="mb-6">
-        <h1 className="text-3xl font-bold">Glossário</h1>
+        <h1 className="text-3xl font-bold">Glossary</h1>
         <p className="mt-1 text-slate-600 dark:text-slate-300">
-          Termos essenciais de bioinformática. Pesquise e/ou filtre pela letra inicial.
+          Essential bioinformatics terms. Search and/or filter by initial letter.
         </p>
       </header>
 
@@ -87,10 +87,10 @@ export default function Glossary() {
         {/* Coluna esquerda: SearchBar + Alfabeto (mesma largura) */}
         <div className="flex-1">
           <SearchBar
-            placeholder="Buscar por termo ou alias..."
+            placeholder="Search for term or alias..."
             value={query}
             onChange={(v: string) => setQuery(v)}
-            ariaLabel="Buscar no glossário"
+            ariaLabel="Search the glossary"
           />
 
           {/* Alfabeto em uma única linha com 26 colunas iguais, mesmo width do SearchBar */}
@@ -98,7 +98,7 @@ export default function Glossary() {
             <div
               className="grid gap-1"
               style={{ gridTemplateColumns: "repeat(26, minmax(0, 1fr))" }}
-              aria-label="Filtro por letra inicial"
+              aria-label="Filter by initial letter"
               role="group"
             >
               {ALPHABET.map(l => (
@@ -107,7 +107,7 @@ export default function Glossary() {
             </div>
             {selectedLetter && (
               <p className="mt-2 text-xs text-slate-600 dark:text-slate-400">
-                Filtrando por termos que começam com <span className="font-semibold">{selectedLetter}</span>.
+                                Filtering by terms that start with <span className="font-semibold">{selectedLetter}</span>.
               </p>
             )}
           </div>
@@ -120,7 +120,7 @@ export default function Glossary() {
               className="text-sm text-slate-700 dark:text-slate-200 hover:underline"
               onClick={clearAll}
             >
-              Limpar filtros
+                            Clear filters
             </button>
           )}
         </div>
@@ -130,7 +130,7 @@ export default function Glossary() {
       <section className="mt-6">
         {results.length === 0 ? (
           <div className="text-slate-600 dark:text-slate-300">
-            Nenhum resultado. Tente outra busca ou selecione outra letra.
+                        No results. Try another search or select another letter.
           </div>
         ) : (
           <ul className="flex flex-col gap-4">
