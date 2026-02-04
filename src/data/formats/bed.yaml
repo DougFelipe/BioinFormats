@@ -10,6 +10,22 @@ description: A simple format for defining genomic regions with chromosome coordi
 
 encoding_type: ASCII / UTF-8
 
+# Viewer configuration
+viewer_type: tabular
+column_definitions:
+  - name: Chrom
+    tooltip: Chromosome name (e.g., chr1, chrX)
+  - name: Start
+    tooltip: Start position (0-based)
+  - name: End
+    tooltip: End position (not inclusive)
+  - name: Name
+    tooltip: Feature name (optional)
+  - name: Score
+    tooltip: Score value 0-1000 (optional)
+  - name: Strand
+    tooltip: + (forward) or - (reverse)
+
 example_filenames:
   - peaks.bed
   - genes.bed

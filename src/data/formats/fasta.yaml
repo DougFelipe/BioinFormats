@@ -11,6 +11,9 @@ description: A text-based format for representing nucleotide or peptide sequence
 
 encoding_type: ASCII / UTF-8
 
+# Viewer configuration
+viewer_type: sequence
+
 example_filenames:
   - sequences.fasta
   - genome.fa

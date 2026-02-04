@@ -11,6 +11,28 @@ description: A tab-delimited text format for describing genes and other features
 
 encoding_type: ASCII / UTF-8
 
+# Viewer configuration
+viewer_type: tabular
+column_definitions:
+  - name: Seqname
+    tooltip: Chromosome or scaffold name
+  - name: Source
+    tooltip: Program or database that generated the feature
+  - name: Feature
+    tooltip: Type of feature (gene, exon, CDS, etc.)
+  - name: Start
+    tooltip: Start position (1-based)
+  - name: End
+    tooltip: End position (inclusive)
+  - name: Score
+    tooltip: Numeric score (. if not available)
+  - name: Strand
+    tooltip: + (forward) or - (reverse)
+  - name: Frame
+    tooltip: Reading frame (0, 1, 2 or .)
+  - name: Attributes
+    tooltip: Semicolon-separated key=value pairs
+
 example_filenames:
   - annotations.gff
   - features.gff3

@@ -10,6 +10,26 @@ description: A standard format for storing genetic variations such as SNPs, inde
 
 encoding_type: ASCII / UTF-8
 
+# Viewer configuration
+viewer_type: tabular
+column_definitions:
+  - name: CHROM
+    tooltip: Chromosome identifier
+  - name: POS
+    tooltip: Position (1-based)
+  - name: ID
+    tooltip: Variant identifier (e.g., rs number)
+  - name: REF
+    tooltip: Reference allele at position
+  - name: ALT
+    tooltip: Alternate allele(s)
+  - name: QUAL
+    tooltip: Phred-scaled quality score
+  - name: FILTER
+    tooltip: Filter status (PASS or filter names)
+  - name: INFO
+    tooltip: Additional info as key=value pairs
+
 example_filenames:
   - variants.vcf
   - mutations.vcf.gz

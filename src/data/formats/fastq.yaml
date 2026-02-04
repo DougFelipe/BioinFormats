@@ -10,6 +10,9 @@ description: A text-based format for storing nucleotide sequences along with the
 
 encoding_type: ASCII / UTF-8
 
+# Viewer configuration
+viewer_type: sequence
+
 example_filenames:
   - reads.fastq
   - sample_R1.fq

@@ -10,6 +10,28 @@ description: A specialized format similar to GFF, commonly used in transcript an
 
 encoding_type: ASCII / UTF-8
 
+# Viewer configuration
+viewer_type: tabular
+column_definitions:
+  - name: Seqname
+    tooltip: Chromosome or scaffold name
+  - name: Source
+    tooltip: Annotation source (e.g., ENSEMBL)
+  - name: Feature
+    tooltip: Feature type (exon, CDS, etc.)
+  - name: Start
+    tooltip: Start position (1-based)
+  - name: End
+    tooltip: End position (inclusive)
+  - name: Score
+    tooltip: Numeric score (. if unavailable)
+  - name: Strand
+    tooltip: + (forward) or - (reverse)
+  - name: Frame
+    tooltip: Reading frame (0, 1, 2 or .)
+  - name: Attributes
+    tooltip: gene_id, transcript_id pairs
+
 example_filenames:
   - genes.gtf
 

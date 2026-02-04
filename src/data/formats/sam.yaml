@@ -10,6 +10,32 @@ description: A text-based format that stores biological sequence alignment data 
 
 encoding_type: ASCII / UTF-8
 
+# Viewer configuration
+viewer_type: tabular
+column_definitions:
+  - name: QNAME
+    tooltip: Query template/read name
+  - name: FLAG
+    tooltip: Bitwise flag (alignment info)
+  - name: RNAME
+    tooltip: Reference sequence name
+  - name: POS
+    tooltip: 1-based leftmost position
+  - name: MAPQ
+    tooltip: Mapping quality (0-255)
+  - name: CIGAR
+    tooltip: CIGAR alignment string
+  - name: RNEXT
+    tooltip: Reference name of next read
+  - name: PNEXT
+    tooltip: Position of next read
+  - name: TLEN
+    tooltip: Template length
+  - name: SEQ
+    tooltip: Read sequence
+  - name: QUAL
+    tooltip: ASCII quality string
+
 example_filenames:
   - alignment.sam
   - rna_reads.sam

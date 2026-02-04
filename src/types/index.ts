@@ -14,6 +14,11 @@ export interface PipelineExample {
   explanation: string;
 }
 
+export interface ColumnDefinition {
+  name: string;
+  tooltip: string;
+}
+
 export interface FileFormat {
   extension: string;
   name: string;
@@ -28,6 +33,9 @@ export interface FileFormat {
   encoding_type: string;
   used_in_repositories?: string[];
   notes?: string;
+  // Viewer configuration
+  viewer_type?: 'tabular' | 'sequence' | 'text';
+  column_definitions?: ColumnDefinition[];
 }
 
 export type Area = {
