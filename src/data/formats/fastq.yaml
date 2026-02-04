@@ -1,0 +1,53 @@
+# FASTQ Format
+extension: fastq
+name: FASTQ Format
+
+area:
+  - Genomics
+  - Transcriptomics
+
+description: A text-based format for storing nucleotide sequences along with their corresponding base quality scores.
+
+encoding_type: ASCII / UTF-8
+
+example_filenames:
+  - reads.fastq
+  - sample_R1.fq
+  - sequences.fastq.gz
+
+example_file_content: "@read_identifier\nACGTACGT\n+\n!''*((((***+))%%%++)(%%%%).1***-+*''))**55CCF>>>>>CCCCCCC65"
+
+example_file_explanation:
+  - "Line 1: Read identifier, starting with '@' followed by a unique sequence name."
+  - "Line 2: Nucleotide sequence (ACGTACGT)."
+  - "Line 3: Optional separator '+' (can repeat the identifier)."
+  - "Line 4: ASCII quality string where each character represents the quality of the corresponding base."
+
+pipeline_examples:
+  - pipeline: FASTQ → FastQC → Trimmomatic → BWA → BAM
+    explanation: Raw sequencing reads (FASTQ) are quality-checked (FastQC), trimmed (Trimmomatic), aligned to a reference (BWA), and compressed into a BAM file.
+
+  - pipeline: FASTQ → STAR → gene counts → DESeq2
+    explanation: An RNA-seq pipeline where reads are aligned (STAR), expression is quantified (gene counts), and differential expression is analyzed (DESeq2).
+
+  - pipeline: FASTQ → Bowtie2 → SAM → variant calling
+    explanation: Reads are aligned to a genome (Bowtie2), the alignment is stored (SAM), and this is used as the basis for identifying genetic variants.
+
+tools:
+  - FastQC
+  - Trimmomatic
+  - BWA
+  - Bowtie2
+  - STAR
+
+references:
+  - title: FASTQ Format Specification
+    url: https://en.wikipedia.org/wiki/FASTQ_format
+    type: documentation
+
+used_in_repositories:
+  - NCBI SRA
+  - ENA
+  - DDBJ
+
+notes: The standard for next-generation sequencing data. Quality scores are ASCII-encoded (Phred+33 or Phred+64).

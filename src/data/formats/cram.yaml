@@ -1,0 +1,48 @@
+# CRAM Format
+extension: cram
+name: CRAM Format
+
+area:
+  - Genomics
+  - Big Data & Repositories
+
+description: A compressed binary format for storing aligned sequence data. CRAM reduces file size by storing differences relative to a reference genome.
+
+encoding_type: Binary
+
+example_filenames:
+  - sample.cram
+
+example_file_content: "[Binary file - reference-based compression]"
+
+example_file_explanation:
+  - CRAM files are binary and compressed using the reference genome.
+  - They contain the same alignment data as SAM/BAM but require the reference to decode.
+  - Reference-based compression enables smaller file sizes compared to BAM.
+
+pipeline_examples:
+  - pipeline: BAM → SAMtools → CRAM
+    explanation: A BAM file is converted into a CRAM file using SAMtools with a reference genome provided.
+
+  - pipeline: CRAM → CRAMtools → read decompression
+    explanation: CRAMtools or SAMtools is used to extract alignments for specific regions or convert back to SAM.
+
+  - pipeline: CRAM → GATK → variant calling
+    explanation: Compressed CRAM files are used as input to GATK pipelines for calling genetic variants efficiently.
+
+tools:
+  - SAMtools
+  - htslib
+  - GATK
+  - CRAMtools
+
+references:
+  - title: CRAM Format Overview
+    url: https://samtools.github.io/hts-specs/CRAMv3.pdf
+    type: standard
+
+used_in_repositories:
+  - ENA
+  - EGA
+
+notes: Efficient for large-scale sequencing datasets; smaller size but requires reference genome.

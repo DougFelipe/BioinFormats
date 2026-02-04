@@ -1,0 +1,39 @@
+# Bioinformatics Areas
+# Used for categorizing file formats
+
+areas:
+  - id: big-data-repositories
+    name: Big Data & Repositories
+
+  - id: genomics
+    name: Genomics
+
+  - id: ml-bioinformatics
+    name: Machine Learning in Bioinformatics
+
+  - id: metabolomics
+    name: Metabolomics
+
+  - id: metagenomics
+    name: Metagenomics
+
+  - id: microbiome-analysis
+    name: Microbiome Analysis
+
+  - id: phylogenetics
+    name: Phylogenetics
+
+  - id: proteomics
+    name: Proteomics
+
+  - id: single-cell-omics
+    name: Single-Cell
+
+  - id: structural-biology
+    name: Structural Biology
+
+  - id: systems-biology
+    name: Systems Biology
+
+  - id: transcriptomics
+    name: Transcriptomics

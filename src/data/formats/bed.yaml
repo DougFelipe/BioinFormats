@@ -1,0 +1,51 @@
+# Browser Extensible Data Format
+extension: bed
+name: Browser Extensible Data
+
+area:
+  - Genomics
+  - Epigenomics
+
+description: A simple format for defining genomic regions with chromosome coordinates.
+
+encoding_type: ASCII / UTF-8
+
+example_filenames:
+  - peaks.bed
+  - genes.bed
+  - regions.bed
+
+example_file_content: "chr1\t1000\t2000\tfeature1\t100\t+\nchr1\t3000\t4000\tfeature2\t200\t-"
+
+example_file_explanation:
+  - "Line 1: Defines a feature named 'feature1' on chromosome 1, from base 1000 to 2000, on the positive strand."
+  - "Line 2: Defines a feature named 'feature2' on chromosome 1, from base 3000 to 4000, on the negative strand."
+  - "The columns are: chromosome, start, end, name, score, and strand."
+
+pipeline_examples:
+  - pipeline: ChIP-seq peaks → BED → genome annotation
+    explanation: The genomic coordinates of protein-binding sites (peaks) from a ChIP-seq experiment are stored in a BED file for downstream annotation.
+
+  - pipeline: BED → BEDTools → genomic intervals
+    explanation: BEDTools is used to perform set operations on genomic regions (e.g., finding overlaps or differences) defined in BED files.
+
+  - pipeline: BED → UCSC Browser → visualization
+    explanation: A BED file can be uploaded as a custom track to the UCSC Genome Browser to visualize specific genomic features.
+
+tools:
+  - BEDTools
+  - IGV
+  - UCSC Genome Browser
+  - Galaxy
+
+references:
+  - title: BED Format Description
+    url: https://genome.ucsc.edu/FAQ/FAQformat.html#format1
+    type: documentation
+
+used_in_repositories:
+  - UCSC Genome Browser
+  - ENCODE
+  - Roadmap Epigenomics
+
+notes: A flexible format with 3 to 12 columns. Widely used for genomic annotation and visualization.

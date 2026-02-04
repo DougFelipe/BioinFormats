@@ -1,9 +1,12 @@
-import React from 'react';
 import FaqItem from '../components/FaqItem';
-import faqData from '../data/faq.json';
+import faqYaml from '../data/faq.yaml';
+import { FaqYaml } from '../types';
 import { HelpCircle } from 'lucide-react';
 
-const FaqPage: React.FC = () => {
+// Extract categories from YAML
+const faqData = (faqYaml as FaqYaml).categories;
+
+const FaqPage = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="bg-white">
@@ -16,22 +19,22 @@ const FaqPage: React.FC = () => {
           </div>
         </div>
       </div>
-      
+
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* O mapeamento agora itera sobre as categorias primeiro */}
         <div className="space-y-12">
           {faqData.map((category, categoryIndex) => (
             <div key={categoryIndex}>
               <h2 className="text-2xl font-bold text-gray-800 mb-6 pb-2 border-b border-gray-200">
-                {category.category}
+                {category.name}
               </h2>
               <div className="space-y-4">
                 {/* Em seguida, itera sobre os itens (perguntas) dentro de cada categoria */}
                 {category.items.map((faq, itemIndex) => (
-                  <FaqItem 
-                    key={itemIndex} 
-                    question={faq.question} 
-                    answer={faq.answer} 
+                  <FaqItem
+                    key={itemIndex}
+                    question={faq.question}
+                    answer={faq.answer}
                   />
                 ))}
               </div>

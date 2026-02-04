@@ -1,0 +1,56 @@
+# General Feature Format
+extension: gff
+name: General Feature Format
+
+area:
+  - Genomics
+  - Transcriptomics
+  - Epigenomics
+
+description: A tab-delimited text format for describing genes and other features of DNA, RNA, and protein sequences.
+
+encoding_type: ASCII / UTF-8
+
+example_filenames:
+  - annotations.gff
+  - features.gff3
+
+example_file_content: "chr1\tRefSeq\tgene\t11874\t14409\t.\t+\t.\tID=gene0;Name=DDX11L1"
+
+example_file_explanation:
+  - "Column 1: Chromosome or reference sequence name."
+  - "Column 2: Source of annotation (e.g., RefSeq)."
+  - "Column 3: Feature type (e.g., gene, exon, CDS)."
+  - "Columns 4–5: Start and end positions of the feature."
+  - "Column 6: Score (optional)."
+  - "Column 7: Strand (+ or -)."
+  - "Column 8: Frame (phase)."
+  - "Column 9: Attributes (key-value pairs like ID and Name)."
+
+pipeline_examples:
+  - pipeline: GFF → genome browser → visualization
+    explanation: GFF files are loaded into genome browsers to visualize annotated genomic elements.
+
+  - pipeline: GFF → HTSeq-count → gene expression
+    explanation: Used to assign sequencing reads to genomic features for RNA-seq quantification.
+
+  - pipeline: GFF → BEDTools → feature intersection
+    explanation: Used with BEDTools to find overlaps between annotated features and experimental data.
+
+tools:
+  - IGV
+  - UCSC Genome Browser
+  - HTSeq
+  - BEDTools
+
+references:
+  - title: GFF3 Format Specification
+    url: https://github.com/The-Sequence-Ontology/Specifications/blob/master/gff3.md
+    type: standard
+
+used_in_repositories:
+  - Ensembl
+  - NCBI
+  - UCSC
+
+notes: GFF3 is the latest version, supporting hierarchical relationships between features.

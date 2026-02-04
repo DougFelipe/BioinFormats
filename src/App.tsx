@@ -1,23 +1,31 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
-import ScrollToTop from './components/ScrollToTop'; // Importa o componente ScrollToTop
+import ScrollToTop from './components/ScrollToTop';
 import Home from './pages/Home';
 import FormatDetail from './pages/FormatDetail';
 import FaqPage from './pages/Faq';
-import { FileFormat, BioinformaticsArea } from './types';
+import { FileFormat, BioinformaticsArea, AreasYaml } from './types';
 import Glossary from "./pages/Glossary";
 
+// Import YAML data
+import areasYaml from './data/areas.yaml';
 
-
-// Import data
-import areasData from './data/areas.json';
-import formatsData from './data/formats.json'; // Corrige a importação para o ficheiro .js
+// Import format loader
+import { loadAllFormats } from './utils/formatLoader';
 
 function App() {
-  const [areas] = useState<BioinformaticsArea[]>(areasData);
-  const [formats] = useState<FileFormat[]>(formatsData);
+  // Load areas from YAML
+  const [areas] = useState<BioinformaticsArea[]>((areasYaml as AreasYaml).areas);
+
+  // Load formats dynamically from YAML files
+  const [formats, setFormats] = useState<FileFormat[]>([]);
+
+  useEffect(() => {
+    const allFormats = loadAllFormats();
+    setFormats(allFormats);
+  }, []);
 
   return (
     <Router>
@@ -26,17 +34,17 @@ function App() {
         <Navigation />
         <main className="flex-grow">
           <Routes>
-            <Route 
-              path="/" 
-              element={<Home formats={formats} areas={areas} />} 
+            <Route
+              path="/"
+              element={<Home formats={formats} areas={areas} />}
             />
-            <Route 
-              path="/format/:extension" 
-              element={<FormatDetail formats={formats} />} 
+            <Route
+              path="/format/:extension"
+              element={<FormatDetail formats={formats} />}
             />
-            <Route 
-              path="/faq" 
-              element={<FaqPage />} 
+            <Route
+              path="/faq"
+              element={<FaqPage />}
             />
             <Route path="/glossary" element={<Glossary />} />
 

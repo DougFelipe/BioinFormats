@@ -1,0 +1,59 @@
+# FASTA Format
+extension: fasta
+name: FASTA Format
+
+area:
+  - Genomics
+  - Transcriptomics
+  - Proteomics
+
+description: A text-based format for representing nucleotide or peptide sequences. Each sequence is preceded by a single-line description that starts with a '>' character.
+
+encoding_type: ASCII / UTF-8
+
+example_filenames:
+  - sequences.fasta
+  - genome.fa
+  - proteins.faa
+
+example_file_content: ">seq1 description\nACGTACGTACGT\n>seq2 description\nTGCATGCATGCA"
+
+example_file_explanation:
+  - "Line 1: Header of the first sequence, starting with '>' followed by the identifier 'seq1' and an optional description."
+  - "Line 2: Nucleotide sequence of the first entry (ACGTACGTACGT)."
+  - "Line 3: Header of the second sequence with identifier 'seq2' and description."
+  - "Line 4: Nucleotide sequence of the second entry (TGCATGCATGCA)."
+
+pipeline_examples:
+  - pipeline: FASTA → BLAST → alignment results
+    explanation: A sequence from a FASTA file is used as a query in a BLAST search to find similar sequences in a database, producing alignment results.
+
+  - pipeline: FASTA → Clustal Omega → multiple alignment
+    explanation: Multiple sequences from a FASTA file are aligned using Clustal Omega to identify conserved regions and evolutionary relationships.
+
+  - pipeline: FASTA → MUSCLE → phylogenetic tree
+    explanation: Sequences are aligned with MUSCLE, and this alignment is then used as input for phylogenetic software to construct an evolutionary tree.
+
+tools:
+  - BLAST
+  - Clustal Omega
+  - MUSCLE
+  - MAFFT
+  - SeqKit
+
+references:
+  - title: FASTA Format Description
+    url: https://en.wikipedia.org/wiki/FASTA_format
+    type: documentation
+
+  - title: NCBI FASTA Format Guide
+    url: https://www.ncbi.nlm.nih.gov/BLAST/fasta.shtml
+    type: standard
+
+used_in_repositories:
+  - NCBI GenBank
+  - ENA
+  - DDBJ
+  - UniProt
+
+notes: A widely supported and de facto standard for biological sequences. Common extensions include .fa, .fas, .fna (DNA), .faa (amino acids).

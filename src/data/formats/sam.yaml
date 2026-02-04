@@ -1,0 +1,50 @@
+# Sequence Alignment Map Format
+extension: sam
+name: Sequence Alignment Map
+
+area:
+  - Genomics
+  - Transcriptomics
+
+description: A text-based format that stores biological sequence alignment data against a reference genome. SAM files contain both a header section and an alignment section.
+
+encoding_type: ASCII / UTF-8
+
+example_filenames:
+  - alignment.sam
+  - rna_reads.sam
+
+example_file_content: "@HD\tVN:1.6\tSO:coordinate\n@SQ\tSN:chr1\tLN:248956422\nread1\t0\tchr1\t100\t255\t50M\t*\t0\t0\tACGTACGTACGTACGTACGTACGTACGTACGTACGTACGTACGT\tIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII"
+
+example_file_explanation:
+  - "Line 1: Header line indicating SAM version and sorting order (coordinate)."
+  - "Line 2: Reference sequence header indicating sequence name 'chr1' and length."
+  - "Line 3: Alignment line with read name 'read1' aligned to 'chr1' at position 100, with CIGAR string '50M'."
+  - "   - Fields include flags (0 = unpaired, mapped), MAPQ (255), and sequences with quality scores."
+
+pipeline_examples:
+  - pipeline: FASTQ → BWA → SAM → BAM
+    explanation: Reads in FASTQ format are aligned to a reference genome using BWA, generating a SAM file that can later be converted to BAM.
+
+  - pipeline: SAM → Picard → MarkDuplicates
+    explanation: SAM file is processed with Picard tools to mark duplicate reads before downstream analysis.
+
+  - pipeline: SAM → samtools view/sort → indexed BAM
+    explanation: SAM files are sorted and indexed with SAMtools for efficient downstream querying and variant calling.
+
+tools:
+  - BWA
+  - SAMtools
+  - Picard
+  - IGV
+
+references:
+  - title: SAM Format Specification
+    url: https://samtools.github.io/hts-specs/SAMv1.pdf
+    type: standard
+
+used_in_repositories:
+  - GEO
+  - SRA
+
+notes: SAM is the human-readable version of BAM and is often used as an intermediate file during analysis.

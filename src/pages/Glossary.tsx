@@ -1,12 +1,12 @@
 import React from "react";
 import { useSearchParams } from "react-router-dom";
-import glossaryJSON from "../data/glossary.json";
-import type { GlossaryTerm } from "../types";
+import glossaryYaml from "../data/glossary.yaml";
+import type { GlossaryYaml } from "../types";
 import { searchGlossary, highlightMatch } from "../utils/searchUtils";
 import GlossaryListItem from "../components/GlossaryListItem";
 import SearchBar from "../components/SearchBar";
 
-const glossary = glossaryJSON as GlossaryTerm[];
+const glossary = (glossaryYaml as GlossaryYaml).terms;
 
 const norm = (s: string) =>
   (s ?? "")
@@ -107,7 +107,7 @@ export default function Glossary() {
             </div>
             {selectedLetter && (
               <p className="mt-2 text-xs text-slate-600 dark:text-slate-400">
-                                Filtering by terms that start with <span className="font-semibold">{selectedLetter}</span>.
+                Filtering by terms that start with <span className="font-semibold">{selectedLetter}</span>.
               </p>
             )}
           </div>
@@ -120,7 +120,7 @@ export default function Glossary() {
               className="text-sm text-slate-700 dark:text-slate-200 hover:underline"
               onClick={clearAll}
             >
-                            Clear filters
+              Clear filters
             </button>
           )}
         </div>
@@ -130,7 +130,7 @@ export default function Glossary() {
       <section className="mt-6">
         {results.length === 0 ? (
           <div className="text-slate-600 dark:text-slate-300">
-                        No results. Try another search or select another letter.
+            No results. Try another search or select another letter.
           </div>
         ) : (
           <ul className="flex flex-col gap-4">

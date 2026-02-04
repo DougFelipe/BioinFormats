@@ -1,0 +1,48 @@
+# Wiggle Format
+extension: wig
+name: Wiggle Format
+
+area:
+  - Genomics
+  - Epigenomics
+
+description: A format designed for display of continuous-valued data such as read depth or signal intensity across a genome.
+
+encoding_type: ASCII / UTF-8
+
+example_filenames:
+  - signal_track.wig
+
+example_file_content: "track type=wiggle_0 name=\"Signal\"\nfixedStep chrom=chr1 start=1 step=1\n10\n12\n15\n13"
+
+example_file_explanation:
+  - "Line 1: Track definition for genome browsers."
+  - "Line 2: fixedStep mode starting at position 1 with step size 1."
+  - "Lines 3–6: Signal values at consecutive positions (1-based coordinates)."
+
+pipeline_examples:
+  - pipeline: ChIP-seq → MACS2 → WIG
+    explanation: MACS2 outputs signal enrichment in WIG format for peak visualization.
+
+  - pipeline: BAM → bedtools genomecov → WIG
+    explanation: Read depth is calculated from BAM alignments and output as WIG file.
+
+  - pipeline: WIG → UCSC Genome Browser → visualization
+    explanation: Used to view continuous signal tracks across the genome in UCSC browser.
+
+tools:
+  - MACS2
+  - BEDTools
+  - UCSC Tools
+  - IGV
+
+references:
+  - title: WIG Format Description
+    url: https://genome.ucsc.edu/goldenPath/help/wiggle.html
+    type: documentation
+
+used_in_repositories:
+  - ENCODE
+  - Roadmap Epigenomics
+
+notes: Replaced by BigWig in large-scale data visualization pipelines.

@@ -47,3 +47,27 @@ export type GlossaryTerm = {
   related_terms?: string[];  // pode referenciar slugs de outros termos
   references?: ReferenceLink[];
 };
+
+// YAML file wrapper types
+export interface AreasYaml {
+  areas: BioinformaticsArea[];
+}
+
+export interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+export interface FaqCategory {
+  name: string;
+  items: FaqItem[];
+}
+
+export interface FaqYaml {
+  categories: FaqCategory[];
+}
+
+export interface GlossaryYaml {
+  terms: GlossaryTerm[];
+}
+

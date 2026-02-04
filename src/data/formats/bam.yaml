@@ -1,0 +1,52 @@
+# Binary Alignment Map Format
+extension: bam
+name: Binary Alignment Map
+
+area:
+  - Genomics
+  - Transcriptomics
+
+description: The compressed binary version of the SAM format for efficient storage of alignments.
+
+encoding_type: Binary
+
+example_filenames:
+  - alignment.bam
+  - sorted_reads.bam
+
+example_file_content: "[Binary file - not human-readable]"
+
+example_file_explanation:
+  - This is a binary file, which is a compressed version of a SAM file.
+  - It contains the same alignment data but is not human-readable.
+  - Requires tools like SAMtools to be viewed or converted.
+  - An index file (.bai) allows for fast access to specific genomic regions.
+
+pipeline_examples:
+  - pipeline: SAM → SAMtools → BAM
+    explanation: A text-based SAM alignment file is converted and compressed into the efficient binary BAM format using SAMtools.
+
+  - pipeline: BAM → GATK → variant calling → VCF
+    explanation: A sorted and indexed BAM file is used by the GATK toolkit to identify genetic variants, with results stored in a VCF file.
+
+  - pipeline: BAM → IGV → genome visualization
+    explanation: BAM files are loaded into genome browsers like IGV to visually inspect how individual reads align to the reference genome.
+
+tools:
+  - SAMtools
+  - IGV
+  - GATK
+  - Picard
+  - BEDTools
+
+references:
+  - title: SAM/BAM Format Specification
+    url: https://samtools.github.io/hts-specs/SAMv1.pdf
+    type: standard
+
+used_in_repositories:
+  - GEO (NCBI)
+  - ArrayExpress
+  - TCGA
+
+notes: Binary format optimized for fast processing. Requires indexing (.bai) for random access.

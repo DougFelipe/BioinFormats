@@ -1,0 +1,48 @@
+# Gene Transfer Format
+extension: gtf
+name: Gene Transfer Format
+
+area:
+  - Genomics
+  - Transcriptomics
+
+description: A specialized format similar to GFF, commonly used in transcript annotation and RNA-seq analysis.
+
+encoding_type: ASCII / UTF-8
+
+example_filenames:
+  - genes.gtf
+
+example_file_content: "chr1\tENSEMBL\texon\t11869\t12227\t.\t+\t.\tgene_id \"ENSG00000223972\"; transcript_id \"ENST00000456328\";"
+
+example_file_explanation:
+  - Represents an exon of a transcript on chromosome 1.
+  - Contains metadata including gene_id and transcript_id.
+  - Used to define exon-intron structures and transcript boundaries.
+
+pipeline_examples:
+  - pipeline: GTF → STAR → BAM
+    explanation: STAR aligner uses the GTF annotation to guide alignment of reads and generate spliced alignments.
+
+  - pipeline: GTF → featureCounts → read quantification
+    explanation: Used to count the number of reads overlapping each gene or exon.
+
+  - pipeline: GTF → StringTie → transcript assembly
+    explanation: StringTie assembles full-length transcripts from aligned reads using GTF as a guide.
+
+tools:
+  - STAR
+  - featureCounts
+  - StringTie
+  - Cufflinks
+
+references:
+  - title: GTF Format Specification
+    url: https://useast.ensembl.org/info/website/upload/gff.html
+    type: documentation
+
+used_in_repositories:
+  - Ensembl
+  - Gencode
+
+notes: GTF is more restrictive than GFF3 and widely used in expression quantification tools.
