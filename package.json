@@ -8,10 +8,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "organize-data": "node scripts/organize-data.cjs",
-    "validate-data": "node scripts/organize-data.cjs --validate-only",
-    "force-organize": "node scripts/organize-data.cjs --force",
-    "prepush": "npm run lint && npm run validate-data",
+    "prepush": "npm run lint",
     "prepare": "husky install",
     "docker:build": "docker build -t bioinformats:local .",
     "docker:run": "docker run --rm -p 8080:80 bioinformats:local"
@@ -46,8 +43,7 @@
       "npm run lint -- --fix",
       "git add"
     ],
-    "src/data/**/*.json": [
-      "npm run validate-data",
+    "src/data/**/*.yaml": [
       "git add src/data"
     ]
   }
