@@ -19,6 +19,15 @@ export interface ColumnDefinition {
   tooltip: string;
 }
 
+export interface CodingCase {
+  operation: string;
+  title: string;
+  command: string;
+  description: string;
+  parameters_explanation?: string;
+  use_case?: string;
+}
+
 export interface FileFormat {
   extension: string;
   name: string;
@@ -36,6 +45,8 @@ export interface FileFormat {
   // Viewer configuration
   viewer_type?: 'tabular' | 'sequence' | 'text';
   column_definitions?: ColumnDefinition[];
+  // Coding cases
+  coding_cases?: CodingCase[];
 }
 
 export type Area = {

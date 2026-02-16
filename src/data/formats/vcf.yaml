@@ -70,3 +70,102 @@ used_in_repositories:
   - dbVar
 
 notes: The standard for genome-wide association studies (GWAS) and medical genomics. Supports multiple samples.
+
+coding_cases:
+  - operation: Reading
+    title: View VCF file header
+    command: bcftools view -h variants.vcf
+    description: Displays only the header section containing metadata and column definitions.
+    parameters_explanation: "-h: outputs header lines only (starting with # or ##)"
+    use_case: Inspect file format version, sample names, and metadata before processing variants.
+
+  - operation: Reading
+    title: View first variants
+    command: bcftools view -H variants.vcf | head -20
+    description: Shows the first 20 variant records without header information.
+    parameters_explanation: "-H: suppresses header; | head -20: limits output to 20 lines"
+    use_case: Quick preview of variant data structure and quality scores.
+
+  - operation: Filtering
+    title: Extract variants from specific region
+    command: bcftools view -r chr1:1000000-2000000 variants.vcf.gz > region.vcf
+    description: Filters variants to a specific genomic region.
+    parameters_explanation: "-r: specifies region as chr:start-end; requires indexed VCF (.tbi)"
+    use_case: Focus analysis on genes or regions of interest, reducing computational load.
+
+  - operation: Filtering
+    title: Filter by quality score
+    command: bcftools view -i 'QUAL>=30' variants.vcf > high_qual.vcf
+    description: Keeps only variants with quality score of 30 or higher.
+    parameters_explanation: "-i: include filter expression; QUAL>=30: minimum quality threshold"
+    use_case: Remove low-confidence variant calls to reduce false positives in analysis.
+
+  - operation: Filtering
+    title: Extract only SNPs
+    command: bcftools view -v snps variants.vcf > snps_only.vcf
+    description: Filters out all variants except single nucleotide polymorphisms (SNPs).
+    parameters_explanation: "-v snps: variant type filter; other options: indels, mnps, other"
+    use_case: Separate SNPs from indels for type-specific analysis or annotation.
+
+  - operation: Filtering
+    title: Filter by allele frequency
+    command: bcftools view -i 'AF>0.05' variants.vcf > common_variants.vcf
+    description: Keeps only variants with allele frequency greater than 5%.
+    parameters_explanation: "-i 'AF>0.05': include variants where AF field exceeds threshold"
+    use_case: Focus on common variants for population studies, excluding rare variants.
+
+  - operation: Statistics
+    title: Count total variants
+    command: bcftools stats variants.vcf | grep "number of records"
+    description: Generates comprehensive statistics including total variant count.
+    parameters_explanation: "stats: produces detailed statistics; grep: extracts record count line"
+    use_case: Quality control to verify expected number of variants after processing.
+
+  - operation: Statistics
+    title: Calculate allele frequencies
+    command: bcftools +fill-tags variants.vcf -- -t AF | bcftools query -f '%CHROM\t%POS\t%AF\n'
+    description: Calculates and displays allele frequencies for each variant position.
+    parameters_explanation: "+fill-tags: plugin to calculate tags; -t AF: specifies AF tag; query: extracts fields"
+    use_case: Identify common versus rare variants in your dataset for filtering or prioritization.
+
+  - operation: Conversion
+    title: Convert VCF to tab-delimited table
+    command: bcftools query -f '%CHROM\t%POS\t%REF\t%ALT\t%QUAL\n' variants.vcf > variants.tsv
+    description: Extracts specific fields into a simple tab-separated format.
+    parameters_explanation: "-f: format string with field specifiers; \\t: tab separator; \\n: newline"
+    use_case: Export variant data for analysis in Excel, R, or other tabular data tools.
+
+  - operation: Conversion
+    title: Compress and index VCF
+    command: bgzip variants.vcf && tabix -p vcf variants.vcf.gz
+    description: Compresses VCF with bgzip and creates index for fast random access.
+    parameters_explanation: "bgzip: block-compressed gzip; tabix: creates .tbi index; -p vcf: preset for VCF files"
+    use_case: Required for efficient region-based queries and use with genome browsers.
+
+  - operation: Manipulation
+    title: Merge multiple VCF files
+    command: bcftools merge sample1.vcf.gz sample2.vcf.gz sample3.vcf.gz -O z -o merged.vcf.gz
+    description: Combines variants from multiple samples into a single multi-sample VCF.
+    parameters_explanation: "-O z: output compressed; -o: output file; input files must be indexed"
+    use_case: Create population VCF for joint analysis or allele frequency calculations.
+
+  - operation: Manipulation
+    title: Normalize variants
+    command: bcftools norm -m-both -f reference.fasta variants.vcf -o normalized.vcf
+    description: Splits multi-allelic variants and left-aligns indels.
+    parameters_explanation: "-m-both: splits multi-allelic sites; -f: reference genome for left-alignment"
+    use_case: Standardize variant representation before comparison or annotation.
+
+  - operation: Manipulation
+    title: Remove duplicate variants
+    command: bcftools norm -d all variants.vcf -o dedup.vcf
+    description: Removes duplicate variant records from the VCF file.
+    parameters_explanation: "-d all: removes all types of duplicates"
+    use_case: Clean VCF files after merging multiple sources to avoid redundant entries.
+
+  - operation: Filtering
+    title: Extract passing variants only
+    command: bcftools view -f PASS variants.vcf > passed.vcf
+    description: Keeps only variants that passed all quality filters.
+    parameters_explanation: "-f PASS: filter by FILTER column value; excludes failed variants"
+    use_case: Remove filtered variants before annotation or clinical interpretation.

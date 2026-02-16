@@ -3,9 +3,10 @@ import { useParams, Link } from 'react-router-dom';
 import ReferenceList from '../components/ReferenceList';
 import ExplanationBlock from '../components/ExplanationBlock';
 import WorkflowSection from '../components/WorkflowSection';
+import CodingCasesSection from '../components/CodingCasesSection';
 import { FormatViewer } from '../components/viewers';
 import { FileFormat } from '../types';
-import { FileText, Info, ArrowLeft } from 'lucide-react';
+import { FileText, Info, ArrowLeft, Code } from 'lucide-react';
 
 interface FormatDetailProps {
   formats: FileFormat[];
@@ -181,6 +182,25 @@ const FormatDetail: React.FC<FormatDetailProps> = ({ formats }) => {
               />
             </div>
           </details>
+
+          {/* Coding Cases Dropdown */}
+          {format.coding_cases && format.coding_cases.length > 0 && (
+            <details className="shadow-lg rounded-xl bg-white border border-gray-200">
+              <summary className="cursor-pointer select-none px-6 py-4 text-lg font-semibold text-gray-900 flex items-center justify-between">
+                <span className="flex items-center">
+                  <Code className="h-5 w-5 mr-2 text-gray-600" />
+                  Coding Cases
+                </span>
+                <span className="ml-2 text-gray-400">▼</span>
+              </summary>
+              <div className="px-6 pb-6 pt-2">
+                <CodingCasesSection
+                  cases={format.coding_cases}
+                  className=""
+                />
+              </div>
+            </details>
+          )}
 
           <div className="flex flex-col gap-8">
             {/* Additional Information */}

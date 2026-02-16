@@ -32,6 +32,13 @@ const Home: React.FC<HomeProps> = ({ formats, areas }) => {
     setSelectedAreaId(prevId => (prevId === areaId ? null : areaId));
   };
 
+  // Calcula o total de coding cases em todos os formatos
+  const totalCodingCases = useMemo(() => {
+    return formats.reduce((total, format) => {
+      return total + (format.coding_cases?.length || 0);
+    }, 0);
+  }, [formats]);
+
   const featuredFormats = formats.slice(0, 6);
 
   return (
@@ -61,6 +68,10 @@ const Home: React.FC<HomeProps> = ({ formats, areas }) => {
                 <div className="text-center">
                   <div className="text-4xl md:text-5xl font-extrabold">{areas.length}</div>
                   <div className="text-lg md:text-xl font-medium">Areas</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-4xl md:text-5xl font-extrabold">{totalCodingCases}+</div>
+                  <div className="text-lg md:text-xl font-medium">Coding Cases</div>
                 </div>
               </div>
 

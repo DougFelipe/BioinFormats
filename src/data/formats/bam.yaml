@@ -50,3 +50,95 @@ used_in_repositories:
   - TCGA
 
 notes: Binary format optimized for fast processing. Requires indexing (.bai) for random access.
+
+coding_cases:
+  - operation: Reading
+    title: View BAM file content
+    command: samtools view alignment.bam | head
+    description: Displays the first 10 alignment records from a BAM file in SAM format.
+    parameters_explanation: "view: converts BAM to SAM output; | head: shows only first 10 lines"
+    use_case: Quick inspection of BAM file content to verify data integrity or format.
+
+  - operation: Reading
+    title: View BAM header
+    command: samtools view -H alignment.bam
+    description: Displays only the header section of the BAM file, containing metadata.
+    parameters_explanation: "-H: outputs only the header lines (starting with @)"
+    use_case: Check reference sequences, read groups, and program information without reading alignment data.
+
+  - operation: Indexing
+    title: Create BAM index
+    command: samtools index sorted_reads.bam
+    description: Creates an index file (.bai) for fast random access to the BAM file.
+    parameters_explanation: "index: creates .bai file; requires sorted BAM file"
+    use_case: Required before accessing specific genomic regions or using genome browsers like IGV.
+
+  - operation: Sorting
+    title: Sort BAM by coordinates
+    command: samtools sort -o sorted.bam unsorted.bam
+    description: Sorts alignment records by genomic coordinates.
+    parameters_explanation: "-o: specifies output file name; input file comes last"
+    use_case: Prerequisite for indexing and many downstream analyses like variant calling.
+
+  - operation: Filtering
+    title: Extract mapped reads only
+    command: samtools view -b -F 4 alignment.bam > mapped_only.bam
+    description: Filters out unmapped reads, keeping only those that aligned to the reference.
+    parameters_explanation: "-b: outputs in BAM format; -F 4: excludes reads with flag 4 (unmapped)"
+    use_case: Reduce file size and focus analysis on successfully aligned sequences.
+
+  - operation: Filtering
+    title: Extract reads from specific region
+    command: samtools view -b alignment.bam chr1:1000000-2000000 > region.bam
+    description: Extracts only reads that align to a specific genomic region.
+    parameters_explanation: "region format: chr:start-end; requires indexed BAM file"
+    use_case: Analyze specific genes or regions of interest without processing the entire file.
+
+  - operation: Filtering
+    title: Filter by mapping quality
+    command: samtools view -b -q 30 alignment.bam > high_quality.bam
+    description: Keeps only reads with mapping quality ≥ 30 (high confidence alignments).
+    parameters_explanation: "-q 30: minimum mapping quality threshold; higher values = more stringent"
+    use_case: Remove ambiguous alignments to increase confidence in downstream variant calling.
+
+  - operation: Statistics
+    title: Generate alignment statistics
+    command: samtools flagstat alignment.bam
+    description: Produces summary statistics about read alignments, including mapped/unmapped counts.
+    parameters_explanation: "flagstat: analyzes SAM flags to count different read categories"
+    use_case: Quality control to assess alignment success rate and identify potential issues.
+
+  - operation: Statistics
+    title: Calculate depth of coverage
+    command: samtools depth alignment.bam | head
+    description: Calculates read depth (coverage) at each genomic position.
+    parameters_explanation: "depth: outputs three columns: chr, position, depth"
+    use_case: Identify regions with low coverage that may need additional sequencing.
+
+  - operation: Conversion
+    title: Convert BAM to SAM
+    command: samtools view -h alignment.bam > alignment.sam
+    description: Converts binary BAM format to human-readable SAM format.
+    parameters_explanation: "-h: includes header in output; > redirects to file"
+    use_case: Inspect alignment details manually or use tools that only accept SAM format.
+
+  - operation: Conversion
+    title: Convert BAM to FASTQ
+    command: samtools fastq alignment.bam > reads.fastq
+    description: Extracts sequence reads from BAM and outputs in FASTQ format.
+    parameters_explanation: "fastq: extracts read sequences and quality scores"
+    use_case: Recover original sequencing reads for re-alignment or format conversion.
+
+  - operation: Manipulation
+    title: Merge multiple BAM files
+    command: samtools merge merged.bam sample1.bam sample2.bam sample3.bam
+    description: Combines multiple BAM files into a single BAM file.
+    parameters_explanation: "merge: output file first, then list input files"
+    use_case: Combine data from multiple sequencing runs or lanes for a single sample.
+
+  - operation: Manipulation
+    title: Remove duplicate reads
+    command: samtools rmdup sorted.bam dedup.bam
+    description: Removes PCR duplicates from a coordinate-sorted BAM file.
+    parameters_explanation: "rmdup: identifies and removes duplicate reads; requires sorted BAM"
+    use_case: Reduce bias from PCR amplification in variant calling and coverage analysis.

@@ -60,3 +60,109 @@ used_in_repositories:
   - UniProt
 
 notes: A widely supported and de facto standard for biological sequences. Common extensions include .fa, .fas, .fna (DNA), .faa (amino acids).
+
+coding_cases:
+  - operation: Reading
+    title: View first sequences
+    command: head -20 sequences.fasta
+    description: Displays the first 20 lines of the FASTA file.
+    parameters_explanation: "head -20: shows first 20 lines (typically 10 sequences if 2 lines each)"
+    use_case: Quick preview to verify file format and content structure.
+
+  - operation: Reading
+    title: Count total sequences
+    command: grep -c "^>" sequences.fasta
+    description: Counts the number of sequences by counting header lines.
+    parameters_explanation: "grep -c: counts matching lines; ^>: lines starting with >"
+    use_case: Verify expected number of sequences after filtering or downloading.
+
+  - operation: Statistics
+    title: Calculate sequence statistics
+    command: seqkit stats sequences.fasta
+    description: Provides comprehensive statistics including number of sequences, total length, min/max/average length.
+    parameters_explanation: "seqkit stats: computes various sequence statistics in tabular format"
+    use_case: Quality control to assess dataset composition and identify outliers.
+
+  - operation: Statistics
+    title: Calculate GC content
+    command: seqkit fx2tab -n -g sequences.fasta
+    description: Calculates and displays GC content percentage for each sequence.
+    parameters_explanation: "-n: includes sequence name; -g: calculates GC content percentage"
+    use_case: Assess compositional bias, important for primer design and species identification.
+
+  - operation: Filtering
+    title: Extract sequences by length
+    command: seqkit seq -m 100 -M 500 sequences.fasta > filtered.fasta
+    description: Filters sequences keeping only those between 100 and 500 bp in length.
+    parameters_explanation: "-m 100: minimum length; -M 500: maximum length"
+    use_case: Remove fragments or very long sequences to focus on desired size range.
+
+  - operation: Filtering
+    title: Extract specific sequence by ID
+    command: seqkit grep -p "seq1" sequences.fasta > seq1_only.fasta
+    description: Extracts sequences whose headers match a specific pattern.
+    parameters_explanation: "-p: pattern to search in sequence headers"
+    use_case: Retrieve specific genes or transcripts of interest from large files.
+
+  - operation: Filtering
+    title: Remove duplicate sequences
+    command: seqkit rmdup -s sequences.fasta > unique.fasta
+    description: Removes duplicate sequences based on sequence content.
+    parameters_explanation: "-s: compare by sequence content (not by name)"
+    use_case: Clean dataset by removing redundant identical sequences.
+
+  - operation: Manipulation
+    title: Convert to single-line FASTA
+    command: seqkit seq -w 0 sequences.fasta > oneline.fasta
+    description: Converts multi-line sequences to single-line format.
+    parameters_explanation: "-w 0: width 0 means no line wrapping, entire sequence on one line"
+    use_case: Simplify parsing with grep/awk or prepare for tools requiring single-line format.
+
+  - operation: Manipulation
+    title: Reverse complement sequences
+    command: seqkit seq -r -p sequences.fasta > revcomp.fasta
+    description: Generates reverse complement of DNA sequences.
+    parameters_explanation: "-r: reverse sequence; -p: complement (reverse + complement = revcomp)"
+    use_case: Analyze opposite strand or prepare sequences for specific cloning orientations.
+
+  - operation: Manipulation
+    title: Translate to protein
+    command: seqkit translate sequences.fasta > proteins.fasta
+    description: Translates nucleotide sequences to amino acid sequences in all six frames.
+    parameters_explanation: "translate: converts DNA/RNA to protein using genetic code"
+    use_case: Predict protein sequences from coding DNA sequences for functional analysis.
+
+  - operation: Manipulation
+    title: Sort sequences by length
+    command: seqkit sort -l sequences.fasta > sorted.fasta
+    description: Sorts sequences in ascending order by sequence length.
+    parameters_explanation: "-l: sort by length; add -r for descending order"
+    use_case: Organize sequences for easier visualization or prioritize longer sequences.
+
+  - operation: Conversion
+    title: Convert to tab-delimited format
+    command: seqkit fx2tab sequences.fasta > sequences.tsv
+    description: Converts FASTA to a table with ID and sequence as columns.
+    parameters_explanation: "fx2tab: converts FASTA/FASTQ to tab-separated values"
+    use_case: Import into spreadsheets or process with standard text tools like awk.
+
+  - operation: Manipulation
+    title: Extract subsequences by position
+    command: seqkit subseq -r 1:100 sequences.fasta > first100bp.fasta
+    description: Extracts the first 100 base pairs from each sequence.
+    parameters_explanation: "-r 1:100: region from position 1 to 100 (1-based indexing)"
+    use_case: Extract specific regions like promoters, domains, or barcode sequences.
+
+  - operation: Manipulation
+    title: Concatenate multiple FASTA files
+    command: cat file1.fasta file2.fasta file3.fasta > combined.fasta
+    description: Merges multiple FASTA files into a single file.
+    parameters_explanation: "cat: concatenates files; > redirects output to new file"
+    use_case: Combine sequences from different sources or samples for joint analysis.
+
+  - operation: Filtering
+    title: Filter by GC content range
+    command: seqkit fx2tab -n -g sequences.fasta | awk '$2>=40 && $2<=60' | cut -f1 | seqkit grep -f - sequences.fasta
+    description: Filters sequences with GC content between 40% and 60%.
+    parameters_explanation: "fx2tab: gets GC%; awk: filters range; grep -f: extracts matching sequences"
+    use_case: Select sequences with suitable GC content for PCR or species-specific analysis.
