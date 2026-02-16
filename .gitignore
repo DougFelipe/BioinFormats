@@ -11,8 +11,6 @@ node_modules
 dist
 dist-ssr
 *.local
-RELATORIO.md
-validation-report.md
 lint-results.json
 
 # Editor directories and files
@@ -26,3 +24,5 @@ lint-results.json
 *.sln
 *.sw?
 .env
+
+.archive
