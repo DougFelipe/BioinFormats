@@ -10,6 +10,7 @@ export interface Reference {
 }
 
 export interface PipelineExample {
+  title?: string;
   pipeline: string;
   explanation: string;
 }

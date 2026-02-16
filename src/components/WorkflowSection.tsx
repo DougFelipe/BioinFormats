@@ -3,6 +3,7 @@ import { ArrowRight } from 'lucide-react';
 
 // A estrutura dos dados que o componente espera receber foi atualizada.
 interface PipelineItem {
+  title?: string;
   pipeline: string;
   explanation: string;
 }
@@ -36,6 +37,13 @@ const WorkflowSection: React.FC<WorkflowSectionProps> = ({ pipelines, className 
               key={index}
               className="bg-gray-50 rounded-lg p-4 border border-gray-200"
             >
+              {/* Título do workflow (se existir) */}
+              {item.title && (
+                <h4 className="text-sm font-semibold text-gray-900 mb-3">
+                  {item.title}
+                </h4>
+              )}
+              
               {/* Representação visual do fluxo de trabalho */}
               {/* AJUSTE: Adicionado 'justify-center' para centralizar os passos do pipeline */}
               <div className="flex items-center justify-center overflow-x-auto pb-2">

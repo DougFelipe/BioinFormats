@@ -23,13 +23,16 @@ example_file_explanation:
   - An index file (.bai) allows for fast access to specific genomic regions.
 
 pipeline_examples:
-  - pipeline: SAM → SAMtools → BAM
+  - title: SAM to BAM Conversion
+    pipeline: SAM → SAMtools → BAM
     explanation: A text-based SAM alignment file is converted and compressed into the efficient binary BAM format using SAMtools.
 
-  - pipeline: BAM → GATK → variant calling → VCF
+  - title: Variant Calling from Alignments
+    pipeline: BAM → GATK → variant calling → VCF
     explanation: A sorted and indexed BAM file is used by the GATK toolkit to identify genetic variants, with results stored in a VCF file.
 
-  - pipeline: BAM → IGV → genome visualization
+  - title: Genome Visualization
+    pipeline: BAM → IGV → genome visualization
     explanation: BAM files are loaded into genome browsers like IGV to visually inspect how individual reads align to the reference genome.
 
 tools:

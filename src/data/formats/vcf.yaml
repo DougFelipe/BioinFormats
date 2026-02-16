@@ -42,13 +42,16 @@ example_file_explanation:
   - "Line 3: A variant record showing a change from 'A' to 'G' on chromosome 1 at position 123456."
 
 pipeline_examples:
-  - pipeline: BAM → GATK → VCF → annotation
+  - title: Variant Calling and Annotation
+    pipeline: BAM → GATK → VCF → annotation
     explanation: A VCF file is generated from alignments (BAM) using GATK, and then annotated to add functional information to the variants.
 
-  - pipeline: VCF → VCFtools → population analysis
+  - title: Population Genetics Analysis
+    pipeline: VCF → VCFtools → population analysis
     explanation: A VCF file containing variants from multiple individuals is analyzed with VCFtools to calculate population genetics statistics.
 
-  - pipeline: VCF → PLINK → GWAS analysis
+  - title: Genome-Wide Association Study
+    pipeline: VCF → PLINK → GWAS analysis
     explanation: VCF data is converted and used in PLINK for genome-wide association studies (GWAS) to find links between variants and traits.
 
 tools:
